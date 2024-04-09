@@ -1,0 +1,24 @@
+{
+  "name": "wprdv",
+  "version": "1.0.0",
+  "description": "Plug in  Wordpress de prise de rendez-vous",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kodi-Studio/wprdv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kodi-Studio/wprdv/issues"
+  },
+  "homepage": "https://github.com/Kodi-Studio/wprdv#readme"
+}

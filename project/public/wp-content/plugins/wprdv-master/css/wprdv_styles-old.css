@@ -1,0 +1,139 @@
+.selector-hours {
+	display: flex;
+}
+.selector-hours--day {
+
+
+
+}
+
+.btn-select-hour {
+	padding:6px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.btn-select-hour.disabled {
+	color: #CCC;
+	cursor: unset;
+}
+
+.btn-select-hour.
+ {
+	color: #CC0000;
+	cursor: unset;
+}
+
+.wprdv-input.error {
+	border: 1px solid #CC0000;
+}
+
+
+.liste-rdv-wrapper, .liste-persons-wrapper {
+	clear:left;
+	border:  1px solid #CCCCCC;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	
+}
+.liste-rdv-listcontainer {
+	min-height: 300px;
+	max-height: 500px;
+	overflow: scroll;
+}
+.liste-rdv-elt, .liste-persons-elt {
+	display: flex;
+    flex-direction: row;
+    padding: 8px 6px;
+    border-bottom: 1px solid #CCCCCC;
+	font-size: 19px;
+	cursor: pointer;
+	justify-content: space-between;
+}
+
+.liste-rdv-elt:hover , .liste-persons-elt:hover  {
+	background-color: #F2F2F2;
+}
+.liste-rdv-elt .name {
+	width:20%;
+}
+.liste-rdv-elt .mail {
+	width:15%;
+}
+.liste-rdv-elt .phone {
+	width:10%;
+}
+.liste-rdv-elt .date {
+	width:15%; text-align: center
+}
+.liste-rdv-elt .confirmed {
+	width:5%; text-align: center
+}
+.liste-rdv-elt .allday {
+	width:3%; text-align: center
+}
+.liste-rdv-elt .refused {
+	width:3%; text-align: center
+}
+
+
+
+
+.liste-persons-elt .lastname  { width: 15%; }
+.liste-persons-elt .firstname  { width: 15%; }
+.liste-persons-elt .email  { width: 30%; }
+.liste-persons-elt .title  { width: 20%; }
+.liste-persons-elt .btn {
+	padding: 3px 5px;
+	border: 1px solid #CCC;
+	color: #000;
+}
+.liste-persons-elt .btn:hover {
+	background-color: #FFF;
+}
+
+.datepiker-container {
+	margin: 22px;
+}
+.datepiker-container .year, .datepiker-container .month {
+	display: inline-block;
+	width: 120px;
+	text-align: center;
+}
+
+
+.btnPrev, .btnNext {
+	display: inline-block;
+	font-weight: bold;
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	text-align:center;
+	cursor: pointer;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+}
+.datepicker-days {
+	display: block;
+	width: 280px;
+}
+
+.datepicker-day {
+	display: inline-block;
+	width: 32px; height: 32px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 32px;
+	margin:4px;
+}
+
+.liste-rdv-wrapper .datepiker-container , .liste-rdv-wrapper .selector-hours--hours, .liste-rdv-wrapper .selector-allday  {
+	display: inline-block;
+}
+
+
+
+
+
+
