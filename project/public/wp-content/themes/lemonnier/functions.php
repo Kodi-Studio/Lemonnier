@@ -17,15 +17,19 @@ declare(strict_types=1);
 function nb_add_theme_scripts()
 {
     // add global style
-    wp_enqueue_style('nb_style', get_stylesheet_uri());
+    // wp_enqueue_style('nb_style', get_stylesheet_uri());
 
     // add additional style
     // wp_enqueue_style('nb_slider', get_template_directory_uri() . '/css/slider.css', [], '1.1', 'all');
 
+    // styles template Lemonnier
+    wp_enqueue_style('template', get_template_directory_uri() . '/dist/styles/styles.css', [], '1.1', 'all');
+
+
     // add global script
     wp_enqueue_script(
         'nb_script',
-        get_template_directory_uri() . '/js/script.js',
+        get_template_directory_uri() . '/dist/js/bundle.js',
         // dependencies
         [],
         // version (increase on changes)
@@ -53,6 +57,7 @@ function nb_register_menus()
     register_nav_menus([
         'nb-main-menu' => __('Main Menu', 'nb-wordpress-skeleton-theme'),
         'nb-cta-menu' => __('Call-to-Action Menu', 'nb-wordpress-skeleton-theme'),
+        'information-menu' => __('Infomation Menu', 'nb-wordpress-skeleton-theme'),
     ]);
 }
 add_action( 'init', 'nb_register_menus' );
@@ -117,3 +122,4 @@ function nb_customize_register($wp_customize)
     ));
 }
 add_action('customize_register', 'nb_customize_register');
+

@@ -1,0 +1,14 @@
+@import "./breakpoints.scss";
+
+
+.section {
+  width: 100vw;
+  margin: auto;
+}
+
+
+@include lg {
+  .section {
+    max-width: 1400px;
+  }
+}

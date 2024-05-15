@@ -1,0 +1,170 @@
+/*
+Theme Name: Theme Lemonnier voyages - Atelier Mook
+Theme URI: https://netbrothers.de
+Author: Thilo Ratnaweera <info@netbrothers.de>
+Author URI: https://www.linkedin.com/in/thilo-ratnaweera/
+Description: This minimalistic skeleton theme is intended as a starting point, if you plan to develop a WordPress theme from scratch.
+Tags: skeleton, developer, minimalistic, minimal, translation-ready
+Version: 1.0.0
+Requires at least: 6.4.0
+Requires PHP: 8.1
+License: GPL-3.0-or-later
+License URI: https://spdx.org/licenses/GPL-3.0-or-later.html
+Text Domain: nb-wordpress-skeleton-theme
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: calc(var(--nb-body-font-size) * 1.9);
+}
+
+h2 {
+  font-size: calc(var(--nb-body-font-size) * 1.4);
+}
+a,
+a:hover {
+  text-decoration: none;
+}
