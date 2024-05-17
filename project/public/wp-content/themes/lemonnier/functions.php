@@ -123,3 +123,77 @@ function nb_customize_register($wp_customize)
 }
 add_action('customize_register', 'nb_customize_register');
 
+
+
+
+
+
+// Fonction pour ajouter le champ d'upload d'image EN entête des pages
+function ajouter_champ_upload_image() {
+    add_meta_box(
+        'champ_upload_image',
+        'Image en tête de page',
+        'afficher_champ_upload_image',
+        'page', // Ajouter uniquement à l'édition de pages
+        'normal',
+        'high'
+    );
+}
+
+// Fonction pour afficher le champ d'upload d'image
+function afficher_champ_upload_image($post) {
+    // Récupérer la valeur actuelle du champ s'il existe
+    $image_url = get_post_meta($post->ID, 'image_url', true);
+
+    // Sécuriser le formulaire avec un nonce
+    wp_nonce_field('upload_image_nonce', 'upload_image_nonce_field');
+
+    // Afficher le champ d'upload d'image
+    echo '<label for="image_url">Image :</label>';
+    echo '<input type="text" id="image_url" name="image_url" value="' . esc_attr($image_url) . '" size="30" />';
+    echo '<input type="button" id="upload_image_button" class="button" value="Uploader une image" />';
+    echo '<p class="description">Sélectionnez ou téléchargez une image pour cette page.</p>';
+    echo '<div><img style="max-width: 200px" src="'.$image_url.'" /></div>'
+    // JavaScript pour gérer l'événement de clic sur le bouton d'upload
+    ?>
+    <script>
+        jQuery(document).ready(function($){
+            $('#upload_image_button').click(function() {
+                var custom_uploader = wp.media({
+                    title: 'Uploader une image',
+                    button: {
+                        text: 'Choisir une image'
+                    },
+                    multiple: false  // Set to true to allow multiple files to be selected
+                })
+                .on('select', function() {
+                    var attachment = custom_uploader.state().get('selection').first().toJSON();
+                    $('#image_url').val(attachment.url);
+                })
+                .open();
+            });
+        });
+    </script>
+    <?php
+
+
+
+}
+
+// Fonction pour enregistrer la valeur du champ d'upload d'image
+function enregistrer_champ_upload_image($post_id) {
+    // Vérifier les autorisations et la présence du nonce
+    if (!isset($_POST['upload_image_nonce_field']) || !wp_verify_nonce($_POST['upload_image_nonce_field'], 'upload_image_nonce')) {
+        return;
+    }
+
+    // Vérifier si la valeur a été saisie
+    if (isset($_POST['image_url'])) {
+        // Nettoyer et enregistrer la valeur du champ d'upload d'image
+        update_post_meta($post_id, 'image_url', sanitize_text_field($_POST['image_url']));
+    }
+}
+
+// Hooks pour ajouter et enregistrer le champ d'upload d'image
+add_action('add_meta_boxes', 'ajouter_champ_upload_image');
+add_action('save_post', 'enregistrer_champ_upload_image');

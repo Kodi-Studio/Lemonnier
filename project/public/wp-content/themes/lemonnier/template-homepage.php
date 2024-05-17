@@ -16,12 +16,11 @@ declare(strict_types=1);
 ?>
 <?php get_header(); ?>
 
+    <section class="section section-full page-header">
+        <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
+        <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
+    </section>
     <section class="section" >
-
-        <div class="page-header">
-            
-        </div>
-
         <div id="content-container">
             <main>
                 <?php the_content(); ?>
