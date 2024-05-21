@@ -9,11 +9,10 @@
 //     someFunction(); // Appel d'une fonction définie dans un autre fichier
 // });
 
-import '../scss/main.scss';
+import "../scss/main.scss";
 
-import { Header } from './components/header.component'
+import { Header } from "./components/header.component";
 
 const test = new Header();
 
 test.init();
-
