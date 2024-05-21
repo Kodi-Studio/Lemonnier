@@ -1,0 +1,28 @@
+@import "./breakpoints.scss";
+
+.page {
+  &-header {
+    overflow: hidden;
+    position: relative;
+    height: 40vh;
+    .image-header {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+    .weaver {
+      bottom: -9px;
+      left: 50%;
+      width: 100vw;
+      max-width: 1200px;
+      min-width: 600px;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+    @include md {
+     height: 50vh;
+    }
+
+  }
+}
