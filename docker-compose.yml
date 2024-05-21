@@ -37,12 +37,12 @@ services:
         - dev
         
   www:
-    build: "php_7.4"
+    build: "php_8.0"
     container_name: www_docker_kodistudio
     ports:
       - "3000:80"
     volumes:
-        - ./php_7.4/vhosts:/etc/apache2/sites-enabled
+        - ./php_8.0/vhosts:/etc/apache2/sites-enabled
         - ./:/var/www
     restart: always
     networks:
