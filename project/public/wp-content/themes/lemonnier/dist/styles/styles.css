@@ -569,15 +569,16 @@ body {
 }
 
 main {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .container {
   max-width: 1200px;
 }
 
+.content-container,
 #content-container {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 p {
@@ -600,7 +601,7 @@ h2 {
 .page-header {
   overflow: hidden;
   position: relative;
-  height: 40vh;
+  height: 50vh;
 }
 .page-header .image-header {
   object-fit: cover;
@@ -619,8 +620,69 @@ h2 {
 }
 @media (min-width: 768px) {
   .page-header {
-    height: 50vh;
+    height: 80vh;
   }
+}
+.page-header h1.page-title {
+  border-top: 2px dashed #fff;
+  color: #fff;
+  font-family: "Glamoure Everyday", sans-serif;
+  font-weight: 100;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-top: 1.2rem;
+  padding-top: 1.6rem;
+}
+@media (min-width: 768px) {
+  .page-header h1.page-title {
+    font-size: 5.2rem;
+  }
+}
+.page-content {
+  padding-top: 50px;
+}
+.page-content h2,
+.page-content h2.page-title {
+  color: #000;
+  font-family: "Lexend", sans-serif;
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+.page-content h2 strong,
+.page-content h2.page-title strong {
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .page-content h2,
+  .page-content h2.page-title {
+    font-size: 2.28rem;
+  }
+}
+
+.content-container {
+  background: transparent;
+  height: calc(100% - 40px);
+  max-width: 1200px;
+  margin: auto;
+  width: calc(100vw - 20px);
+}
+.content-container.top-page {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.content-container.top-page .logo-container {
+  position: absolute;
+  left: 0;
+  max-width: 470px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70vw;
+}
+.content-container.top-page .logo-container .logo-text {
+  width: 100%;
 }
 
 .footer {

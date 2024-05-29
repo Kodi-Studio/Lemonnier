@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: WP RDV
+Plugin Name: KodiStudio - Destinations
 Plugin URI: http://www.kodi-studio.fr
-Description: Plugin prise de RDV
+Description: Gestion des destinations
 Version: 0.1
 Author: KODI Studio
 Author URI: http://www.christopheharel.fr
-Text Domain: wprdv
+Text Domain: kdest
 */
 define( 'KDEST_URL', plugins_url('/', __FILE__) );
 define( 'KDEST_DIR', dirname(__FILE__) );
@@ -32,55 +32,56 @@ function Kdest_Init() {
 	//// public part
 	if ( !is_admin() ) {
 		//header('Location: http://www.example.com/');
-		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'functions.tpl.php' );	
-		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.client.php' );
-		$tab = getallheaders();
-		if(strrpos($tab['Accept'] ,'application/json' )>-1){
-			require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.webservice.php' );
-			$webservice = new wprdv_Clientwebservice();			
-		}
-		$myExt['client'] = new wprdv_Client();
+		// require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'functions.tpl.php' );	
+		// require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.client.php' );
+		// $tab = getallheaders();
+		// if(strrpos($tab['Accept'] ,'application/json' )>-1){
+		// 	require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.webservice.php' );
+		// 	$webservice = new wprdv_Clientwebservice();			
+		// }
+		// $myExt['client'] = new wprdv_Client();
 	}
 	// Admin part
 	else if ( is_admin() ) {
 		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'functions.plugin.php' );
-		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.wprdv.php' );
-		//// page d'administration des RDV
-		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminrdv.page.php' );
-		//// page d'administration de persons (collaborateurs)
-		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminpersons.page.php' );
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.kdest.php' );
+		//// page d'administration des voyages
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminkdest.page.php' );
+		// page d'administration des types de voyages (monde, europe ...etc)
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminkdesttypes.page.php' );
 		
 		
-		$myExt['admin_page'] = new Wprdv();
+		$myExt['admin_page'] = new Kdest();
 
 		///// preparation des reponses AJAX côté admin
-		function generic_Webservice() {
-			require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.webservice.php' );
-			$webservice = new wprdv_Clientwebservice();
-			die();
-		}
-		add_action( 'wp_ajax_rdvlisteAdmin', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_rdvlisteAdmin', 'generic_Webservice' );
+		// function generic_Webservice() {
+		// 	require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.webservice.php' );
+		// 	$webservice = new wprdv_Clientwebservice();
+		// 	die();
+		// }
 
-		add_action( 'wp_ajax_updaterdv', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_updaterdv', 'generic_Webservice' );
+		// add_action( 'wp_ajax_rdvlisteAdmin', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_rdvlisteAdmin', 'generic_Webservice' );
 
-		/// nouveau rdv depuis l'admin
-		add_action( 'wp_ajax_newRdvAdmin', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_newRdvAdmin', 'generic_Webservice' );
+		// add_action( 'wp_ajax_updaterdv', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_updaterdv', 'generic_Webservice' );
 
-		/// suppression collaborateur depuis admin
-		add_action( 'wp_ajax_deletePerson', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_deletePerson', 'generic_Webservice' );
-		/// update collaborateur depuis admin
-		add_action( 'wp_ajax_updatePerson', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_updatePerson', 'generic_Webservice' );	
-		/// insertion collaborateur depuis admin
-		add_action( 'wp_ajax_insertPerson', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_updatePerson', 'generic_Webservice' );
-		/// get persons configs -> coté client 
-		add_action( 'wp_ajax_getPersonsConfigs', 'generic_Webservice' );
-		add_action( 'wp_ajax_nopriv_getPersonsConfigs', 'generic_Webservice' );
+		// /// nouveau rdv depuis l'admin
+		// add_action( 'wp_ajax_newRdvAdmin', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_newRdvAdmin', 'generic_Webservice' );
+
+		// /// suppression collaborateur depuis admin
+		// add_action( 'wp_ajax_deletePerson', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_deletePerson', 'generic_Webservice' );
+		// /// update collaborateur depuis admin
+		// add_action( 'wp_ajax_updatePerson', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_updatePerson', 'generic_Webservice' );	
+		// /// insertion collaborateur depuis admin
+		// add_action( 'wp_ajax_insertPerson', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_updatePerson', 'generic_Webservice' );
+		// /// get persons configs -> coté client 
+		// add_action( 'wp_ajax_getPersonsConfigs', 'generic_Webservice' );
+		// add_action( 'wp_ajax_nopriv_getPersonsConfigs', 'generic_Webservice' );
 
 
 		
@@ -89,12 +90,12 @@ function Kdest_Init() {
 add_action( 'plugins_loaded', 'Kdest_Init' );
 
 if ( is_admin() ) {
-	require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR.'class.wprdv.php' );
-	register_activation_hook( __FILE__, array('Wprdv','wprdv_Install') );
+	require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR.'class.kdest.php' );
+	register_activation_hook( __FILE__, array('Kdest','kdest_Install') );
 }
 
 /////////////////////////////////////  importation des fichiers javascripts côté client
-function wprdv_jsScripts(){
+function Kdest_jsScripts(){
 	//wp_enqueue_style( 'tadv-css', TADV_URL . 'css/tadv-styles.css', array( 'editor-buttons' ), '4.0' );
 	//wp_enqueue_style( 'wprdv_styles', KDEST_URL. "css/wprdv_styles.css", array( 'wprdv_styles_css' ) , '1.0' , false  );
 
@@ -110,11 +111,11 @@ function wprdv_jsScripts(){
 	wp_register_script( 'App', KDEST_URL . 'js/App.js', array('mithril') , null, true );
 	wp_enqueue_script( 'App' );	
 }
-if(!is_admin()) add_action('init','wprdv_jsScripts');
+if(!is_admin()) add_action('init','Kdest_jsScripts');
 
 
 /////////////////////////////////////  importation des fichiers javascripts côté Admin
-function wprdv_jsScriptsAdmin(){
+function Kdest_jsScriptsAdmin(){
 	//wp_enqueue_style( 'tadv-css', TADV_URL . 'css/tadv-styles.css', array( 'editor-buttons' ), '4.0' );
 	//wp_enqueue_style( 'wprdv_styles', KDEST_URL. "css/wprdv_styles.css", array( 'wprdv_styles_css' ) , '1.0' , false  );
 
@@ -130,7 +131,7 @@ function wprdv_jsScriptsAdmin(){
 	//wp_register_script( 'App', KDEST_URL . 'js/AppAdminRdv.js', array('mithril') , null, true );
 	//wp_enqueue_script( 'App' );	
 }
-if(is_admin()) add_action('init','wprdv_jsScriptsAdmin');
+if(is_admin()) add_action('init','Kdest_jsScriptsAdmin');
 
 
 
