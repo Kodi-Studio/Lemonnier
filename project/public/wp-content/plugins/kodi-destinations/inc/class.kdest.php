@@ -13,6 +13,10 @@ class Kdest{
 			// add_options_page('Gestion des rendez-vous', 'Destinations', 'manage_options', 'rdv_manager', 'showAdminTravelTypePage',   '', 90);
 			add_submenu_page( 'kdest_manager', 'Gestion des types', 'types', 'manage_options', 'kdest_types_manager', 'showAdminTravelTypePage' );
 
+			add_submenu_page( 'kdest_manager', 'Gestion des discounts', 'discounts', 'manage_options', 'kdest_discount_manager', 'showAdminDiscountPage' );
+
+			add_submenu_page( 'kdest_manager', 'Gestion des catalogues', 'catalogues', 'manage_options', 'kdest_cata_manager', 'showAdminCataPage' );
+
 		}
 
 		function kdest_types_manager() {
@@ -26,8 +30,13 @@ class Kdest{
 		function showAdminTravelPage() {  $myExt['admin_travel_page'] = new TRAVEL_Admin_Page();  }
 
 		function showAdminTravelTypePage() {  $myExt['admin_travel_type_page'] = new TRAVEL_Admin_types_Page();  }
+
+		function showAdminDiscountPage() {  $myExt['admin_travel_discount_page'] = new TRAVEL_Admin_discount_Page();  }
+
+		function showAdminCataPage() {  $myExt['admin_travel_discount_page'] = new TRAVEL_Admin_cata_Page(); } 
 		
 		
+		//class.adminkdestdiscount.page.php
 		
 	
 	}

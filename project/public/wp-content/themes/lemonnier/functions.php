@@ -129,19 +129,21 @@ add_action('customize_register', 'nb_customize_register');
 
 
 // Fonction pour ajouter le champ d'upload d'image EN entête des pages
-function ajouter_champ_upload_image() {
+function add_field_upload_image() {
     add_meta_box(
         'champ_upload_image',
         'Image en tête de page',
-        'afficher_champ_upload_image',
+        'show_champ_upload_image',
         'page', // Ajouter uniquement à l'édition de pages
         'normal',
         'high'
     );
 }
 
+
+
 // Fonction pour afficher le champ d'upload d'image
-function afficher_champ_upload_image($post) {
+function show_champ_upload_image($post) {
     // Récupérer la valeur actuelle du champ s'il existe
     $image_url = get_post_meta($post->ID, 'image_url', true);
 
@@ -195,5 +197,54 @@ function enregistrer_champ_upload_image($post_id) {
 }
 
 // Hooks pour ajouter et enregistrer le champ d'upload d'image
-add_action('add_meta_boxes', 'ajouter_champ_upload_image');
+add_action('add_meta_boxes', 'add_field_upload_image');
 add_action('save_post', 'enregistrer_champ_upload_image');
+
+
+
+// Fonction pour ajouter le champ check box liens catalogues avant le footer
+function add_field_show_cata_before_footer() {
+    add_meta_box(
+        'champ_show_cata',
+        'Liens de téléchargement des catalogues avant le footer',
+        'show_check_cata_before_footer',
+        'page', // Ajouter uniquement à l'édition de pages
+        'normal',
+        'high'
+    );
+}
+
+
+
+
+function show_check_cata_before_footer($post) {
+
+    // Récupérer la valeur actuelle du champ s'il existe
+    $show_catas_footer = get_post_meta($post->ID, 'show_catas_footer', true);
+
+    // Sécuriser le formulaire avec un nonce
+    wp_nonce_field('show_catas_footer_nonce', 'show_catas_footer_nonce_field');
+
+    // Afficher le champ d'upload d'image
+    echo '<label for="show_catas_footer">Afficher avant le footer :</label>';
+    echo '<input type="checkbox" id="show_catas_footer" name="show_catas_footer" value="1" ' . checked($show_catas_footer, '1', false) . '>';
+}
+
+
+// Fonction pour enregistrer la valeur du champ d'upload d'image
+function save_show_check_cata_before_footer($post_id) {
+    // Vérifier les autorisations et la présence du nonce
+    if (!isset($_POST['show_catas_footer']) || !wp_verify_nonce($_POST['show_catas_footer_nonce_field'], 'show_catas_footer_nonce')) {
+        return;
+    }
+
+    // Vérifier si la valeur a été saisie
+    if (isset($_POST['show_catas_footer'])) {
+        // Nettoyer et enregistrer la valeur du champ d'upload d'image
+        update_post_meta($post_id, 'show_catas_footer', sanitize_text_field($_POST['show_catas_footer']));
+    }
+}
+// Hooks pour ajouter et enregistrer le champ d'upload d'image
+add_action('add_meta_boxes', 'add_field_show_cata_before_footer');
+add_action('save_post', 'save_show_check_cata_before_footer');
+

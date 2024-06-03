@@ -98,7 +98,9 @@ if ( ! defined( 'ABSPATH' ) )
 require_once( ABSPATH . 'wp-settings.php' );
 
 
-
+@ini_set('upload_max_filesize', '64M');
+@ini_set('post_max_size', '64M');
+@ini_set('memory_limit', '128M');
 
 // Afficher les erreurs PHP
 // define('WP_DEBUG', true);

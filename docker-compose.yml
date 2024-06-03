@@ -1,5 +1,52 @@
 version: "3.8"
 services:
+  traefik:
+    image: "traefik:v2.5"
+    container_name: welive_docker_traefik
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=kodi.webstudio@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--providers.file.directory=/etc/traefik/"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./dev-traefik.yml:/etc/traefik/traefik.yml
+      - ./dev-tls.yml:/etc/traefik/tls.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - certs:/etc/ssl/traefik
+    labels:
+      # global redirect to https
+      - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+
+      # middleware redirect
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    networks:
+        - dev
+
+  reverse-proxy-https-helper:
+    image: alpine
+    container_name: welive_docker_ssl_proxy
+    command: sh -c "cd /etc/ssl/traefik
+      && wget traefik.me/cert.pem -O cert.pem
+      && wget traefik.me/privkey.pem -O privkey.pem"
+    volumes:
+      - certs:/etc/ssl/traefik
+    # networks:
+    #   - web
+
   db:
       image: mysql
       container_name: db_docker_kodistudio
@@ -21,7 +68,7 @@ services:
     depends_on:
         - db
     ports:
-        - 8080:80
+        - 8081:80
     environment:
         PMA_HOST: db
     networks:
@@ -44,6 +91,13 @@ services:
     volumes:
         - ./php_8.0/vhosts:/etc/apache2/sites-enabled
         - ./:/var/www
+    labels:
+      - "traefik.http.routers.www_docker_api.rule=Host(`api.traefik.me`)"
+      #- "traefik.http.routers.www_docker_sulu.middlewares=auth"
+      - "traefik.http.routers.www_docker_api.entrypoints=websecure"
+      - "traefik.http.routers.www_docker_api.tls=true"
+      # - "traefik.http.routers.my-app.tls.certresolver=leresolver"
+      # - "traefik.http.middlewares.auth.basicauth.users=user:$$apr1$$q8eZFHjF$$Fvmkk//V6Btlaf2i/ju5n/" # user/password
     restart: always
     networks:
         - dev
@@ -52,5 +106,6 @@ networks:
   dev:
 
 volumes:
-  db-data:  
+  db-data:
+  certs:
 
