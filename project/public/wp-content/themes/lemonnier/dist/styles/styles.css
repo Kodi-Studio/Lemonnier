@@ -685,6 +685,63 @@ h2 {
   width: 100%;
 }
 
+.carousel-travels-title {
+  text-align: center;
+  width: auto;
+  margin: auto;
+}
+.carousel-travels-title h2 {
+  font-family: "Glamoure Everyday", sans-serif;
+  color: var(--color-text);
+  margin: 1rem 0 0;
+  padding: 0;
+  font-size: 4rem;
+}
+.carousel-travels-title h3 {
+  font-family: "Lexend", sans-serif;
+  color: var(--color-text);
+  border-top: 1px dashed var(--color-text);
+  width: fit-content;
+  margin: auto;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.carousel-travels-title h3 strong {
+  font-weight: 500;
+}
+
+.carousel-generic {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.carousel-generic::-webkit-scrollbar {
+  display: none;
+}
+.carousel-generic--item {
+  align-items: center;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 66.6666666667%;
+  min-width: 66.6666666667%;
+}
+.carousel-generic--item .--vignette {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .carousel-generic--item {
+    width: 33.3333333333%;
+    min-width: 33.3333333333%;
+  }
+}
+
 .footer {
   background-color: #000;
 }

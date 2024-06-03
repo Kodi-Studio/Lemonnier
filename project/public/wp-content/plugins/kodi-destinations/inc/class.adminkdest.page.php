@@ -107,14 +107,17 @@ class TRAVEL_Admin_Page {
 					'travel_date_b_end' => '',
 					'travel_price_b_1' => '',
 					'travel_price_b_2' => '',
+					'travel_discount_id' => null,
 
 			);
 		}
 
 		/// liste des types de travel
 		$travels_types = $wpdb->get_results("SELECT travel_type_id, travel_type_title FROM `travel_type`");
-
+		$travel_discount = $wpdb->get_results("SELECT travel_discount_id, travel_discount_libelle FROM `travel_discount`");
 		
+		// var_dump($travel_discount);
+
 		$html =  '
 			<form method="post" action="" enctype="multipart/form-data" >
 				<input type="hidden" name="mp_form_update_submitted" value="1">';
@@ -147,8 +150,7 @@ class TRAVEL_Admin_Page {
                         $html .='<option value="' . esc_attr($type->travel_type_id) . '" ' . $selected . '>' . esc_html($type->travel_type_title) . '</option>';
                     }
 
-		$html .= '</select>
-				</td>';
+		$html .= '</select></td>';
 		$html .= '</tr>';
 
 
@@ -190,7 +192,20 @@ class TRAVEL_Admin_Page {
                     <th scope="row"><label for="travel_price_b_2">Tarif 2</label></th>
                     <td><input type="text" id="travel_price_b_2" name="travel_price_b_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2) : '').'" required></td>
                 </tr>
+				
+				<tr >
+					<th >Sticker discount  :</th>';
+		$html .= '<td>
+					<select id="travel_discount_id" name="travel_discount_id" required>
+						<option value="">Sélectionner un sticker discount</option>';
+						foreach ($travel_discount as $discount) {
+							$selected = $edit_item && $edit_item->travel_discount_id == $discount->travel_discount_id ? 'selected' : '';
+							$html .='<option value="' . esc_attr($discount->travel_discount_id) . '" ' . $selected . '>' . esc_html($discount->travel_discount_libelle) . '</option>';
+						}
 
+		$html .= '</select></td>';
+
+		$html .= '</tr>
 				<tr ><th >Images  :</th></tr>
 				<tr valign="top">
                     <th scope="row"><label for="image">Image principale</label></th>
@@ -256,7 +271,7 @@ class TRAVEL_Admin_Page {
 		$travel_price_b_1 = sanitize_text_field($_POST['travel_price_b_1']);
 		$travel_price_b_2 = sanitize_text_field($_POST['travel_price_b_2']);
 
-
+		$travel_discount_id = sanitize_text_field($_POST['travel_discount_id']);
 
 		$travel_homepage = isset($_POST['travel_homepage']) ? 1 : 0;
 		$travel_online = isset($_POST['travel_online']) ? 1 : 0;
@@ -316,6 +331,7 @@ class TRAVEL_Admin_Page {
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
 					'travel_price_b_2' => $travel_price_b_2,
+					'travel_discount_id' => $travel_discount_id
                 ),
                 array('travel_id' => $travel_id)
             );
@@ -344,6 +360,7 @@ class TRAVEL_Admin_Page {
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
 					'travel_price_b_2' => $travel_price_b_2,
+					'travel_discount_id' => $travel_discount_id
                 ),
             );
 			// echo "page d'insertion d'une nouvelle destination";

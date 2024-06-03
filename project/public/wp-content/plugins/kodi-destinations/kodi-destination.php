@@ -32,7 +32,7 @@ function Kdest_Init() {
 	//// public part
 	if ( !is_admin() ) {
 		//header('Location: http://www.example.com/');
-		// require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'functions.tpl.php' );	
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'functions.tpl.php' );	
 		// require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.client.php' );
 		// $tab = getallheaders();
 		// if(strrpos($tab['Accept'] ,'application/json' )>-1){
@@ -49,6 +49,10 @@ function Kdest_Init() {
 		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminkdest.page.php' );
 		// page d'administration des types de voyages (monde, europe ...etc)
 		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminkdesttypes.page.php' );
+		// page d'administration des discounts
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.adminkdestdiscount.page.php' );
+		// page d'administration des catalogues
+		require_once( KDEST_DIR . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'class.admincata.page.php' );
 		
 		
 		$myExt['admin_page'] = new Kdest();

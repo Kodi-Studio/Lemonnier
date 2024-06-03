@@ -85,3 +85,68 @@
     }
   }
 }
+
+///// HOMEPAGE
+.carousel-travels-title {
+  text-align: center;
+  width: auto;
+  margin: auto;
+  // --color-text: red;
+
+  h2 {
+    font-family: "Glamoure Everyday", sans-serif;
+    color: var(--color-text);
+    margin: 1rem 0 0;
+    padding: 0;
+    font-size: 4rem;
+  }
+  h3 {
+    font-family: "Lexend", sans-serif;
+    color: var(--color-text);
+    border-top: 1px dashed var(--color-text);
+    width: fit-content;
+    margin: auto;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    strong {
+      font-weight: 500;
+    }
+  }
+}
+
+.carousel-generic {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &--container {
+  }
+  &--item {
+    align-items: center;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    width: calc(100% / 1.5);
+    min-width: calc(100% / 1.5);
+
+    .--vignette {
+      width: 50%;
+    }
+
+    @include md {
+      width: calc(100% / 3);
+      min-width: calc(100% / 3);
+    }
+  }
+}
