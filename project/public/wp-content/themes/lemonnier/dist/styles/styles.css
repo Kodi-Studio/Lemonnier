@@ -246,6 +246,24 @@ a:hover {
 .section-footer {
   width: 100%;
 }
+.section-footer--catalogs {
+  background-color: #7d41c2;
+  padding: 4rem 0.5rem 6rem;
+  display: flex;
+  justify-content: center;
+}
+.section-footer--catalogs .footer-catalogs--list a {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 200;
+  letter-spacing: 0.8px;
+}
+.section-footer--catalogs .footer-catalogs--list a strong {
+  font-weight: 500;
+}
+.section-footer--catalogs .footer-catalogs--list a:hover {
+  text-decoration: underline;
+}
 
 @media (min-width: 960px) {
   .section {
@@ -255,6 +273,10 @@ a:hover {
     max-width: 100vw;
   }
 }
+.max-width-lg {
+  max-width: 1400px;
+}
+
 :root {
   --nb-color-header-bg: black;
   --nb-color-header-text: white;
@@ -569,15 +591,16 @@ body {
 }
 
 main {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .container {
   max-width: 1200px;
 }
 
+.content-container,
 #content-container {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 p {
@@ -600,7 +623,7 @@ h2 {
 .page-header {
   overflow: hidden;
   position: relative;
-  height: 40vh;
+  height: 50vh;
 }
 .page-header .image-header {
   object-fit: cover;
@@ -619,8 +642,181 @@ h2 {
 }
 @media (min-width: 768px) {
   .page-header {
-    height: 50vh;
+    height: 80vh;
   }
+}
+.page-header h1.page-title {
+  border-top: 2px dashed #fff;
+  color: #fff;
+  font-family: "Glamoure Everyday", sans-serif;
+  font-weight: 100;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-top: 1.2rem;
+  padding-top: 1.6rem;
+}
+@media (min-width: 768px) {
+  .page-header h1.page-title {
+    font-size: 5.2rem;
+  }
+}
+.page-content {
+  padding-top: 50px;
+}
+.page-content h2,
+.page-content h2.page-title {
+  color: #000;
+  font-family: "Lexend", sans-serif;
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+.page-content h2 strong,
+.page-content h2.page-title strong {
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .page-content h2,
+  .page-content h2.page-title {
+    font-size: 2.28rem;
+  }
+}
+
+.content-container {
+  background: transparent;
+  height: calc(100% - 40px);
+  max-width: 1200px;
+  margin: auto;
+  width: calc(100vw - 20px);
+}
+.content-container.top-page {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.content-container.top-page .logo-container {
+  position: absolute;
+  left: 0;
+  max-width: 470px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70vw;
+}
+.content-container.top-page .logo-container .logo-text {
+  width: 100%;
+}
+
+.carousel-travels-title {
+  text-align: center;
+  width: auto;
+  margin: auto;
+}
+.carousel-travels-title h2 {
+  font-family: "Glamoure Everyday", sans-serif;
+  color: var(--color-text);
+  margin: 1rem 0 0;
+  padding: 0;
+  font-size: 4rem;
+}
+.carousel-travels-title h3 {
+  font-family: "Lexend", sans-serif;
+  color: var(--color-text);
+  border-top: 1px dashed var(--color-text);
+  width: fit-content;
+  margin: auto;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.carousel-travels-title h3 strong {
+  font-weight: 500;
+}
+
+.carousel-generic {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  overflow: scroll;
+  width: calc(100% - 54px);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.carousel-generic::-webkit-scrollbar {
+  display: none;
+}
+.carousel-generic--container {
+  display: flex;
+  margin: 4rem auto 8rem;
+}
+.carousel-generic--container .--next-link {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  width: 54px;
+  text-align: center;
+}
+.carousel-generic--container .--next-link:hover {
+  cursor: pointer;
+}
+.carousel-generic--container .--next-link .--next-link--arrow {
+  border: 2px solid var(--color-text);
+  height: 65%;
+}
+.carousel-generic--container .--next-link .--next-link--text {
+  align-items: center;
+  display: flex;
+  height: 35%;
+  line-height: 1.2;
+}
+.carousel-generic--item {
+  align-items: center;
+  border-right: 1px dashed #c6c6c6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 66.6666666667%;
+  min-width: 66.6666666667%;
+}
+.carousel-generic--item .--vignette {
+  width: 50%;
+}
+.carousel-generic--item .--title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 4rem;
+}
+.carousel-generic--item .--subtitle {
+  font-size: 1rem;
+  font-weight: 200;
+  letter-spacing: 0.6px;
+}
+.carousel-generic--item .--discount {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+.carousel-generic--item:last-child {
+  border: none;
+}
+@media (min-width: 768px) {
+  .carousel-generic--item {
+    width: 33.3333333333%;
+    min-width: 33.3333333333%;
+  }
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 2rem auto 3rem;
 }
 
 .footer {

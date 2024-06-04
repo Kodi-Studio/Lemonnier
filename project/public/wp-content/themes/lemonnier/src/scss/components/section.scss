@@ -1,15 +1,33 @@
 @import "./breakpoints.scss";
 
-
 .section {
   width: 100vw;
   max-width: 100vw;
   margin: auto;
   &-footer {
     width: 100%;
+    &--catalogs {
+      background-color: #7d41c2;
+      padding: 4rem 0.5rem 6rem;
+      display: flex;
+      justify-content: center;
+      .footer-catalogs--list {
+        a {
+          color: #fff;
+          font-size: 1.2rem;
+          font-weight: 200;
+          letter-spacing: 0.8px;
+          strong {
+            font-weight: 500;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
   }
 }
-
 
 @include lg {
   .section {
@@ -18,4 +36,8 @@
       max-width: 100vw;
     }
   }
+}
+
+.max-width-lg {
+  max-width: 1400px;
 }

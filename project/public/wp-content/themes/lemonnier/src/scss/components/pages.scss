@@ -4,7 +4,7 @@
   &-header {
     overflow: hidden;
     position: relative;
-    height: 40vh;
+    height: 50vh;
     .image-header {
       object-fit: cover;
       object-position: center;
@@ -21,8 +21,186 @@
       transform: translateX(-50%);
     }
     @include md {
-     height: 50vh;
+      height: 80vh;
     }
 
+    h1.page-title {
+      border-top: 2px dashed #fff;
+      color: #fff;
+      font-family: "Glamoure Everyday", sans-serif;
+      font-weight: 100;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-top: 1.2rem;
+      padding-top: 1.6rem;
+
+      @include md {
+        font-size: 5.2rem;
+      }
+    }
   }
+
+  &-content {
+    padding-top: 50px;
+    h2,
+    h2.page-title {
+      color: #000;
+      font-family: "Lexend", sans-serif;
+      font-weight: 100;
+      font-size: 2rem;
+      line-height: 1.5;
+      strong {
+        font-weight: 500;
+      }
+
+      @include md {
+        font-size: 2.28rem;
+      }
+    }
+  }
+}
+
+.content-container {
+  background: transparent;
+  height: calc(100% - 40px);
+  max-width: 1200px;
+  margin: auto;
+  width: calc(100vw - 20px);
+
+  &.top-page {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    .logo-container {
+      position: absolute;
+      left: 0;
+      max-width: 470px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 70vw;
+      .logo-text {
+        width: 100%;
+      }
+    }
+  }
+}
+
+///// HOMEPAGE
+.carousel-travels-title {
+  text-align: center;
+  width: auto;
+  margin: auto;
+  // --color-text: red;
+
+  h2 {
+    font-family: "Glamoure Everyday", sans-serif;
+    color: var(--color-text);
+    margin: 1rem 0 0;
+    padding: 0;
+    font-size: 4rem;
+  }
+  h3 {
+    font-family: "Lexend", sans-serif;
+    color: var(--color-text);
+    border-top: 1px dashed var(--color-text);
+    width: fit-content;
+    margin: auto;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    strong {
+      font-weight: 500;
+    }
+  }
+}
+
+.carousel-generic {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  overflow: scroll;
+  width: calc(100% - 54px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &--container {
+    display: flex;
+    margin: 4rem auto 8rem;
+    .--next-link {
+      color: var(--color-text);
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      width: 54px;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
+      .--next-link--arrow {
+        border: 2px solid var(--color-text);
+        height: 65%;
+      }
+      .--next-link--text {
+        align-items: center;
+        display: flex;
+        height: 35%;
+        line-height: 1.2;
+      }
+    }
+  }
+  &--item {
+    align-items: center;
+    border-right: 1px dashed #c6c6c6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    width: calc(100% / 1.5);
+    min-width: calc(100% / 1.5);
+
+    .--vignette {
+      width: 50%;
+    }
+    .--title {
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 4rem;
+    }
+    .--subtitle {
+      font-size: 1rem;
+      font-weight: 200;
+      letter-spacing: 0.6px;
+    }
+    .--discount {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-weight: 600;
+      margin-top: 1rem;
+      padding: 0.2rem 0.4rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    &:last-child {
+      border: none;
+    }
+
+    @include md {
+      width: calc(100% / 3);
+      min-width: calc(100% / 3);
+    }
+  }
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 2rem auto 3rem;
 }
