@@ -97,10 +97,8 @@ function travels_homepage_shortcode($atts) {
 
 		$typeId = $travel->travel_type_id;
 		if($nexttravel == null) {
-			$html .= 'cas1';
 			$html .= $endHtml;
 		}else if($typeId != $nexttravel->travel_type_id && $typeId != null ) {
-			$html .= 'cas2 : '.$typeId.' '.$nexttravel->travel_type_id;
 			$html .= $endHtml;
 		}
 		$index ++;
