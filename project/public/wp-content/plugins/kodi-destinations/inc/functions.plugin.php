@@ -1,6 +1,5 @@
 <?php
 
-
 /// day during millisecondes
 $stampday = 86400;
 $today =  time();

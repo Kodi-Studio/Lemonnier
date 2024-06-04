@@ -17,17 +17,42 @@ declare(strict_types=1);
 <?php get_header(); ?>
 
     <section class="section section-full page-header">
+        
         <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
+        <div class="content-container top-page">
+            <div class="logo-container" >
+                <img class="logo-text" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Voyages_Le_Monnier_typo_blanc.svg" alt="">
+                <h1 class="page-title" >
+                    Créateur<br /> de voyages
+                </h1>
+            </div>
+        </div>
     </section>
     <section class="section" >
-        <div id="content-container">
+        <div id="content-container" class="content-container page-content" >
             <main>
                 <?php the_content(); ?>
             </main>
             <!-- <?php get_sidebar(); ?> -->
         </div>
-    <section>
+    </section>
+    <? if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
+    <section class="section section-full" >
+        <div class="section-footer--catalogs" >
+            <div class="max-width-lg">
+                <ul class="footer-catalogs--list"  >
+                    <?php
+                        $list = getCatalogs();
+                        foreach($list as $cata) {
+                    ?>
+                    <li><a href="<?php echo $cata['cata_fichier']; ?>">Télécharger <?php echo $cata['cata_libelle'] ?> </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <? } ?>
 
 
 <?php get_footer(); ?>
