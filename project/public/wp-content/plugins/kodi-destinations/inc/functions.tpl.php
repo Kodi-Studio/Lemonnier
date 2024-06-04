@@ -31,6 +31,15 @@ function getHpTravels() {
 	return $result;
 }
 
+function getCatalogs() {
+	global $wpdb;
+	$query = "SELECT * FROM `catalogues` WHERE `cata_online` = 1";
+	$result = $wpdb->get_results($query, ARRAY_A );
+	return $result;
+}
+
+
+
 //// SHORTSCODES
 // Fonction qui génère le HTML du shortcode
 function travels_homepage_shortcode($atts) {
@@ -50,43 +59,68 @@ function travels_homepage_shortcode($atts) {
 	
 	$html = '';
 
+	$nbElements = count($liste);
+	$index = 0;
+
 	foreach ($liste as $value){
+		
     	//commandes
 		$travel = (object) $value;
+		// $typeId = $travel->travel_type_id;
 
 
-
-		if($travel->travel_type_id != $typeId) $html .= genrateHeaderListeTravel($travel , $typeId);
+		if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
 		
 		$html .= '<div class="carousel-generic--item">';
 		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
 		$html .= '<div class="--title" >'.$travel->travel_title.'</div>';
-		$html .= '<div class="--subtitle>'.$travel->travel_subtitle.'</div>';
+		$html .= '<div class="--subtitle">'.$travel->travel_subtitle.' '.($index+1).'</div>';
 		if($travel->travel_discount_id) {
-			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'" >'.$travel->travel_discount_libelle.'</div>';
+			$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
+			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
 		}
-		$html .= '</div>';
-		$typeId = $travel->travel_type_id;
 		
+		$html .= '</div>';
+		
+		$nextIndex = ($index+1);
+
+		$nexttravel = $index != $nbElements -1 ? (object) $liste[$nextIndex] : null;
+
+		$endHtml = '</div>
+					
+					<a class="--next-link">
+						<div class="--next-link--arrow">></div>
+						<div class="--next-link--text" >Voir toutes les offres</div>
+						</div>
+					</a>
+					</div>'; //</section>fin de section';
+
+		$typeId = $travel->travel_type_id;
+		if($nexttravel == null) {
+			$html .= 'cas1';
+			$html .= $endHtml;
+		}else if($typeId != $nexttravel->travel_type_id && $typeId != null ) {
+			$html .= 'cas2 : '.$typeId.' '.$nexttravel->travel_type_id;
+			$html .= $endHtml;
+		}
+		$index ++;
 	}
-
-	$html .= '</section>';
-
     return $html;
 }
 add_shortcode('travels_homepage', 'travels_homepage_shortcode');
 
 
-function genrateHeaderListeTravel($travel , $typeId) {
-
-	$html = $typeId == null ? '' : '</div>'; /// end carousel
-	$html .= '<section><div class="carousel-travels-title" style="--color-text: '.$travel->travel_type_color.';" >';
+function generateHeaderListeTravel($travel , $typeId ) {
+	$html = '<div style="--color-text: '.$travel->travel_type_color.';"  ><div class="carousel-travels-title" >';
 	$html .= '<h2>'.$travel->travel_type_title.'</h2>';
-	$html .= '<h3>'.$travel->travel_type_description.'</h3>';
+	$html .= '<h3>'.$travel->travel_type_subtitle.'</h3>';
 	$html .= '</div>';
-	$html .= '<div class="carousel-generic" style="border: 1px solid red;" >';
+	$html .= '<div class="carousel-generic--container" ><div class="carousel-generic" >';
 	return $html;
 };
+
+
+
 
 
 

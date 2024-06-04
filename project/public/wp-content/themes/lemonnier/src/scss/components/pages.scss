@@ -118,8 +118,10 @@
 
 .carousel-generic {
   display: flex;
+  position: relative;
   flex-direction: row;
   overflow: scroll;
+  width: calc(100% - 54px);
 
   &::-webkit-scrollbar {
     display: none;
@@ -128,10 +130,33 @@
   scrollbar-width: none; /* Firefox */
 
   &--container {
+    display: flex;
+    margin: 4rem auto 8rem;
+    .--next-link {
+      color: var(--color-text);
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      width: 54px;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
+      .--next-link--arrow {
+        border: 2px solid var(--color-text);
+        height: 65%;
+      }
+      .--next-link--text {
+        align-items: center;
+        display: flex;
+        height: 35%;
+        line-height: 1.2;
+      }
+    }
   }
   &--item {
     align-items: center;
-    border: 1px solid green;
+    border-right: 1px dashed #c6c6c6;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -143,10 +168,39 @@
     .--vignette {
       width: 50%;
     }
+    .--title {
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 4rem;
+    }
+    .--subtitle {
+      font-size: 1rem;
+      font-weight: 200;
+      letter-spacing: 0.6px;
+    }
+    .--discount {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-weight: 600;
+      margin-top: 1rem;
+      padding: 0.2rem 0.4rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    &:last-child {
+      border: none;
+    }
 
     @include md {
       width: calc(100% / 3);
       min-width: calc(100% / 3);
     }
   }
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 2rem auto 3rem;
 }

@@ -141,7 +141,7 @@ class TRAVEL_Admin_Page {
 
 		$html .= '<tr><th>Catégorie (type de voyage) :</th></tr>';
     	$html .= '<tr valign="top">';
-    	$html .= '<th scope="row"><label for="travel_type_id">Date de début</label></th>';
+    	$html .= '<th scope="row"><label for="travel_type_id">Type catégorie :</label></th>';
 		$html .= '<td>
 					<select id="travel_type_id" name="travel_type_id" required>
                     <option value="">Sélectionner une catégorie</option>';

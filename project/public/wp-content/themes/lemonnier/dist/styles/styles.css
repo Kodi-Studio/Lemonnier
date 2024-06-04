@@ -246,6 +246,24 @@ a:hover {
 .section-footer {
   width: 100%;
 }
+.section-footer--catalogs {
+  background-color: #7d41c2;
+  padding: 4rem 0.5rem 6rem;
+  display: flex;
+  justify-content: center;
+}
+.section-footer--catalogs .footer-catalogs--list a {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 200;
+  letter-spacing: 0.8px;
+}
+.section-footer--catalogs .footer-catalogs--list a strong {
+  font-weight: 500;
+}
+.section-footer--catalogs .footer-catalogs--list a:hover {
+  text-decoration: underline;
+}
 
 @media (min-width: 960px) {
   .section {
@@ -255,6 +273,10 @@ a:hover {
     max-width: 100vw;
   }
 }
+.max-width-lg {
+  max-width: 1400px;
+}
+
 :root {
   --nb-color-header-bg: black;
   --nb-color-header-text: white;
@@ -714,17 +736,44 @@ h2 {
 
 .carousel-generic {
   display: flex;
+  position: relative;
   flex-direction: row;
   overflow: scroll;
+  width: calc(100% - 54px);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 .carousel-generic::-webkit-scrollbar {
   display: none;
 }
+.carousel-generic--container {
+  display: flex;
+  margin: 4rem auto 8rem;
+}
+.carousel-generic--container .--next-link {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  width: 54px;
+  text-align: center;
+}
+.carousel-generic--container .--next-link:hover {
+  cursor: pointer;
+}
+.carousel-generic--container .--next-link .--next-link--arrow {
+  border: 2px solid var(--color-text);
+  height: 65%;
+}
+.carousel-generic--container .--next-link .--next-link--text {
+  align-items: center;
+  display: flex;
+  height: 35%;
+  line-height: 1.2;
+}
 .carousel-generic--item {
   align-items: center;
-  border: 1px solid green;
+  border-right: 1px dashed #c6c6c6;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -735,11 +784,39 @@ h2 {
 .carousel-generic--item .--vignette {
   width: 50%;
 }
+.carousel-generic--item .--title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 4rem;
+}
+.carousel-generic--item .--subtitle {
+  font-size: 1rem;
+  font-weight: 200;
+  letter-spacing: 0.6px;
+}
+.carousel-generic--item .--discount {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+.carousel-generic--item:last-child {
+  border: none;
+}
 @media (min-width: 768px) {
   .carousel-generic--item {
     width: 33.3333333333%;
     min-width: 33.3333333333%;
   }
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 2rem auto 3rem;
 }
 
 .footer {
