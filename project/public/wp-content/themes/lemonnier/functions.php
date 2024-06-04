@@ -235,14 +235,17 @@ function show_check_cata_before_footer($post) {
 function save_show_check_cata_before_footer($post_id) {
     // Vérifier les autorisations et la présence du nonce
     if (!isset($_POST['show_catas_footer']) || !wp_verify_nonce($_POST['show_catas_footer_nonce_field'], 'show_catas_footer_nonce')) {
-        return;
+        // return;
+        $show_catas_footer = 0;
     }
 
     // Vérifier si la valeur a été saisie
     if (isset($_POST['show_catas_footer'])) {
         // Nettoyer et enregistrer la valeur du champ d'upload d'image
-        update_post_meta($post_id, 'show_catas_footer', sanitize_text_field($_POST['show_catas_footer']));
+       $show_catas_footer = $_POST['show_catas_footer'];
     }
+
+     update_post_meta($post_id, 'show_catas_footer', sanitize_text_field($show_catas_footer));
 }
 // Hooks pour ajouter et enregistrer le champ d'upload d'image
 add_action('add_meta_boxes', 'add_field_show_cata_before_footer');
