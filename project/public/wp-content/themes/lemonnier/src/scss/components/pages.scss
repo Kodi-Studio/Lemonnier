@@ -121,7 +121,10 @@
   position: relative;
   flex-direction: row;
   overflow: scroll;
-  width: calc(100% - 54px);
+  width: 100vw;
+  @include lg {
+    width: calc(100% - 54px);
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -132,19 +135,39 @@
   &--container {
     display: flex;
     margin: 4rem auto 8rem;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    @include lg {
+      flex-direction: row;
+      align-items: unset;
+      width: unset;
+    }
+
     .--next-link {
       color: var(--color-text);
       display: flex;
-      flex-direction: column;
+      flex-direction: row-reverse;
+      margin-top: 3rem;
+      padding: 1rem 1.2rem;
       top: 0;
-      width: 54px;
+      border: 2px solid var(--color-text);
       text-align: center;
+
+      @include lg {
+        flex-direction: column;
+        width: 54px;
+        border: none;
+      }
+
       &:hover {
         cursor: pointer;
       }
       .--next-link--arrow {
-        border: 2px solid var(--color-text);
-        height: 65%;
+        @include lg {
+          border: 2px solid var(--color-text);
+          height: 65%;
+        }
       }
       .--next-link--text {
         align-items: center;
