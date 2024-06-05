@@ -739,9 +739,14 @@ h2 {
   position: relative;
   flex-direction: row;
   overflow: scroll;
-  width: calc(100% - 54px);
+  width: 100vw;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+@media (min-width: 960px) {
+  .carousel-generic {
+    width: calc(100% - 54px);
+  }
 }
 .carousel-generic::-webkit-scrollbar {
   display: none;
@@ -749,21 +754,42 @@ h2 {
 .carousel-generic--container {
   display: flex;
   margin: 4rem auto 8rem;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+@media (min-width: 960px) {
+  .carousel-generic--container {
+    flex-direction: row;
+    align-items: unset;
+    width: unset;
+  }
 }
 .carousel-generic--container .--next-link {
   color: var(--color-text);
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  margin-top: 3rem;
+  padding: 1rem 1.2rem;
   top: 0;
-  width: 54px;
+  border: 2px solid var(--color-text);
   text-align: center;
+}
+@media (min-width: 960px) {
+  .carousel-generic--container .--next-link {
+    flex-direction: column;
+    width: 54px;
+    border: none;
+  }
 }
 .carousel-generic--container .--next-link:hover {
   cursor: pointer;
 }
-.carousel-generic--container .--next-link .--next-link--arrow {
-  border: 2px solid var(--color-text);
-  height: 65%;
+@media (min-width: 960px) {
+  .carousel-generic--container .--next-link .--next-link--arrow {
+    border: 2px solid var(--color-text);
+    height: 65%;
+  }
 }
 .carousel-generic--container .--next-link .--next-link--text {
   align-items: center;
