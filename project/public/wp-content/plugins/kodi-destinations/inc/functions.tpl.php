@@ -12,6 +12,22 @@ $stampday = 86400;
 $today =  time();
 
 
+define('SVG_ARROW' , '
+	<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 36.32 58.75">
+	<defs>
+		<style>
+		.svg-carousel-arrow {
+			fill: #cc005a;
+			stroke-width: 0px;
+		}
+		</style>
+	</defs>
+	<path class="svg-carousel-arrow" d="M4.96,58.49c-1.25,0-2.5-.48-3.45-1.43-1.9-1.9-1.9-4.99,0-6.89l20.88-20.88L1.51,8.42C-.39,6.52-.39,3.43,1.51,1.53,3.42-.38,6.5-.38,8.41,1.53l27.77,27.77-27.77,27.77c-.95.95-2.2,1.43-3.45,1.43Z"/>
+	</svg>
+');
+
+
+
 
 ///// getters
 function getHpTravels() {
@@ -44,6 +60,7 @@ function getCatalogs() {
 // Fonction qui génère le HTML du shortcode
 function travels_homepage_shortcode($atts) {
     // Traitement des attributs du shortcode (si nécessaire)
+	global $svgArrow;
     $atts = shortcode_atts(
         array(
             'param1' => 'default_value',
@@ -89,7 +106,7 @@ function travels_homepage_shortcode($atts) {
 		$endHtml = '</div>
 					
 					<a class="--next-link">
-						<div class="--next-link--arrow">></div>
+						<div class="--next-link--arrow">'.SVG_ARROW.'</div>
 						<div class="--next-link--text" >Voir toutes les offres</div>
 						</div>
 					</a>
