@@ -12,21 +12,40 @@
       display: flex;
       justify-content: center;
       .footer-catalogs--list {
+        li {
+          padding: 12px 0;
+        }
         a {
           color: #fff;
-          font-size: 1.2rem;
+          font-size: 1.6rem;
           font-weight: 200;
           letter-spacing: 0.8px;
           strong {
             font-weight: 500;
           }
           &:hover {
-            text-decoration: underline;
+            // text-decoration: underline;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            .underline {
+              border: none;
+            }
+          }
+          .underline {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+          }
+          @include lg {
+            font-size: 2rem;
           }
         }
       }
     }
   }
+}
+.footer-logo-cata-container {
+  width: unset;
+  max-width: 800px;
+  margin: auto;
+  padding: 0 20px;
 }
 
 @include lg {
@@ -38,6 +57,13 @@
   }
 }
 
+.full-vw-width {
+  width: 100vw;
+}
+
 .max-width-lg {
   max-width: 1400px;
+}
+.text-center {
+  text-align: center;
 }
