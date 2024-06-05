@@ -864,7 +864,7 @@ h2 {
   text-align: center;
   width: 66.6666666667%;
   min-width: 66.6666666667%;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 .carousel-generic--item .--vignette {
   width: 50%;
