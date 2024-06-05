@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 services:
   traefik:
     image: "traefik:v2.5"
@@ -92,11 +92,13 @@ services:
         - ./php_8.0/vhosts:/etc/apache2/sites-enabled
         - ./:/var/www
     labels:
-      - "traefik.http.routers.www_docker_api.rule=Host(`api.traefik.me`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.www_docker_kodistudio.rule=Host(`lemonnier.ateliermook.com`)"
+      # - "traefik.http.routers.www_docker_kodistudio.rule=Host(`api.traefik.me`)"
       #- "traefik.http.routers.www_docker_sulu.middlewares=auth"
-      - "traefik.http.routers.www_docker_api.entrypoints=websecure"
-      - "traefik.http.routers.www_docker_api.tls=true"
-      # - "traefik.http.routers.my-app.tls.certresolver=leresolver"
+      - "traefik.http.routers.www_docker_kodistudio.entrypoints=websecure"
+      - "traefik.http.routers.www_docker_kodistudio.tls=true"
+      - "traefik.http.routers.www_docker_kodistudio.tls.certresolver=leresolver"
       # - "traefik.http.middlewares.auth.basicauth.users=user:$$apr1$$q8eZFHjF$$Fvmkk//V6Btlaf2i/ju5n/" # user/password
     restart: always
     networks:
