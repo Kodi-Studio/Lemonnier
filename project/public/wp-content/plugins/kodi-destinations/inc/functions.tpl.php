@@ -40,12 +40,25 @@ function getHpTravels() {
 				LEFT JOIN `travel_discount` t3 ON t1.travel_discount_id = t3.travel_discount_id WHERE t1.travel_homepage = 1 
 				AND t1.travel_online = 1
 				AND t2.travel_type_online = 1
+				AND t1.travel_online=1
+				AND t2.travel_type_online = 1
 				ORDER BY t1.travel_type_id ASC";
 
 	$result = $wpdb->get_results($query, ARRAY_A );
 
 	return $result;
 }
+
+function getAllTypes() {
+	global $wpdb;
+	/// join with stickers discount
+	$query = 	"SELECT * FROM `travel_type` WHERE `travel_type_online` = 1";
+
+	$result = $wpdb->get_results($query, ARRAY_A );
+
+	return $result;
+}
+
 
 function getCatalogs() {
 	global $wpdb;
@@ -148,14 +161,15 @@ function travels_liste_types_shortcode($atts) {
             // Ajoutez d'autres paramètres si nécessaire
         ),
         $atts,
-        'my_custom_shortcode'
+        'my_custom_type_shortcode'
     );
 
-	$liste = getHpTravels();
+	$liste = getAllTypes();
 
 	$typeId = null;
 	
-	$html = '';
+	$html = '<section>';
+	$html .= '<div class="types-list">';
 
 	$nbElements = count($liste);
 	$index = 0;
@@ -163,44 +177,53 @@ function travels_liste_types_shortcode($atts) {
 	foreach ($liste as $value){
 		
     	//commandes
-		$travel = (object) $value;
+		$type = (object) $value;
 		// $typeId = $travel->travel_type_id;
 
+		$html .= '<div class="type-card" >';
+		$html .= '<div><img class="type-card--vignette" src="'.$type->travel_type_vignette.'" /></div>';
+		$html .= $type->travel_type_title;
 
-		if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
-		
-		$html .= '<div class="carousel-generic--item">TRAVEL LISTE TYPE';
-		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
-		$html .= '<div class="--title" >'.$travel->travel_title.'</div>';
-		$html .= '<div class="--subtitle">'.$travel->travel_subtitle.' '.($index+1).'</div>';
-		if($travel->travel_discount_id) {
-			$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
-			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
-		}
-		
 		$html .= '</div>';
+
+
+		// if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
 		
-		$nextIndex = ($index+1);
+		// $html .= '<div class="carousel-generic--item">TRAVEL LISTE TYPE';
+		// $html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
+		// $html .= '<div class="--title" >'.$travel->travel_title.'</div>';
+		// $html .= '<div class="--subtitle">'.$travel->travel_subtitle.' '.($index+1).'</div>';
+		// if($travel->travel_discount_id) {
+		// 	$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
+		// 	$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
+		// }
+		
+		// $html .= '</div>';
+		
+		// $nextIndex = ($index+1);
 
-		$nexttravel = $index != $nbElements -1 ? (object) $liste[$nextIndex] : null;
+		// $nexttravel = $index != $nbElements -1 ? (object) $liste[$nextIndex] : null;
 
-		$endHtml = '</div>
+		// $endHtml = '</div>
 					
-					<a class="--next-link" href="/destinations/" >
-						<div class="--next-link--arrow">'.SVG_ARROW.'</div>
-						<div class="--next-link--text" >Voir toutes les offres</div>
-						</div>
-					</a>
-					</div>'; //</section>fin de section';
+		// 			<a class="--next-link" href="/destinations/" >
+		// 				<div class="--next-link--arrow">'.SVG_ARROW.'</div>
+		// 				<div class="--next-link--text" >Voir toutes les offres</div>
+		// 				</div>
+		// 			</a>
+		// 			</div>'; //</section>fin de section';
 
-		$typeId = $travel->travel_type_id;
-		if($nexttravel == null) {
-			$html .= $endHtml;
-		}else if($typeId != $nexttravel->travel_type_id && $typeId != null ) {
-			$html .= $endHtml;
-		}
-		$index ++;
+		// $typeId = $travel->travel_type_id;
+		// if($nexttravel == null) {
+		// 	$html .= $endHtml;
+		// }else if($typeId != $nexttravel->travel_type_id && $typeId != null ) {
+		// 	$html .= $endHtml;
+		// }
+		// $index ++;
 	}
+	$html .= '</div>';
+	$html .= '</section>';
+
     return $html;
 }
 add_shortcode('travels_liste_types', 'travels_liste_types_shortcode');

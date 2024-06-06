@@ -904,6 +904,19 @@ p {
   margin: 2rem auto 3rem;
 }
 
+.types-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-card {
+  width: 33.3333333333%;
+}
+.type-card--vignette {
+  width: 50%;
+  height: auto;
+}
+
 .footer {
   background-color: #000;
 }
