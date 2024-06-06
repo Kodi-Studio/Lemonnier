@@ -671,7 +671,7 @@ h2 {
 }
 @media (min-width: 768px) {
   .page-header {
-    height: 80vh;
+    height: 60vh;
   }
 }
 .page-header h1.page-title {
