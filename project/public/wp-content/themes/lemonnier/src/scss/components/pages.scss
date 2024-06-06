@@ -259,3 +259,17 @@ p {
   font-weight: 300;
   margin: 2rem auto 3rem;
 }
+
+//// pages liste de categories des voyages
+.types-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-card {
+  width: calc(100% / 3);
+  &--vignette {
+    width: 50%;
+    height: auto;
+  }
+}
