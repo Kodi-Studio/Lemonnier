@@ -72,7 +72,7 @@ class TRAVEL_Admin_types_Page {
             $html.= '<td><div style="display: flex;">' . esc_html($row->travel_type_color) . '&nbsp;&nbsp;<div style="width:20px; height:20px; background-color:'.esc_html($row->travel_type_color).';" ></div></div></td>';
 			$html.= '<td>' . esc_html($row->travel_type_homepage === '1' ? 'oui' : 'non') . '</td>';
 			// $html.= '<td width="90" ><a href="?page=kdest_manager&delete=' . esc_attr($row->travel_id) . '" class="button">Supprimer</a></td>';
-			$html.= '<td width="90" ><a href="javascript:removeTravel(\'?page=kdest_types_manager&delete=' . esc_attr($row->travel_type_id) . '\')" class="button">Supprimer</a></td>';
+			$html.= '<td width="90" ><a href="javascript:removeTravelType(\'?page=kdest_types_manager&delete=' . esc_attr($row->travel_type_id) . '\')" class="button">Supprimer</a></td>';
 			$html.= '<td width="90" ><a href="?page=kdest_types_manager&edit=' . esc_attr($row->travel_type_id) . '" class="button">Éditer</a></td>';
 			$html.= '</tr>';
 		}

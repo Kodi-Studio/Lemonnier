@@ -33,6 +33,18 @@ define('SVG_ARROW' , '
 function getHpTravels() {
 	global $wpdb;
 	/// join with stickers discount
+	// $query = 	"SELECT t1.*, t2.*, t3.* FROM `kdest_travel` t1 
+	// 			RIGHT JOIN `travel_type` t2 ON t1.travel_homepage = 1 
+	// 			AND t2.travel_type_homepage = 1 
+	// 			AND t1.travel_type_id = t2.travel_type_id 
+	// 			LEFT JOIN `travel_discount` t3 ON t1.travel_discount_id = t3.travel_discount_id WHERE t1.travel_homepage = 1 
+	// 			AND t1.travel_online = 1
+	// 			AND t2.travel_type_online = 1
+	// 			AND t1.travel_online=1
+	// 			AND t2.travel_type_online = 1
+	// 			-- GROUP BY t1.travel_type_id
+	// 			ORDER BY t2.travel_type_homepage_order ASC";
+
 	$query = 	"SELECT t1.*, t2.*, t3.* FROM `kdest_travel` t1 
 				RIGHT JOIN `travel_type` t2 ON t1.travel_homepage = 1 
 				AND t2.travel_type_homepage = 1 
@@ -42,7 +54,7 @@ function getHpTravels() {
 				AND t2.travel_type_online = 1
 				AND t1.travel_online=1
 				AND t2.travel_type_online = 1
-				ORDER BY t1.travel_type_id ASC";
+				ORDER BY t2.travel_type_homepage_order ASC, t1.travel_type_id ASC";
 
 	$result = $wpdb->get_results($query, ARRAY_A );
 
@@ -180,11 +192,11 @@ function travels_liste_types_shortcode($atts) {
 		$type = (object) $value;
 		// $typeId = $travel->travel_type_id;
 
-		$html .= '<div class="type-card" >';
-		$html .= '<div><img class="type-card--vignette" src="'.$type->travel_type_vignette.'" /></div>';
-		$html .= $type->travel_type_title;
+		$html .= '<a href="#" class="type-card" >';
+		$html .= '<div class="type-card--vignette"  ><img src="'.$type->travel_type_vignette.'" /></div>';
+		$html .= '<div class="type-card--description" ><h3>'.$type->travel_type_description.'</h3></div>';
 
-		$html .= '</div>';
+		$html .= '</a>';
 
 
 		// if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
