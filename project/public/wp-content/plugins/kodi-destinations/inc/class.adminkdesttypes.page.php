@@ -163,7 +163,7 @@ class TRAVEL_Admin_types_Page {
 
 
                 <tr valign="top">
-                    <th scope="row"><label for="travel_type_homepage">Afficher la page d\'acceuil</label></th>
+                    <th scope="row"><label for="travel_type_homepage">Afficher sur la page d\'acceuil</label></th>
                     <td><input type="checkbox" id="travel_type_homepage" name="travel_type_homepage" value="1" '.esc_attr($edit_item && $edit_item->travel_type_homepage ? 'checked' : '').'></td>
                 </tr>
                 <tr valign="top">
