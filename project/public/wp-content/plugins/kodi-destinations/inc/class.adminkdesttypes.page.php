@@ -166,6 +166,10 @@ class TRAVEL_Admin_types_Page {
                     <th scope="row"><label for="travel_type_homepage">Afficher la page d\'acceuil</label></th>
                     <td><input type="checkbox" id="travel_type_homepage" name="travel_type_homepage" value="1" '.esc_attr($edit_item && $edit_item->travel_type_homepage ? 'checked' : '').'></td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row"><label for="travel_type_homepage_order">Position sur la page d\'acceuil</label></th>
+                    <td><input type="number" id="travel_type_homepage_order" name="travel_type_homepage_order" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_homepage_order) : '0' ).'"/></td>
+                </tr>
 
                  <tr valign="top">
                     <th scope="row"><label for="travel_type_online">Publié</label></th>
@@ -208,6 +212,7 @@ class TRAVEL_Admin_types_Page {
         $travel_type_image = '';//sanitize_text_field($_POST['travel_type_image']);	
         $travel_type_vignette = '';//sanitize_text_field($_POST['travel_type_vignette']);
         $travel_type_homepage = isset($_POST['travel_type_homepage']) ? 1 : 0;
+        $travel_type_homepage_order = isset($_POST['travel_type_homepage_order']) ? $_POST['travel_type_homepage_order'] : 0;
         $travel_type_online = isset($_POST['travel_type_online']) ? 1 : 0;
 
         // // Gestion de l'upload de l'image principale
@@ -257,6 +262,7 @@ class TRAVEL_Admin_types_Page {
 					'travel_type_image' => $travel_type_image,
                     'travel_type_vignette' => $travel_type_vignette,
                     'travel_type_homepage' => $travel_type_homepage,
+                    'travel_type_homepage_order' => $travel_type_homepage_order,
                     'travel_type_online' => $travel_type_online
                 ),
                 array('travel_type_id' => $travel_type_id)
@@ -275,6 +281,7 @@ class TRAVEL_Admin_types_Page {
                     'travel_type_image' => $travel_type_image,
                     'travel_type_vignette' => $travel_type_vignette,
 					'travel_type_homepage' => $travel_type_homepage,
+                    'travel_type_homepage_order' => $travel_type_homepage_order,
                     'travel_type_online' => $travel_type_online
                     
                 )
