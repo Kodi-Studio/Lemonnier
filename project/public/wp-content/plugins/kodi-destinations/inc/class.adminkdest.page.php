@@ -196,7 +196,7 @@ class TRAVEL_Admin_Page {
 				<tr >
 					<th >Sticker discount  :</th>';
 		$html .= '<td>
-					<select id="travel_discount_id" name="travel_discount_id" required>
+					<select id="travel_discount_id" name="travel_discount_id" >
 						<option value="">Sélectionner un sticker discount</option>';
 						foreach ($travel_discount as $discount) {
 							$selected = $edit_item && $edit_item->travel_discount_id == $discount->travel_discount_id ? 'selected' : '';

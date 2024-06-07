@@ -264,12 +264,42 @@ p {
 .types-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  @include md {
+    justify-content: flex-start;
+  }
 }
 
 .type-card {
-  width: calc(100% / 3);
+  margin-top: 24px;
+  width: 80vw;
+  color: #000;
   &--vignette {
-    width: 50%;
-    height: auto;
+    text-align: center;
+    img {
+      width: 70%;
+      height: auto;
+      @include md {
+        width: 50%;
+      }
+    }
+  }
+  &--description {
+    h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: "Lexend", sans-serif;
+      font-weight: 600;
+      max-width: 250px;
+      margin: 24px auto;
+    }
+  }
+
+  @include md {
+    width: calc(100% / 2);
+  }
+
+  @include lg {
+    width: calc(100% / 3);
   }
 }

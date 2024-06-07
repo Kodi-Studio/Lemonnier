@@ -72,7 +72,7 @@ class TRAVEL_Admin_discount_Page {
             $html.= '<td><div style="width:20px; height:20px; border: 1px solid #000; background-color:'.esc_html($row->travel_discount_color).';" ></div></td>';
 			$html.= '<td>' . $row->travel_discount_bgcolor. '</td>';
             $html.= '<td><div style="width:20px; height:20px; background-color:'.esc_html($row->travel_discount_bgcolor).';" ></div></td>';
-            $html.= '<td width="90" ><a href="javascript:removeTravel(\'?page=kdest_discount_manager&delete=' . esc_attr($row->travel_discount_id) . '\')" class="button">Supprimer</a></td>';
+            $html.= '<td width="90" ><a href="javascript:removeTravelDiscount(\'?page=kdest_discount_manager&delete=' . esc_attr($row->travel_discount_id) . '\')" class="button">Supprimer</a></td>';
 			$html.= '<td width="90" ><a href="?page=kdest_discount_manager&edit=' . esc_attr($row->travel_discount_id) . '" class="button">Éditer</a></td>';
 			$html.= '</tr>';
 		}

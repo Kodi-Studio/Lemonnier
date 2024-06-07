@@ -251,6 +251,7 @@ a:hover {
   padding: 4rem 0.5rem 6rem;
   display: flex;
   justify-content: center;
+  margin-top: 10rem;
 }
 .section-footer--catalogs .footer-catalogs--list li {
   padding: 12px 0;
@@ -907,14 +908,48 @@ p {
 .types-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .types-list {
+    justify-content: flex-start;
+  }
 }
 
 .type-card {
-  width: 33.3333333333%;
+  margin-top: 24px;
+  width: 80vw;
+  color: #000;
 }
 .type-card--vignette {
-  width: 50%;
+  text-align: center;
+}
+.type-card--vignette img {
+  width: 70%;
   height: auto;
+}
+@media (min-width: 768px) {
+  .type-card--vignette img {
+    width: 50%;
+  }
+}
+.type-card--description h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: "Lexend", sans-serif;
+  font-weight: 600;
+  max-width: 250px;
+  margin: 24px auto;
+}
+@media (min-width: 768px) {
+  .type-card {
+    width: 50%;
+  }
+}
+@media (min-width: 960px) {
+  .type-card {
+    width: 33.3333333333%;
+  }
 }
 
 .footer {
