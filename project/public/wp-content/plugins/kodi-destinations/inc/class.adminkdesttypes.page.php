@@ -209,14 +209,14 @@ class TRAVEL_Admin_types_Page {
 			require_once(ABSPATH . 'wp-admin/includes/image.php');
 		}
 
-		$travel_type_title = sanitize_text_field($_POST['travel_type_title']);
+		$travel_type_title = sanitize_text_field(wp_unslash($_POST['travel_type_title']));
 
         if (!isset($_POST['travel_subtitle_nonce']) || !wp_verify_nonce($_POST['travel_subtitle_nonce'], 'save_travel_subtitle')) {
             return;
         }
-        $travel_type_subtitle = wp_kses_post($_POST['travel_type_subtitle']);
+        $travel_type_subtitle = wp_kses_post(wp_unslash($_POST['travel_type_subtitle']));
 
-        $travel_type_description = sanitize_text_field($_POST['travel_type_description']);
+        $travel_type_description = sanitize_text_field(wp_unslash($_POST['travel_type_description']));
         $travel_type_color = sanitize_text_field($_POST['travel_type_color']);
         $travel_type_image = '';//sanitize_text_field($_POST['travel_type_image']);	
         $travel_type_vignette = '';//sanitize_text_field($_POST['travel_type_vignette']);

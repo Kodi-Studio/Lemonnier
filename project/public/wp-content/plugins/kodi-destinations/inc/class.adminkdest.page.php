@@ -255,9 +255,9 @@ class TRAVEL_Admin_Page {
 			require_once(ABSPATH . 'wp-admin/includes/image.php');
 		}
 
-		$travel_title = sanitize_text_field($_POST['travel_title']);
-        $travel_subtitle = sanitize_text_field($_POST['travel_subtitle']);
-        $travel_description = sanitize_text_field($_POST['travel_description']);
+		$travel_title = sanitize_text_field(wp_unslash($_POST['travel_title']));
+        $travel_subtitle = sanitize_text_field(wp_unslash($_POST['travel_subtitle']));
+        $travel_description = sanitize_text_field(wp_unslash($_POST['travel_description']));
 
 		$travel_date_a_start = sanitize_text_field($_POST['travel_date_a_start']);
 		$travel_date_a_end = sanitize_text_field($_POST['travel_date_a_end']);
