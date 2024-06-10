@@ -37,7 +37,7 @@ class TRAVEL_Admin_types_Page {
 	function renderListeHTML() {
 		
 		global $wpdb;
-		$results = $wpdb->get_results("SELECT * FROM `travel_type`");
+		$results = $wpdb->get_results("SELECT * FROM `travel_type` ORDER BY travel_type_sommaire_order ASC");
 
 		$html =  "<div class='wrap' >";
 		$html .=  "<h1>Gestion types de voyages.";
