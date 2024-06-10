@@ -261,12 +261,22 @@ class TRAVEL_Admin_types_Page {
 
 
 
-
-
-
+            $page_parent = get_posts(
+                    array(
+                        'post_type'              => 'page',
+                        'title'                  => 'Destinations',
+                    )
+                )[0];
 
             /// eventuelle création de page
             if($travel_type_page_id === null) {
+                // on recupère l'ID de la page parent
+                $page_parent = (object) get_posts(
+                    array(
+                        'post_type'              => 'page',
+                        'title'                  => 'Destinations',
+                    )
+                )[0];
                 /// creation de la page
                 $page_title = 'Sommaire '.$travel_type_title;
                 $page_content = 'Voici le contenu de ma nouvelle page.';
@@ -274,7 +284,9 @@ class TRAVEL_Admin_types_Page {
                         'post_title'    => $page_title,
                         'post_content'  => $page_content,
                         'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
-                        'post_type'     => 'page'
+                        'page_template' => 'template-destinations-sommaire.php',
+                        'post_type'     => 'page',
+                        'post_parent'   => $page_parent->ID
                     );
                     // Insérez la page dans la base de données WordPress
                     $travel_type_page_id = wp_insert_post($new_page);
@@ -319,15 +331,26 @@ class TRAVEL_Admin_types_Page {
                     'post_type'              => 'page',
                     'title'                  => $page_title,
                 )
-            );
+            )[0];
             // Si la page n'existe pas encore, on la crée
             if (!isset($page_check->ID)) {
+
+                // on recupère l'ID de la page parent
+                $page_parent = (object) get_posts(
+                    array(
+                        'post_type'              => 'page',
+                        'title'                  => 'Destinations',
+                    )
+                );
+
                 // Créez un tableau contenant les détails de la page
                 $new_page = array(
                     'post_title'    => $page_title,
                     'post_content'  => $page_content,
                     'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
-                    'post_type'     => 'page'
+                    'page_template' => 'template-destinations-sommaire.php',
+                    'post_type'     => 'page',
+                    'post_parent'   => $page_parent->ID
                 );
                 // Insérez la page dans la base de données WordPress
                 $page_id = wp_insert_post($new_page);
@@ -338,12 +361,12 @@ class TRAVEL_Admin_types_Page {
                 }
             }
 
-            $new_page = get_posts(
-                array(
-                    'post_type'              => 'page',
-                    'title'                  => $page_title,
-                )
-            );
+            // $new_page = get_posts(
+            //     array(
+            //         'post_type'              => 'page',
+            //         'title'                  => $page_title,
+            //     )
+            // );
 
             $travel_type_page_id = $new_page[0]->ID;
             
