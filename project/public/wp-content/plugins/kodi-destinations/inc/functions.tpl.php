@@ -194,7 +194,10 @@ function travels_liste_types_shortcode($atts) {
 		$type = (object) $value;
 		// $typeId = $travel->travel_type_id;
 
-		$html .= '<a href="#" class="type-card" >';
+		$page_id = $type->travel_type_page_id; 
+		$page_link = get_permalink($page_id);
+
+		$html .= '<a href="'.$page_link.'" class="type-card" >';
 		$html .= '<div class="type-card--vignette"  ><img src="'.$type->travel_type_vignette.'" /></div>';
 		$html .= '<div class="type-card--description" ><h3>'.$type->travel_type_description.'</h3></div>';
 
