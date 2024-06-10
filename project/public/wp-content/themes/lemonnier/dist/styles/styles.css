@@ -887,8 +887,10 @@ h2 {
   letter-spacing: 0.6px;
 }
 .carousel-generic--item .--discount {
+  align-items: center;
   background-color: var(--color-bg);
   color: var(--color-text);
+  display: flex;
   font-weight: 600;
   margin-top: 1rem;
   min-height: 21px;
