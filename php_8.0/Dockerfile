@@ -52,4 +52,7 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install pdo pdo_mysql gd opcache intl zip calendar dom mbstring zip gd xsl
 RUN pecl install apcu && docker-php-ext-enable apcu
 
+RUN chown -R www-data:www-data /var/www/project/public/wp-content/uploads
+RUN chmod -R 755 /var/www/project/public/wp-content/uploads
+
 WORKDIR /var/www/
