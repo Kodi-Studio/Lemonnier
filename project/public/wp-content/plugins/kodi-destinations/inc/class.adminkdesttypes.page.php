@@ -103,6 +103,7 @@ class TRAVEL_Admin_types_Page {
                     'travel_type_color' => '',
 					'travel_type_homepage' => '',
                     'travel_type_online' => '',
+                    'travel_type_page_id' => null
 			);
 		}
 
@@ -171,9 +172,17 @@ class TRAVEL_Admin_types_Page {
                     <td><input type="number" id="travel_type_homepage_order" name="travel_type_homepage_order" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_homepage_order) : '0' ).'"/></td>
                 </tr>
 
+                <tr valign="top">
+                    <th scope="row"><label for="travel_type_sommaire_order">Position sur la page sommaire</label></th>
+                    <td><input type="number" id="travel_type_sommaire_order" name="travel_type_sommaire_order" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_sommaire_order) : '0' ).'"/></td>
+                </tr>
+
                  <tr valign="top">
                     <th scope="row"><label for="travel_type_online">Publié</label></th>
                     <td><input type="checkbox" id="travel_type_online" name="travel_type_online" value="1" '.esc_attr($edit_item && $edit_item->travel_type_online ? 'checked' : '').'></td>
+                </tr>
+                <tr valign="top">
+                    <td><input id="travel_type_page_id" name="travel_type_page_id" type="text" value="'.$edit_item->travel_type_page_id.'" /></td>
                 </tr>
 
                 ';
@@ -213,7 +222,10 @@ class TRAVEL_Admin_types_Page {
         $travel_type_vignette = '';//sanitize_text_field($_POST['travel_type_vignette']);
         $travel_type_homepage = isset($_POST['travel_type_homepage']) ? 1 : 0;
         $travel_type_homepage_order = isset($_POST['travel_type_homepage_order']) ? $_POST['travel_type_homepage_order'] : 0;
+        $travel_type_sommaire_order = isset($_POST['travel_type_sommaire_order']) ? $_POST['travel_type_sommaire_order'] : 0;
+
         $travel_type_online = isset($_POST['travel_type_online']) ? 1 : 0;
+        $travel_type_page_id = ( isset($_POST['travel_type_page_id']) && $_POST['travel_type_page_id'] != null ) ? $_POST['travel_type_page_id'] : null;
 
         // // Gestion de l'upload de l'image principale
         if (!empty($_FILES['travel_type_image']['name'])) {
@@ -245,11 +257,34 @@ class TRAVEL_Admin_types_Page {
             $travel_type_vignette = $existing_item->travel_type_vignette;
         }
 
-
-
-
-
         if (isset($_POST['travel_type_id'])) {
+
+
+
+
+
+
+
+            /// eventuelle création de page
+            if($travel_type_page_id === null) {
+                /// creation de la page
+                $page_title = 'Sommaire '.$travel_type_title;
+                $page_content = 'Voici le contenu de ma nouvelle page.';
+                $new_page = array(
+                        'post_title'    => $page_title,
+                        'post_content'  => $page_content,
+                        'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
+                        'post_type'     => 'page'
+                    );
+                    // Insérez la page dans la base de données WordPress
+                    $travel_type_page_id = wp_insert_post($new_page);
+                    // Vérifiez si l'insertion a réussi et affichez un message d'erreur si nécessaire
+                    if (is_wp_error($travel_type_page_id)) {
+                        // Gestion de l'erreur ici
+                        error_log('Erreur lors de la création de la page: ' . $page_id->get_error_message());
+                    }
+            }
+
             $travel_type_id = intval($_POST['travel_type_id']);
 
             $wpdb->update(
@@ -263,7 +298,9 @@ class TRAVEL_Admin_types_Page {
                     'travel_type_vignette' => $travel_type_vignette,
                     'travel_type_homepage' => $travel_type_homepage,
                     'travel_type_homepage_order' => $travel_type_homepage_order,
-                    'travel_type_online' => $travel_type_online
+                    'travel_type_sommaire_order' => $travel_type_sommaire_order,
+                    'travel_type_online' => $travel_type_online,
+                    'travel_type_page_id' => $travel_type_page_id
                 ),
                 array('travel_type_id' => $travel_type_id)
             );
@@ -271,6 +308,45 @@ class TRAVEL_Admin_types_Page {
 
 			$this->renderEditHTML();
         } else {
+
+            /// creation d'une page sommaire du type en question
+            // Vérifiez d'abord si la page n'existe pas déjà pour éviter les doublons
+            $page_title = 'Sommaire '.$travel_type_title;
+            $page_content = 'Voici le contenu de ma nouvelle page.';
+            // $page_check = get_page_by_title($page_title);
+            $page_check = (object) get_posts(
+                array(
+                    'post_type'              => 'page',
+                    'title'                  => $page_title,
+                )
+            );
+            // Si la page n'existe pas encore, on la crée
+            if (!isset($page_check->ID)) {
+                // Créez un tableau contenant les détails de la page
+                $new_page = array(
+                    'post_title'    => $page_title,
+                    'post_content'  => $page_content,
+                    'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
+                    'post_type'     => 'page'
+                );
+                // Insérez la page dans la base de données WordPress
+                $page_id = wp_insert_post($new_page);
+                // Vérifiez si l'insertion a réussi et affichez un message d'erreur si nécessaire
+                if (is_wp_error($page_id)) {
+                    // Gestion de l'erreur ici
+                    error_log('Erreur lors de la création de la page: ' . $page_id->get_error_message());
+                }
+            }
+
+            $new_page = get_posts(
+                array(
+                    'post_type'              => 'page',
+                    'title'                  => $page_title,
+                )
+            );
+
+            $travel_type_page_id = $new_page[0]->ID;
+            
             $wpdb->insert(
                 'travel_type',
                 array(
@@ -282,12 +358,14 @@ class TRAVEL_Admin_types_Page {
                     'travel_type_vignette' => $travel_type_vignette,
 					'travel_type_homepage' => $travel_type_homepage,
                     'travel_type_homepage_order' => $travel_type_homepage_order,
-                    'travel_type_online' => $travel_type_online
+                    'travel_type_sommaire_order' => $travel_type_sommaire_order,
+                    'travel_type_online' => $travel_type_online,
+                    'travel_type_page_id' => $travel_type_page_id,
                     
                 )
             );
             echo '<div class="updated"><p>Données mises à jour avec succès '.$travel_type_title.'</p></div>';
-
+            
 			$this->renderListeHTML();
         }
 

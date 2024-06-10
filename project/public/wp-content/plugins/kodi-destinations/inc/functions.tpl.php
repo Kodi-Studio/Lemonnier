@@ -64,7 +64,7 @@ function getHpTravels() {
 function getAllTypes() {
 	global $wpdb;
 	/// join with stickers discount
-	$query = 	"SELECT * FROM `travel_type` WHERE `travel_type_online` = 1";
+	$query = 	"SELECT * FROM `travel_type` WHERE `travel_type_online` = 1 ORDER BY travel_type_sommaire_order ASC";
 
 	$result = $wpdb->get_results($query, ARRAY_A );
 
