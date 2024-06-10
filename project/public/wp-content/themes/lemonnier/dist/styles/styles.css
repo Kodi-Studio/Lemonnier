@@ -813,6 +813,8 @@ h2 {
     width: 54px;
     border: none;
     font-size: 1rem;
+    padding: 0;
+    margin-top: 0;
   }
 }
 .carousel-generic--container .--next-link:hover {
@@ -859,9 +861,11 @@ h2 {
 .carousel-generic--item {
   align-items: center;
   border-right: 1px dashed #c6c6c6;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 1rem;
   text-align: center;
   width: 66.6666666667%;
   min-width: 66.6666666667%;
@@ -877,7 +881,8 @@ h2 {
 }
 .carousel-generic--item .--subtitle {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  min-height: 3rem;
   font-weight: 200;
   letter-spacing: 0.6px;
 }
@@ -886,6 +891,7 @@ h2 {
   color: var(--color-text);
   font-weight: 600;
   margin-top: 1rem;
+  min-height: 21px;
   padding: 0.2rem 0.4rem;
   border-bottom: 1px dashed var(--border-color);
 }

@@ -120,6 +120,8 @@ function travels_homepage_shortcode($atts) {
 		if($travel->travel_discount_id) {
 			$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
 			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
+		} else {
+			$html .= '<div class="--discount" ></div>';
 		}
 		
 		$html .= '</div>';
