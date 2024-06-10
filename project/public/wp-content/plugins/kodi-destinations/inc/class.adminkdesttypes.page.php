@@ -182,6 +182,7 @@ class TRAVEL_Admin_types_Page {
                     <td><input type="checkbox" id="travel_type_online" name="travel_type_online" value="1" '.esc_attr($edit_item && $edit_item->travel_type_online ? 'checked' : '').'></td>
                 </tr>
                 <tr valign="top">
+                    <th scope="row"><label for="travel_type_page_id">ID de la page <br /><small>Effacer la valeur pour créer une nouvelle page</small></label></th>
                     <td><input id="travel_type_page_id" name="travel_type_page_id" type="text" value="'.$edit_item->travel_type_page_id.'" /></td>
                 </tr>
 
