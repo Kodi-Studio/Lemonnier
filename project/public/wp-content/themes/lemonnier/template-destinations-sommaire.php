@@ -17,8 +17,10 @@ declare(strict_types=1);
 <?php get_header(); ?>
 
 <section>
-<center>Page en contruction.</center>
-<br/><br/><br/><br/>
+    <main>
+        <?php the_content(); ?>
+    </main>
+     
 </section>
 
 
