@@ -1,0 +1,25 @@
+.section-header-fiche {
+  max-width: 1200px;
+  border-top-left-radius: 200px;
+  border-bottom-right-radius: 100px;
+}
+.travel-sheet {
+  // border: 1px solid green;
+  display: flex;
+
+  &-left {
+    background-color: #499ea8;
+    // border: 1px solid blue;
+    box-sizing: border-box;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    min-height: 200px;
+    width: 22%;
+  }
+  &-right {
+    box-sizing: border-box;
+    padding-left: 24px;
+    width: 78%;
+    // border: 1px solid red;
+  }
+}
