@@ -338,7 +338,7 @@ class TRAVEL_Admin_Page {
 					'post_title'    => $page_title,
 					'post_content'  => $page_content,
 					'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
-					'page_template' => 'template-destinations-fiche.php',
+					'page_template' => 'template-destination-fiche.php',
 					'post_type'     => 'page',
 					'post_parent'   => $page_parent_id
 				);
@@ -410,7 +410,7 @@ class TRAVEL_Admin_Page {
 					'post_title'    => $page_title,
 					'post_content'  => $page_content,
 					'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
-					'page_template' => 'template-destinations-fiche.php',
+					'page_template' => 'template-destination-fiche.php',
 					'post_type'     => 'page',
 					'post_parent'   => $page_parent_id
 				);
