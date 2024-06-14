@@ -169,12 +169,12 @@ class TRAVEL_Admin_types_Page {
                 </tr>
                 <tr valign="top">
                     <th scope="row"><label for="travel_type_homepage_order">Position sur la page d\'acceuil</label></th>
-                    <td><input type="number" id="travel_type_homepage_order" name="travel_type_homepage_order" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_homepage_order) : '0' ).'"/></td>
+                    <td><input type="number" id="travel_type_homepage_order" name="travel_type_homepage_order" value="'.esc_attr(isset($edit_item->travel_type_homepage_order) ? esc_attr($edit_item->travel_type_homepage_order) : '0' ).'"/></td>
                 </tr>
 
                 <tr valign="top">
                     <th scope="row"><label for="travel_type_sommaire_order">Position sur la page sommaire</label></th>
-                    <td><input type="number" id="travel_type_sommaire_order" name="travel_type_sommaire_order" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_sommaire_order) : '0' ).'"/></td>
+                    <td><input type="number" id="travel_type_sommaire_order" name="travel_type_sommaire_order" value="'.esc_attr(isset($edit_item->travel_type_sommaire_order) ? esc_attr($edit_item->travel_type_sommaire_order) : '0' ).'"/></td>
                 </tr>
 
                  <tr valign="top">

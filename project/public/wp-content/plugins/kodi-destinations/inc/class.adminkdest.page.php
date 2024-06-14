@@ -108,6 +108,7 @@ class TRAVEL_Admin_Page {
 					'travel_price_b_1' => '',
 					'travel_price_b_2' => '',
 					'travel_discount_id' => null,
+					'travel_page_id' => null,
 
 			);
 		}
@@ -234,9 +235,15 @@ class TRAVEL_Admin_Page {
          	<th scope="row"><label for="travel_online">Publié :</label></th>
             <td><input type="checkbox" id="travel_online" name="travel_online" value="1" '.esc_attr($edit_item && $edit_item->travel_online ? 'checked' : '').'></td>
         </tr>
+
+		<tr valign="top">
+			<th scope="row"><label for="travel_page_id">ID de la page <br /><small>Effacer la valeur pour créer une nouvelle page</small></label></th>
+			<td><input id="travel_page_id" name="travel_page_id" type="text" value="'.$edit_item->travel_page_id.'" /></td>
+		</tr>
+
 		</table>';
 				
-		$html .= '<p class="submit"><input type="submit" name="action" class="button-primary" value="'.esc_attr($edit_item->travel_id ?  'enregistrer' : 'créer').'"></p></form>';
+		$html .= '<p class="submit"><input type="submit" name="action" class="button-primary" value="'.esc_attr(isset($edit_item->travel_id) ?  'enregistrer' : 'créer').'"></p></form>';
 		
 		echo $html;
 
@@ -277,7 +284,11 @@ class TRAVEL_Admin_Page {
 		$travel_online = isset($_POST['travel_online']) ? 1 : 0;
 
 		$travel_type_id = intval($_POST['travel_type_id']);
-       
+
+		$travel_page_id = ( isset($_POST['travel_page_id']) && $_POST['travel_page_id'] != null ) ? $_POST['travel_page_id'] : null;
+
+		$travel_image = '';
+		$travel_vignette = '';
 
         // // Gestion de l'upload de l'image principale
         if (!empty($_FILES['travel_image']['name'])) {
@@ -312,6 +323,36 @@ class TRAVEL_Admin_Page {
         if (isset($_POST['travel_id'])) {
             $travel_id = intval($_POST['travel_id']);
 
+            /// eventuelle création de page
+            if($travel_page_id === null) {
+				
+				// $travel_type =  = 
+				global $wpdb;
+				$result = $wpdb->get_results("SELECT * FROM `travel_type` WHERE travel_type_id = $travel_type_id ");
+
+				$page_parent_id = $result[0]->travel_type_page_id;
+                /// creation de la page
+                $page_title = $travel_title;
+                $page_content = 'Voici le contenu de ma nouvelle page.';
+                $new_page = array(
+					'post_title'    => $page_title,
+					'post_content'  => $page_content,
+					'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
+					'page_template' => 'template-destinations-fiche.php',
+					'post_type'     => 'page',
+					'post_parent'   => $page_parent_id
+				);
+				// Insérez la page dans la base de données WordPress
+				$travel_page_id = wp_insert_post($new_page);
+				// // Vérifiez si l'insertion a réussi et affichez un message d'erreur si nécessaire
+				if (is_wp_error($travel_page_id)) {
+					// Gestion de l'erreur ici
+					error_log('Erreur lors de la création de la page: ' . $page_id->get_error_message());
+				}
+            }
+
+
+
             $wpdb->update(
                 'kdest_travel',
                 array(
@@ -331,7 +372,8 @@ class TRAVEL_Admin_Page {
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
 					'travel_price_b_2' => $travel_price_b_2,
-					'travel_discount_id' => $travel_discount_id
+					'travel_discount_id' => $travel_discount_id,
+					'travel_page_id' => $travel_page_id
                 ),
                 array('travel_id' => $travel_id)
             );
@@ -340,6 +382,49 @@ class TRAVEL_Admin_Page {
 			$this->renderEditHTML();
 		
         } else {
+
+			 // Vérifiez d'abord si la page n'existe pas déjà pour éviter les doublons
+            $page_title = $travel_title;
+            $page_content = 'Voici le contenu de ma nouvelle page.';
+            // $page_check = get_page_by_title($page_title);
+            $page_check = (object) get_posts(
+                array(
+                    'post_type'              => 'page',
+                    'title'                  => $page_title,
+                )
+            );
+
+			$page_check = gettype($page_check) == 'array' ? $page_check[0] : null;
+
+            // Si la page n'existe pas encore, on la crée
+            if (!isset($page_check->ID)) {	
+
+				global $wpdb;
+				$result = $wpdb->get_results("SELECT * FROM `travel_type` WHERE travel_type_id = $travel_type_id ");
+
+				$page_parent_id = $result[0]->travel_type_page_id;
+                /// creation de la page
+                $page_title = $travel_title;
+                $page_content = 'Voici le contenu de ma nouvelle page.';
+                $new_page = array(
+					'post_title'    => $page_title,
+					'post_content'  => $page_content,
+					'post_status'   => 'publish', // ou 'draft' si vous ne souhaitez pas publier immédiatement
+					'page_template' => 'template-destinations-fiche.php',
+					'post_type'     => 'page',
+					'post_parent'   => $page_parent_id
+				);
+				// Insérez la page dans la base de données WordPress
+				$travel_page_id = wp_insert_post($new_page);
+				// // Vérifiez si l'insertion a réussi et affichez un message d'erreur si nécessaire
+				if (is_wp_error($travel_page_id)) {
+					// Gestion de l'erreur ici
+					error_log('Erreur lors de la création de la page: ' . $page_id->get_error_message());
+				}
+
+			}
+
+
             $wpdb->insert(
                 'kdest_travel',
                 array(
@@ -360,7 +445,8 @@ class TRAVEL_Admin_Page {
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
 					'travel_price_b_2' => $travel_price_b_2,
-					'travel_discount_id' => $travel_discount_id
+					'travel_discount_id' => $travel_discount_id,
+					'travel_page_id' => $travel_page_id
                 ),
             );
 			// echo "page d'insertion d'une nouvelle destination";
