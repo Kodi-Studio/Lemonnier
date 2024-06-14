@@ -113,8 +113,8 @@ function travels_homepage_shortcode($atts) {
 
 		if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
 		
-		$html .= '<a href="'.get_permalink( $travel->travel_page_id , true).'" class="carousel-generic--item">';
-		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" />'.$travel->travel_page_id.'</div>';
+		$html .= '<a href="'.get_permalink( $travel->travel_page_id , false).'" class="carousel-generic--item">';
+		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
 		$html .= '<div class="--title" >'.$travel->travel_title.'</div>';
 		$html .= '<div class="--subtitle">'.$travel->travel_subtitle.' '.($index+1).'</div>';
 		if($travel->travel_discount_id) {
