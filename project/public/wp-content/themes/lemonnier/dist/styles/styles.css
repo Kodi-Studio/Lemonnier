@@ -984,6 +984,11 @@ p {
   width: 78%;
 }
 
+.travel_card {
+  border: 1px solid black;
+  padding: 12px;
+}
+
 .footer {
   background-color: #000;
 }
