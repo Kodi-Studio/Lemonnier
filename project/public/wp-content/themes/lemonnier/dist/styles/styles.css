@@ -961,6 +961,29 @@ p {
   }
 }
 
+.section-header-fiche {
+  max-width: 1200px;
+  border-top-left-radius: 200px;
+  border-bottom-right-radius: 100px;
+}
+
+.travel-sheet {
+  display: flex;
+}
+.travel-sheet-left {
+  background-color: #499ea8;
+  box-sizing: border-box;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  min-height: 200px;
+  width: 22%;
+}
+.travel-sheet-right {
+  box-sizing: border-box;
+  padding-left: 24px;
+  width: 78%;
+}
+
 .footer {
   background-color: #000;
 }
