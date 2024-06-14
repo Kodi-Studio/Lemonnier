@@ -32,7 +32,42 @@ declare(strict_types=1);
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
             <main>
+                <?php 
+                
+                    $pageid = get_the_ID();
+
+                    global $wpdb;
+                    $query = 	"SELECT * from `travel_type` WHERE travel_type_page_id = $pageid";
+                    $result = $wpdb->get_results($query, ARRAY_A );
+
+                    $type_id = $result[0]['travel_type_id'];
+
+                    $query = 	"SELECT * from `kdest_travel` WHERE travel_type_id = $type_id";
+                    $travels = $wpdb->get_results($query, ARRAY_A );
+                
+                ?>
+
                 <?php the_content(); ?>
+
+                <?php
+
+                    foreach( $travels as $travel ) {
+                        ?>
+                        <div class="travel_card" >
+                            <h1><?php  echo $travel['travel_title']  ?></h1>
+                            <p>
+                                <?php  echo $travel['travel_description']  ?>
+                            </p>
+                            <p>
+                                <a href="<?php echo get_permalink($travel['travel_page_id'])  , true ?>" >> Voir<a>
+                            </p>
+                        </div>
+                        <?php
+                    }
+
+                ?>
+
+
             </main>
             <!-- <?php get_sidebar(); ?> -->
         </div>
