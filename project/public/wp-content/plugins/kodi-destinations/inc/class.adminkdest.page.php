@@ -167,31 +167,31 @@ class TRAVEL_Admin_Page {
                 </tr>
 				<tr valign="top">
                     <th scope="row"><label for="travel_price_a_1">Tarif 1</label></th>
-                    <td><input type="text" id="travel_price_a_1" name="travel_price_a_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_1) : '').'" required></td>
+                    <td><input type="text" id="travel_price_a_1" name="travel_price_a_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_1) : '').'" ></td>
                 </tr>
 				<tr valign="top">
                     <th scope="row"><label for="travel_price_a_2">Tarif 2</label></th>
-                    <td><input type="text" id="travel_price_a_2" name="travel_price_a_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_2) : '').'" required></td>
+                    <td><input type="text" id="travel_price_a_2" name="travel_price_a_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_2) : '').'" ></td>
                 </tr>
 
 
 				<tr ><th >Secondes dates :</th></tr>
                 <tr valign="top">
                     <th scope="row"><label for="travel_date_b_start">Date de début</label></th>
-                    <td><input type="date" id="travel_date_b_start" name="travel_date_b_start" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_b_start) : '').'" required></td>
+                    <td><input type="date" id="travel_date_b_start" name="travel_date_b_start" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_b_start) : '').'" ></td>
                 </tr>
 				<tr valign="top">
                     <th scope="row"><label for="travel_date_b_end">Date de fin</label></th>
-                    <td><input type="date" id="travel_date_b_end" name="travel_date_b_end" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_b_end) : '').'" required></td>
+                    <td><input type="date" id="travel_date_b_end" name="travel_date_b_end" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_b_end) : '').'" ></td>
                 </tr>
 				
 				<tr valign="top">
                     <th scope="row"><label for="travel_price_b_1">Tarif 1</label></th>
-                    <td><input type="text" id="travel_price_b_1" name="travel_price_b_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_1) : '').'" required></td>
+                    <td><input type="text" id="travel_price_b_1" name="travel_price_b_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_1) : '').'" ></td>
                 </tr>
 				<tr valign="top">
                     <th scope="row"><label for="travel_price_b_2">Tarif 2</label></th>
-                    <td><input type="text" id="travel_price_b_2" name="travel_price_b_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2) : '').'" required></td>
+                    <td><input type="text" id="travel_price_b_2" name="travel_price_b_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2) : '').'" ></td>
                 </tr>
 				
 				<tr >
