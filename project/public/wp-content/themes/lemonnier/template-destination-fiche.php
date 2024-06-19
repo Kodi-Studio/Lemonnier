@@ -66,8 +66,10 @@ declare(strict_types=1);
     <div id="content-container" class="content-container page-content" >
         <main class="travel-sheet" >
             <div class="travel-sheet-left">
-                
-                    <div class="--discount" style="--color-text:#FFF; --color-bg: #cc0000; --border-color:transparent"><?php   echo $travel['travel_discount_libelle'];  ?></div>
+                    <?php if($travel['travel_discount_libelle']) {
+                        echo '<div class="--discount" style="--color-text:#FFF; --color-bg: #cc0000; --border-color:transparent">'.$travel['travel_discount_libelle'].'</div>';
+                    }
+                    ?>
                     <h4 class="--subtitle" ><?php echo $travel['travel_subtitle'] ?></h4>
                 
                 
