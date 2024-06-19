@@ -13,12 +13,6 @@ declare(strict_types=1);
  * @license GPLv3
  */
 
-?>
-<?php get_header(); ?>
-
-
-<?php
-
     $pageid = get_the_ID();
 
     global $wpdb;
@@ -30,7 +24,20 @@ declare(strict_types=1);
     $query = 	"SELECT t1.* , t2.* FROM `kdest_travel` t1 LEFT JOIN `travel_discount` t2 ON t1.travel_discount_id = t2.travel_discount_id WHERE t1.travel_type_id = $type_id";
     $travels = $wpdb->get_results($query, ARRAY_A );
 
+
+    $bgHeader = $type[0]['travel_type_color'];
+
 ?>
+
+<style>
+
+    .header.default {
+        --bg-header: <?php echo $bgHeader; ?>;
+    }
+
+</style>
+
+<?php get_header(); ?>
 
 <section class="section section-full page-header page-header--small" style="background-color: <?php echo $type[0]['travel_type_color']  ?>;" >
         
