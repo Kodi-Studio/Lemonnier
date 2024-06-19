@@ -15,6 +15,14 @@ declare(strict_types=1);
 
 ?>
 <?php $headerwhite = true; ?>
+<style>
+
+    .header.default {
+        --bg-header: #FFF;
+        --menu-text-color: var(--lem-default-blue);
+    }
+
+</style>
 <?php get_header(); ?>
 
 <section class="section section-header-fiche page-header">

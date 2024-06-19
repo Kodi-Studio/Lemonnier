@@ -2,7 +2,7 @@
 
 @keyframes scrolldown {
   from {
-    top: calc(0px - var(--header-h))
+    top: calc(0px - var(--header-h));
   }
 
   to {
@@ -26,30 +26,27 @@
 
   --header-h: 70px;
 
-  --bg-header: var(--lem-default-blue)
+  --bg-header: var(--lem-default-blue);
+  --menu-text-color: #fff;
 }
-
-
 
 @include md {
   :root {
-  --header-h: var(--header-h-sm);
+    --header-h: var(--header-h-sm);
   }
 }
 
 @include lg {
   :root {
-  --header-h: var(--header-h-md);
+    --header-h: var(--header-h-md);
   }
 }
 
 @include xl {
   :root {
-  --header-h: 100px;
+    --header-h: 100px;
   }
 }
-
-
 
 body {
   margin-top: var(--header-h);
@@ -58,8 +55,7 @@ body {
       position: fixed;
 
       animation-name: scrolldown;
-      animation-duration: .4s;
-     
+      animation-duration: 0.4s;
     }
   }
 
@@ -67,12 +63,11 @@ body {
     .section-header {
       position: fixed;
       animation-name: scrollup;
-      animation-duration: .4s;
-      top: calc(0px - var(--header-h))
+      animation-duration: 0.4s;
+      top: calc(0px - var(--header-h));
     }
   }
 }
-
 
 .section {
   &-header {
@@ -83,15 +78,13 @@ body {
   }
 }
 
-
 .header {
   min-height: var(--header-h);
   width: 100vw;
-  
+
   &.default {
     background-color: var(--bg-header);
   }
-
 
   &-container {
     width: 100%;
@@ -100,9 +93,9 @@ body {
     .menu {
       display: contents;
     }
-    .menu-header-container  {
+    .menu-header-container {
       box-sizing: border-box;
-      height: calc( 100dvh - var(--header-h));
+      height: calc(100dvh - var(--header-h));
       padding: 20px;
 
       @include md {
@@ -115,21 +108,20 @@ body {
       position: absolute;
       top: var(--header-h);
       left: -150vw;
-      transition: left .3s;
+      transition: left 0.3s;
       width: 100vw;
       background-color: var(--lem-default-blue);
-      
+
       &.open {
         left: 0;
-        transition: left .3s;
+        transition: left 0.3s;
       }
-     
     }
     .menu {
       .menu-item {
-        color: #FFF;
+        color: #fff;
         font-size: 0rem;
-        font-family: 'Glamoure Everyday', sans-serif;
+        font-family: "Glamoure Everyday", sans-serif;
         line-height: 1.5em;
         font-size: 1.5rem;
         padding: 0 6px;
@@ -141,44 +133,49 @@ body {
           font-size: 1.2rem;
           padding: 0 6px;
         }
-        @include lg{
+        @include lg {
           font-size: 1.6rem;
           padding: 0 12px;
         }
-        @include xl{
+        @include xl {
           font-size: 2rem;
           padding: 0 25px;
         }
 
         &:not(.current-menu-item) {
           a {
-            color: #FFF;
+            color: var(--menu-text-color);
           }
         }
         .sub-menu {
           padding-left: 20px;
           .menu-item {
-
             font-family: Arial, Helvetica, sans-serif;
-            font-size: .8em;
+            font-size: 0.8em;
             &:before {
-              content: '>';
+              content: ">";
               display: inline;
               margin-right: 6px;
             }
           }
         }
-        &.current-menu-ancestor, 
+        &.current-menu-ancestor,
         &.current-menu-item {
-          a { color: #000; }
+          a {
+            color: #000;
+          }
           .sub-menu {
             .menu-item.current-menu-item {
               color: #000;
-              a { color: #000; }
+              a {
+                color: #000;
+              }
             }
-            .menu-item:not(.current-menu-item ) {
-              color: #FFF;
-              a { color: #FFF; }
+            .menu-item:not(.current-menu-item) {
+              color: #fff;
+              a {
+                color: #fff;
+              }
             }
           }
         }
@@ -198,7 +195,6 @@ body {
     @include md {
       justify-content: start;
     }
-   
   }
 
   .burger {
@@ -212,14 +208,14 @@ body {
     background: none;
     border: none;
     span {
-      background-color: #FFF;
+      background-color: #fff;
       display: block;
       height: 6px;
       width: 60%;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      transition: all .2s;
+      transition: all 0.2s;
       &:nth-of-type(1) {
         top: 20%;
       }
@@ -234,13 +230,12 @@ body {
     @include md {
       display: none;
     }
-
   }
-  
+
   &.menu-open {
     .burger {
       span {
-        transition: all .3s;
+        transition: all 0.3s;
         &:nth-of-type(1) {
           transform: rotate(-45deg) translateX(-48%) translateY(7px);
           top: 21%;
@@ -259,33 +254,32 @@ body {
     .header-container {
       .menu-header-container {
         left: 0;
-        -webkit-box-shadow: inset 0px 11px 14px -11px rgba(0,0,0,0.61); 
-        box-shadow: inset 0px 11px 14px -11px rgba(0,0,0,0.61);
+        -webkit-box-shadow: inset 0px 11px 14px -11px rgba(0, 0, 0, 0.61);
+        box-shadow: inset 0px 11px 14px -11px rgba(0, 0, 0, 0.61);
       }
     }
   }
 
-
   .logo {
-    background-image: url('./assets/images/VLM_logo_blanc.svg');
-    background-position: center center;
-    background-size: 80% auto;
-    background-repeat: no-repeat;
+    // background-image: url("./assets/images/VLM_logo_blanc.svg");
+    // background-position: center center;
+    // background-size: 80% auto;
+    // background-repeat: no-repeat;
     font-size: 0;
     min-width: 150px;
     position: relative;
     height: 70px;
     width: calc(70px * 2.2);
-    transition: all .3s;
+    transition: all 0.3s;
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       height: 70%;
       width: 1px;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      border-right: 2px dotted #FFF;
+      border-right: 2px dotted #fff;
     }
   }
 
@@ -299,7 +293,7 @@ body {
     .menu {
       .menu-item {
         // font-size: 2rem;
-       
+
         position: relative;
         cursor: pointer;
         .sub-menu {
@@ -312,7 +306,7 @@ body {
           display: flex;
           position: absolute;
           // padding: 8px 15px;
-          top: 100%; 
+          top: 100%;
           left: 25px;
           border: 1px solid #000;
           flex-direction: column;
@@ -320,7 +314,7 @@ body {
           .menu-item {
             display: block;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: .7em;
+            font-size: 0.7em;
             padding: 12px 12px 12px 8px;
             a {
               white-space: nowrap;
@@ -335,5 +329,14 @@ body {
 body {
   &.menu-open {
     overflow: hidden;
+  }
+}
+
+.logoInline {
+  overflow: visible;
+  fill: var(--menu-text-color);
+  &-svg {
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 }
