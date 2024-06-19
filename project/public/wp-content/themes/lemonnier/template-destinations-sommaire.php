@@ -61,7 +61,7 @@ declare(strict_types=1);
 
                     foreach( $travels as $travel ) {
                         ?>
-                        <div class="travel-card" >
+                        <a class="travel-card" href="<?php echo get_permalink($travel['travel_page_id'])  , true ?>" >
                             <div class="type-card--vignette"><img src="<?php  echo $travel['travel_vignette']  ?>" /></div>
                             <h3 class="--title" ><?php  echo $travel['travel_title']  ?></h3>
                             <div class="--subtitle">
@@ -82,7 +82,7 @@ declare(strict_types=1);
                                 <a href="<?php echo get_permalink($travel['travel_page_id'])  , true ?>" >> Voir<a>
                             </p> -->
                             </div>
-                        </div>
+                        </a>
                         <?php
                     }
 
