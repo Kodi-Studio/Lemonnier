@@ -68,7 +68,7 @@
 
 .content-container {
   background: transparent;
-  height: calc(100% - 40px);
+  // height: calc(100% - 40px);
   max-width: 1200px;
   margin: auto;
   width: calc(100vw - 20px);
@@ -344,6 +344,24 @@ a.type-card {
   display: flex;
   flex-direction: column;
   margin-bottom: 6rem;
+  box-sizing: border-box;
+
+  @include md {
+    border-right: 1px dashed #c6c6c6;
+    &:nth-child(2n) {
+      border: none;
+    }
+  }
+
+  @include lg {
+    border-right: 1px dashed #c6c6c6;
+    &:nth-child(2n) {
+      border-right: 1px dashed #c6c6c6;
+    }
+    &:nth-child(3n) {
+      border: none;
+    }
+  }
 
   &--vignette {
     text-align: center;
