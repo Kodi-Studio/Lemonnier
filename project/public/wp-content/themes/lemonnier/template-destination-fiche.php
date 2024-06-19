@@ -5,6 +5,10 @@
 
 declare(strict_types=1);
 
+// date_default_timezone_set("UTC");
+setlocale(LC_TIME, "fr-FR");
+date_default_timezone_set('Europe/Paris');
+
 /**
  * Project: wordpress-skeleton-theme
  * 
@@ -12,6 +16,34 @@ declare(strict_types=1);
  * @copyright © 2024 NetBrothers GmbH.
  * @license GPLv3
  */
+
+
+    function formatFrenchDate($dateString) {
+
+         $months = array(
+            'Janvier',
+            'Février',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            'Juillet',
+            'Août',
+            'Septembre',
+            'Octobre',
+            'Novembre',
+            'Décembre'
+        );
+
+        ///$newDate = date("d-F-Y", strtotime($dateString));
+        $day = date("d", strtotime($dateString));
+        $month =  $months[+date("m", strtotime($dateString))-1];
+        $year = date("Y", strtotime($dateString));
+
+        return $day.' '.$month; //.' '.$year;
+
+    }
+
 
 ?>
 <?php 
@@ -71,7 +103,21 @@ declare(strict_types=1);
                     }
                     ?>
                     <h4 class="--subtitle" ><?php echo $travel['travel_subtitle'] ?></h4>
-                
+                    <?php
+
+                    if($travel['travel_date_a_start']) {
+
+                        // $date = DateTime::createFromFormat('Y-m-d', $travel['travel_date_a_start']);
+
+                        $starDate = formatFrenchDate($travel['travel_date_a_start']);
+                        $endDate = formatFrenchDate($travel['travel_date_a_end']);
+
+                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>texte detail</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>texte detail</small></div>';
+                    }
+
+                    ?>
                 
             </div>
             <div class="travel-sheet-right">
