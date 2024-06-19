@@ -11,7 +11,10 @@
     font-family: "Glamoure Everyday", sans-serif;
     letter-spacing: 1;
     font-size: 5rem;
-    color: var(--color-bg);
+    color: var(--bg-color);
+    border-bottom: 1px dashed var(--bg-color);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   &-left {
@@ -51,6 +54,11 @@
     padding-left: 24px;
     width: 78%;
     // border: 1px solid red;
+
+    h2 {
+      color: var(--bg-color);
+      font-weight: 300;
+    }
   }
 }
 
