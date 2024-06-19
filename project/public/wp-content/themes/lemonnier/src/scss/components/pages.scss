@@ -5,6 +5,9 @@
     overflow: hidden;
     position: relative;
     height: 50vh;
+    &--small {
+      height: 50px;
+    }
     .image-header {
       object-fit: cover;
       object-position: center;
@@ -22,6 +25,9 @@
     }
     @include md {
       height: 60vh;
+      &--small {
+        height: 100px;
+      }
     }
 
     h1.page-title {
@@ -213,6 +219,7 @@
     align-items: center;
     border-right: 1px dashed #c6c6c6;
     box-sizing: border-box;
+    color: #000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -278,7 +285,12 @@ p {
     justify-content: flex-start;
   }
 }
-
+a.type-card {
+  color: #000;
+  &:visited {
+    color: #000;
+  }
+}
 .type-card {
   margin-top: 24px;
   width: 80vw;
@@ -302,6 +314,81 @@ p {
       max-width: 250px;
       margin: 24px auto;
     }
+  }
+
+  @include md {
+    width: calc(100% / 2);
+  }
+
+  @include lg {
+    width: calc(100% / 3);
+  }
+}
+
+//// pages liste des destinations
+.travel-list {
+  @extend .types-list;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include md {
+    justify-content: flex-start;
+  }
+}
+.travel-card {
+  // @extend .type-card;
+  // text-align: center;
+  // align-items: center;
+  align-items: center;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
+
+  &--vignette {
+    text-align: center;
+    img {
+      width: 70%;
+      height: auto;
+      @include md {
+        width: 50%;
+      }
+    }
+  }
+  &--description {
+    h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: "Lexend", sans-serif;
+      font-weight: 600;
+      max-width: 250px;
+      margin: 24px auto;
+    }
+  }
+
+  .--title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 4rem;
+    margin-bottom: 0;
+  }
+  .--subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 3rem;
+    font-weight: 200;
+    letter-spacing: 0.6px;
+  }
+  .--discount {
+    align-items: center;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    font-weight: 600;
+    margin-top: 1rem;
+    min-height: 21px;
+    padding: 0.2rem 0.4rem;
+    border-bottom: 1px dashed var(--border-color);
   }
 
   @include md {
