@@ -341,7 +341,8 @@ a:hover {
   --header-h-md: 80px;
   --header-h-sm: 60px;
   --header-h: 70px;
-  --bg-header: var(--lem-default-blue) ;
+  --bg-header: var(--lem-default-blue);
+  --menu-text-color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -426,7 +427,7 @@ body.scrolled-up .section-header {
   transition: left 0.3s;
 }
 .header-container .menu .menu-item {
-  color: #FFF;
+  color: #fff;
   font-size: 0rem;
   font-family: "Glamoure Everyday", sans-serif;
   line-height: 1.5em;
@@ -458,7 +459,7 @@ body.scrolled-up .section-header {
   }
 }
 .header-container .menu .menu-item:not(.current-menu-item) a {
-  color: #FFF;
+  color: var(--menu-text-color);
 }
 .header-container .menu .menu-item .sub-menu {
   padding-left: 20px;
@@ -482,10 +483,10 @@ body.scrolled-up .section-header {
   color: #000;
 }
 .header-container .menu .menu-item.current-menu-ancestor .sub-menu .menu-item:not(.current-menu-item), .header-container .menu .menu-item.current-menu-item .sub-menu .menu-item:not(.current-menu-item) {
-  color: #FFF;
+  color: #fff;
 }
 .header-container .menu .menu-item.current-menu-ancestor .sub-menu .menu-item:not(.current-menu-item) a, .header-container .menu .menu-item.current-menu-item .sub-menu .menu-item:not(.current-menu-item) a {
-  color: #FFF;
+  color: #fff;
 }
 @media (min-width: 768px) {
   .header-container {
@@ -504,7 +505,7 @@ body.scrolled-up .section-header {
   border: none;
 }
 .header .burger span {
-  background-color: #FFF;
+  background-color: #fff;
   display: block;
   height: 6px;
   width: 60%;
@@ -550,10 +551,6 @@ body.scrolled-up .section-header {
   box-shadow: inset 0px 11px 14px -11px rgba(0, 0, 0, 0.61);
 }
 .header .logo {
-  background-image: url(../39fc4903349efefe4f92.svg);
-  background-position: center center;
-  background-size: 80% auto;
-  background-repeat: no-repeat;
   font-size: 0;
   min-width: 150px;
   position: relative;
@@ -569,7 +566,7 @@ body.scrolled-up .section-header {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  border-right: 2px dotted #FFF;
+  border-right: 2px dotted #fff;
 }
 @media (min-width: 768px) {
   .header {
@@ -610,6 +607,15 @@ body.scrolled-up .section-header {
 
 body.menu-open {
   overflow: hidden;
+}
+
+.logoInline {
+  overflow: visible;
+  fill: var(--menu-text-color);
+}
+.logoInline-svg {
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 html {
@@ -720,7 +726,6 @@ h2 {
 
 .content-container {
   background: transparent;
-  height: calc(100% - 40px);
   max-width: 1200px;
   margin: auto;
   width: calc(100vw - 20px);
@@ -992,6 +997,26 @@ a.type-card:visited {
   display: flex;
   flex-direction: column;
   margin-bottom: 6rem;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .travel-card {
+    border-right: 1px dashed #c6c6c6;
+  }
+  .travel-card:nth-child(2n) {
+    border: none;
+  }
+}
+@media (min-width: 960px) {
+  .travel-card {
+    border-right: 1px dashed #c6c6c6;
+  }
+  .travel-card:nth-child(2n) {
+    border-right: 1px dashed #c6c6c6;
+  }
+  .travel-card:nth-child(3n) {
+    border: none;
+  }
 }
 .travel-card--vignette {
   text-align: center;

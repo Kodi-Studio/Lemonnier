@@ -33,13 +33,14 @@ declare(strict_types=1);
 
     .header.default {
         --bg-header: <?php echo $bgHeader; ?>;
+
     }
 
 </style>
 
 <?php get_header(); ?>
 
-<section class="section section-full page-header page-header--small" style="background-color: <?php echo $type[0]['travel_type_color']  ?>;" >
+    <section class="section section-full page-header page-header--small" style="background-color: <?php echo $type[0]['travel_type_color']  ?>;" >
         
         <!-- <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" /> -->
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
@@ -58,8 +59,8 @@ declare(strict_types=1);
                 
                 <div style="--color-text:<?php echo $type[0]['travel_type_color']  ?>;" >
                     <div class="carousel-travels-title">
-                    <h2><?php echo $type[0]['travel_type_title']  ?></h2>
-                    <h3><strong><?php echo $type[0]['travel_type_description']  ?></h3>
+                        <h2><?php echo $type[0]['travel_type_title']  ?></h2>
+                        <h3><strong><?php echo $type[0]['travel_type_description']  ?></strong></h3>
                     </div>
                 </div>
                 <?php the_content(); ?>
@@ -85,9 +86,6 @@ declare(strict_types=1);
                             }
                                 echo $html;
                             ?>
-                            <!-- <p>
-                                <a href="<?php echo get_permalink($travel['travel_page_id'])  , true ?>" >> Voir<a>
-                            </p> -->
                             </div>
                         </a>
                         <?php
