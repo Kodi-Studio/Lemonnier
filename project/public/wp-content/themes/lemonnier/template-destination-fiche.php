@@ -86,6 +86,9 @@ date_default_timezone_set('Europe/Paris');
     .travel-sheet {
         --bg-color:  <?php echo $bgHeader; ?>;
     }
+    .burger span {
+         --menu-text-color:  <?php echo $bgHeader; ?>;
+    }
 </style>
 
 
