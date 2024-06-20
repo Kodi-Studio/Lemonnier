@@ -459,7 +459,12 @@ body.scrolled-up .section-header {
   }
 }
 .header-container .menu .menu-item:not(.current-menu-item) a {
-  color: var(--menu-text-color);
+  color: #fff;
+}
+@media (min-width: 960px) {
+  .header-container .menu .menu-item:not(.current-menu-item) a {
+    color: var(--menu-text-color);
+  }
 }
 .header-container .menu .menu-item .sub-menu {
   padding-left: 20px;
@@ -505,7 +510,7 @@ body.scrolled-up .section-header {
   border: none;
 }
 .header .burger span {
-  background-color: #fff;
+  background-color: var(--menu-text-color);
   display: block;
   height: 6px;
   width: 60%;
@@ -1082,6 +1087,12 @@ a.type-card:visited {
 
 .travel-sheet {
   display: flex;
+  flex-direction: column;
+}
+@media (min-width: 960px) {
+  .travel-sheet {
+    flex-direction: row;
+  }
 }
 .travel-sheet .travel-title {
   font-family: "Glamoure Everyday", sans-serif;
@@ -1091,6 +1102,10 @@ a.type-card:visited {
   border-bottom: 1px dashed var(--bg-color);
   padding-bottom: 2rem;
   margin-bottom: 2rem;
+}
+.travel-sheet-left, .travel-sheet-right {
+  width: 100%;
+  margin-bottom: 3rem;
 }
 .travel-sheet-left {
   align-items: center;
@@ -1103,7 +1118,11 @@ a.type-card:visited {
   height: fit-content;
   min-height: 200px;
   padding: 2rem 1.2rem 5rem;
-  width: 22%;
+}
+@media lg {
+  .travel-sheet-left {
+    width: 22%;
+  }
 }
 .travel-sheet-left .--discount {
   align-items: center;
@@ -1147,7 +1166,11 @@ a.type-card:visited {
 .travel-sheet-right {
   box-sizing: border-box;
   padding-left: 24px;
-  width: 78%;
+}
+@media (min-width: 960px) {
+  .travel-sheet-right {
+    width: 78%;
+  }
 }
 .travel-sheet-right h2 {
   color: var(--bg-color);

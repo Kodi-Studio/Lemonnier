@@ -144,7 +144,10 @@ body {
 
         &:not(.current-menu-item) {
           a {
-            color: var(--menu-text-color);
+            color: #fff;
+            @include lg {
+              color: var(--menu-text-color);
+            }
           }
         }
         .sub-menu {
@@ -208,7 +211,7 @@ body {
     background: none;
     border: none;
     span {
-      background-color: #fff;
+      background-color: var(--menu-text-color);
       display: block;
       height: 6px;
       width: 60%;
