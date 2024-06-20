@@ -1122,6 +1122,8 @@ a.type-card:visited {
 @media (min-width: 960px) {
   .travel-sheet-left {
     width: 22%;
+    position: sticky;
+    top: 100px;
   }
 }
 .travel-sheet-left .--discount {
