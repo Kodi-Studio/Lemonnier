@@ -1145,6 +1145,11 @@ a.type-card:visited {
   margin: 2rem 0;
   padding: 1rem 0;
 }
+.travel-sheet-left .--date-box {
+  width: 100%;
+  border-bottom: 1px dashed #fff;
+  padding: 1rem 0;
+}
 .travel-sheet-left .--date {
   color: #fff;
   font-weight: 400;
