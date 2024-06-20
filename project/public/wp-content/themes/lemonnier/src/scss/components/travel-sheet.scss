@@ -43,6 +43,8 @@
 
     @include lg {
       width: 22%;
+      position: sticky;
+      top: 100px;
     }
 
     .--discount {
