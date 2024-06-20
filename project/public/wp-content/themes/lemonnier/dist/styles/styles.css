@@ -1119,7 +1119,7 @@ a.type-card:visited {
   min-height: 200px;
   padding: 2rem 1.2rem 5rem;
 }
-@media lg {
+@media (min-width: 960px) {
   .travel-sheet-left {
     width: 22%;
   }
