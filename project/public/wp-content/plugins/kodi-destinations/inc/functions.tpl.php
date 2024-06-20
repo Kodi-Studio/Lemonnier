@@ -116,7 +116,7 @@ function travels_homepage_shortcode($atts) {
 		$html .= '<a href="'.get_permalink( $travel->travel_page_id , false).'" class="carousel-generic--item">';
 		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
 		$html .= '<div class="--title" >'.$travel->travel_title.'</div>';
-		$html .= '<div class="--subtitle">'.$travel->travel_subtitle.' '.($index+1).'</div>';
+		$html .= '<div class="--subtitle">'.$travel->travel_subtitle.'</div>';
 		if($travel->travel_discount_id) {
 			$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
 			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
