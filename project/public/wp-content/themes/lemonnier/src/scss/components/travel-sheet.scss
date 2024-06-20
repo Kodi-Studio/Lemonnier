@@ -41,7 +41,7 @@
     min-height: 200px;
     padding: 2rem 1.2rem 5rem;
 
-    @media lg {
+    @include lg {
       width: 22%;
     }
 
