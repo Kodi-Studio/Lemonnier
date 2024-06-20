@@ -115,9 +115,25 @@ date_default_timezone_set('Europe/Paris');
                         $starDate = formatFrenchDate($travel['travel_date_a_start']);
                         $endDate = formatFrenchDate($travel['travel_date_a_end']);
 
+                        echo '<div class="--date-box">';
                         echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
                         echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>texte detail</small></div>';
                         echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>texte detail</small></div>';
+                        echo '</div>';
+                    }
+
+                    if($travel['travel_date_b_start']) {
+
+                        // $date = DateTime::createFromFormat('Y-m-d', $travel['travel_date_a_start']);
+
+                        $starDate = formatFrenchDate($travel['travel_date_b_start']);
+                        $endDate = formatFrenchDate($travel['travel_date_b_end']);
+
+                        echo '<div class="--date-box">';
+                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>texte detail</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>texte detail</small></div>';
+                        echo '</div>';
                     }
 
                     ?>
