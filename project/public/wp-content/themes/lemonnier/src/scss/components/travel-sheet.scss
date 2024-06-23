@@ -46,7 +46,6 @@
       position: sticky;
       top: 100px;
     }
-
     .--discount {
       align-items: center;
       background-color: var(--color-bg);
@@ -58,12 +57,18 @@
       padding: 0.2rem 0.4rem;
       border-bottom: 1px dashed var(--border-color);
     }
+    .--during-text {
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0;
+      padding: 0;
+    }
     .--subtitle {
       border-bottom: 1px dashed #fff;
       color: #fff;
       font-family: "Glamoure Everyday", sans-serif;
       font-size: 3rem;
-      margin: 2rem 0;
+      margin: 2rem 0 0;
       padding: 1rem 0;
     }
 
