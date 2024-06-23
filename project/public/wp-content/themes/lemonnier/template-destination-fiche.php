@@ -116,23 +116,25 @@ date_default_timezone_set('Europe/Paris');
                         $endDate = formatFrenchDate($travel['travel_date_a_end']);
 
                         echo '<div class="--date-box">';
+                        echo '<div class="--during-text">'.$travel['travel_during_text'].'</div>';
+                        echo '</div>';
+
+                        echo '<div class="--date-box">';
                         echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>texte detail</small></div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>texte detail</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>'.$travel['travel_price_a_1_note'].'</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>'.$travel['travel_price_a_2_note'].'</small></div>';
                         echo '</div>';
                     }
 
-                    if($travel['travel_date_b_start']) {
-
-                        // $date = DateTime::createFromFormat('Y-m-d', $travel['travel_date_a_start']);
+                    if($travel['travel_date_b_start'] && $travel['travel_date_b_start'] != '0000-00-00') {
 
                         $starDate = formatFrenchDate($travel['travel_date_b_start']);
                         $endDate = formatFrenchDate($travel['travel_date_b_end']);
 
                         echo '<div class="--date-box">';
                         echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>texte detail</small></div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>texte detail</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_b_1'].'€<small>'.$travel['travel_price_b_1_note'].'</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_b_2'].'€<small>'.$travel['travel_price_b_2_note'].'</small></div>';
                         echo '</div>';
                     }
 
