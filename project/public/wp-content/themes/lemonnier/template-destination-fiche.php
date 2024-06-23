@@ -138,7 +138,18 @@ date_default_timezone_set('Europe/Paris');
                         echo '</div>';
                     }
 
+
+                    if($travel['travel_plus_vlm'] != '') {
+                        echo '<div class="--plus-box">';
+                        echo '<div class="--plus-box--title" >Les plus</div>';
+                        echo '<div class="--plus-box--text">'.$travel['travel_plus_vlm'].'</div>';
+                        echo '</div>';
+                    }
+
+
                     ?>
+
+                    
                 
             </div>
             <div class="travel-sheet-right">
