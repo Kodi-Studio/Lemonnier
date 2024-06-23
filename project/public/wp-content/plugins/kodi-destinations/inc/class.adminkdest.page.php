@@ -26,6 +26,10 @@ class TRAVEL_Admin_Page {
 		}
 	}
 
+	function br2nl($string) {
+    	return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+	}
+
 	function travel_delete($delete_id) {
 		global $wpdb;
         $wpdb->delete('kdest_travel', array('travel_id' => $delete_id));
@@ -35,7 +39,7 @@ class TRAVEL_Admin_Page {
 
 
 	function renderListeHTML() {
-		
+
 		global $wpdb;
 		$results = $wpdb->get_results("SELECT * FROM `kdest_travel`");
 
@@ -94,6 +98,7 @@ class TRAVEL_Admin_Page {
                     'travel_title' => '',
                     'travel_subtitle' => '',
                     'travel_description' => '',
+					'travel_during_text' => '',
 					'travel_image' => '',
 					'travel_vignette' => '',
 					'travel_homepage' => 0,
@@ -101,10 +106,12 @@ class TRAVEL_Admin_Page {
 					'travel_type_id' => '',
 					'travel_date_a_start' => '',
 					'travel_date_a_end' => '',
+					'travel_date_a_note' => '',
 					'travel_price_a_1' => '',
 					'travel_price_a_2' => '',
 					'travel_date_b_start' => '',
 					'travel_date_b_end' => '',
+					'travel_date_b_note' => '',
 					'travel_price_b_1' => '',
 					'travel_price_b_2' => '',
 					'travel_discount_id' => null,
@@ -138,7 +145,12 @@ class TRAVEL_Admin_Page {
 				<tr valign="top">
                     <th scope="row"><label for="travel_description">Description</label></th>
                     <td><textarea id="travel_description" name="travel_description" class="large-text">'.esc_html($edit_item ? esc_attr($edit_item->travel_description) : '').'</textarea></td>
-                </tr>';
+                </tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_during_text">Durée <small>(ex: 10 jours/7 nuits)</small></label></th>
+                    <td><textarea id="travel_during_text" name="travel_during_text" class="large-text">'.esc_html($edit_item ? esc_attr($edit_item->travel_during_text) : '').'</textarea></td>
+                </tr>
+				';
 
 		$html .= '<tr><th>Catégorie (type de voyage) :</th></tr>';
     	$html .= '<tr valign="top">';
@@ -165,14 +177,23 @@ class TRAVEL_Admin_Page {
                     <th scope="row"><label for="travel_date_a_end">Date de fin</label></th>
                     <td><input type="date" id="travel_date_a_end" name="travel_date_a_end" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_a_end) : '').'" required></td>
                 </tr>
+			
 				<tr valign="top">
                     <th scope="row"><label for="travel_price_a_1">Tarif 1</label></th>
                     <td><input type="text" id="travel_price_a_1" name="travel_price_a_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_1) : '').'" ></td>
                 </tr>
 				<tr valign="top">
+					<th scope="row"><label for="travel_price_a_1_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_a_1_note" name="travel_price_a_1_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_1_note) : '').'" ></td>
+				</tr>
+				<tr valign="top">
                     <th scope="row"><label for="travel_price_a_2">Tarif 2</label></th>
                     <td><input type="text" id="travel_price_a_2" name="travel_price_a_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_2) : '').'" ></td>
                 </tr>
+				<tr valign="top">
+					<th scope="row"><label for="travel_price_a_2_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_a_2_note" name="travel_price_a_2_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_a_2_note) : '').'" ></td>
+				</tr>
 
 
 				<tr ><th >Secondes dates :</th></tr>
@@ -190,12 +211,25 @@ class TRAVEL_Admin_Page {
                     <td><input type="text" id="travel_price_b_1" name="travel_price_b_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_1) : '').'" ></td>
                 </tr>
 				<tr valign="top">
+					<th scope="row"><label for="travel_price_b_1_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_b_1_note" name="travel_price_b_1_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_1_note) : '').'" ></td>
+				</tr>
+				<tr valign="top">
                     <th scope="row"><label for="travel_price_b_2">Tarif 2</label></th>
                     <td><input type="text" id="travel_price_b_2" name="travel_price_b_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2) : '').'" ></td>
+                </tr>
+				<tr valign="top">
+					<th scope="row"><label for="travel_price_b_2_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_b_2_note" name="travel_price_b_2_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2_note) : '').'" ></td>
+				</tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_plus_vlm">Les plus VLM</label></th>
+                    <td><textarea rows="8" id="travel_plus_vlm" name="travel_plus_vlm" class="large-text">'.esc_html($edit_item ? wp_kses_post(preg_replace('/\<br(\s*)?\/?\>/i', "", $edit_item->travel_plus_vlm)) : '').'</textarea></td>
                 </tr>
 				
 				<tr >
 					<th >Sticker discount  :</th>';
+
 		$html .= '<td>
 					<select id="travel_discount_id" name="travel_discount_id" >
 						<option value="">Sélectionner un sticker discount</option>';
@@ -265,6 +299,7 @@ class TRAVEL_Admin_Page {
 		$travel_title = sanitize_text_field(wp_unslash($_POST['travel_title']));
         $travel_subtitle = sanitize_text_field(wp_unslash($_POST['travel_subtitle']));
         $travel_description = sanitize_text_field(wp_unslash($_POST['travel_description']));
+		$travel_during_text = sanitize_text_field(wp_unslash($_POST['travel_during_text']));
 
 		$travel_date_a_start = sanitize_text_field($_POST['travel_date_a_start']);
 		$travel_date_a_end = sanitize_text_field($_POST['travel_date_a_end']);
@@ -273,10 +308,17 @@ class TRAVEL_Admin_Page {
 		$travel_date_b_end = sanitize_text_field($_POST['travel_date_b_end']);
 
 		$travel_price_a_1 = sanitize_text_field($_POST['travel_price_a_1']);
+		$travel_price_a_1_note = sanitize_text_field($_POST['travel_price_a_1_note']);
 		$travel_price_a_2 = sanitize_text_field($_POST['travel_price_a_2']);
+		$travel_price_a_2_note = sanitize_text_field($_POST['travel_price_a_2_note']);
 
 		$travel_price_b_1 = sanitize_text_field($_POST['travel_price_b_1']);
+		$travel_price_b_1_note = sanitize_text_field($_POST['travel_price_b_1_note']);
 		$travel_price_b_2 = sanitize_text_field($_POST['travel_price_b_2']);
+		$travel_price_b_2_note = sanitize_text_field($_POST['travel_price_b_2_note']);
+
+		// $travel_plus_vlm = sanitize_text_field(wp_unslash($_POST['travel_plus_vlm']));
+		$travel_plus_vlm = wp_kses_post(nl2br(wp_unslash($_POST['travel_plus_vlm'])));
 
 		$travel_discount_id = sanitize_text_field($_POST['travel_discount_id']);
 
@@ -359,6 +401,7 @@ class TRAVEL_Admin_Page {
                     'travel_title' => $travel_title,
                     'travel_subtitle' => $travel_subtitle,
                     'travel_description' => $travel_description,
+					'travel_during_text' => $travel_during_text,
 					'travel_image' => $travel_image,
 					'travel_vignette' => $travel_vignette,
 					'travel_homepage' => $travel_homepage,
@@ -367,11 +410,16 @@ class TRAVEL_Admin_Page {
 					'travel_date_a_start' => $travel_date_a_start,
 					'travel_date_a_end' => $travel_date_a_end,
 					'travel_price_a_1' => $travel_price_a_1,
+					'travel_price_a_1_note' => $travel_price_a_1_note,
 					'travel_price_a_2' => $travel_price_a_2,
+					'travel_price_a_2_note' => $travel_price_a_2_note,
 					'travel_date_b_start' => $travel_date_b_start,
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
+					'travel_price_b_1_note' => $travel_price_b_1_note,
 					'travel_price_b_2' => $travel_price_b_2,
+					'travel_price_b_2_note' => $travel_price_b_2_note,
+					'travel_plus_vlm' => $travel_plus_vlm,
 					'travel_discount_id' => $travel_discount_id,
 					'travel_page_id' => $travel_page_id
                 ),
@@ -431,6 +479,7 @@ class TRAVEL_Admin_Page {
                     'travel_title' => $travel_title,
                     'travel_subtitle' => $travel_subtitle,
                     'travel_description' => $travel_description,
+					'travel_during_text' => $travel_during_text,
 					'travel_image' => $travel_image,
 					'travel_vignette' => $travel_vignette,
 					'travel_homepage' => $travel_homepage,
@@ -440,11 +489,16 @@ class TRAVEL_Admin_Page {
 					'travel_date_a_start' => $travel_date_a_start,
 					'travel_date_a_end' => $travel_date_a_end,
 					'travel_price_a_1' => $travel_price_a_1,
+					'travel_price_a_1_note' => $travel_price_a_1_note,
 					'travel_price_a_2' => $travel_price_a_2,
+					'travel_price_a_2_note' => $travel_price_a_2_note,
 					'travel_date_b_start' => $travel_date_b_start,
 					'travel_date_b_end' => $travel_date_b_end,
 					'travel_price_b_1' => $travel_price_b_1,
+					'travel_price_b_1_note' => $travel_price_b_1_note,
 					'travel_price_b_2' => $travel_price_b_2,
+					'travel_price_b_2_note' => $travel_price_b_2_note,
+					'travel_plus_vlm' => $travel_plus_vlm,
 					'travel_discount_id' => $travel_discount_id,
 					'travel_page_id' => $travel_page_id
                 ),
