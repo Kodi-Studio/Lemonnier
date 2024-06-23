@@ -215,6 +215,58 @@ function add_field_show_cata_before_footer() {
 }
 
 
+///// ajouter un champ custom WYSIWYG pour les mentions sur fond violet des pages fiche vayage
+// Enregistrer la meta box
+function my_custom_meta_boxes() {
+    add_meta_box(
+        'travel_mentions_text_meta_box', // ID de la meta box
+        'Mentions & détails vayagees', // Titre de la meta box
+        'travel_mentions_text_meta_box_callback', // Fonction de rappel pour afficher la meta box
+        'page', // Type de publication
+        'normal', // Contexte (normal, side, advanced)
+        'high' // Priorité (high, core, default, low)
+    );
+}
+add_action('add_meta_boxes', 'my_custom_meta_boxes');
+
+// Afficher l'éditeur WYSIWYG
+function travel_mentions_text_meta_box_callback($post) {
+    wp_nonce_field('travel_mentions_text_meta_box_nonce', 'meta_box_nonce');
+
+    $value = get_post_meta($post->ID, '_travel_mentions_text_meta_key', true);
+
+    wp_editor($value, 'travel_mentions_text_field', array(
+        'textarea_name' => 'travel_mentions_text_field', // Important !
+        'media_buttons' => true,
+        'textarea_rows' => 10,
+        'teeny'         => true
+    ));
+}
+
+// Enregistrer les données de la meta box
+function my_save_custom_meta_box_data($post_id) {
+    if (!isset($_POST['meta_box_nonce']) || !wp_verify_nonce($_POST['meta_box_nonce'], 'travel_mentions_text_meta_box_nonce')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if (isset($_POST['travel_mentions_text_field'])) {
+        update_post_meta($post_id, '_travel_mentions_text_meta_key', wp_kses_post($_POST['travel_mentions_text_field']));
+    }
+}
+add_action('save_post', 'my_save_custom_meta_box_data');
+
+
+
+
+///// END ajouter un champ custom WYSIWYG pour les mentions sur fond violet des pages fiche vayage
 
 
 function show_check_cata_before_footer($post) {
