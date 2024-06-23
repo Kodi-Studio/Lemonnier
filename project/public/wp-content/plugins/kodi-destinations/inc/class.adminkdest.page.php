@@ -26,6 +26,10 @@ class TRAVEL_Admin_Page {
 		}
 	}
 
+	function br2nl($string) {
+    	return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+	}
+
 	function travel_delete($delete_id) {
 		global $wpdb;
         $wpdb->delete('kdest_travel', array('travel_id' => $delete_id));
@@ -35,7 +39,7 @@ class TRAVEL_Admin_Page {
 
 
 	function renderListeHTML() {
-		
+
 		global $wpdb;
 		$results = $wpdb->get_results("SELECT * FROM `kdest_travel`");
 
@@ -218,9 +222,14 @@ class TRAVEL_Admin_Page {
 					<th scope="row"><label for="travel_price_b_2_note">Note tarif</label></th>
 					<td><input type="text" id="travel_price_b_2_note" name="travel_price_b_2_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_b_2_note) : '').'" ></td>
 				</tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_plus_vlm">Les plus VLM</label></th>
+                    <td><textarea rows="8" id="travel_plus_vlm" name="travel_plus_vlm" class="large-text">'.esc_html($edit_item ? wp_kses_post(preg_replace('/\<br(\s*)?\/?\>/i', "", $edit_item->travel_plus_vlm)) : '').'</textarea></td>
+                </tr>
 				
 				<tr >
 					<th >Sticker discount  :</th>';
+
 		$html .= '<td>
 					<select id="travel_discount_id" name="travel_discount_id" >
 						<option value="">Sélectionner un sticker discount</option>';
@@ -307,6 +316,9 @@ class TRAVEL_Admin_Page {
 		$travel_price_b_1_note = sanitize_text_field($_POST['travel_price_b_1_note']);
 		$travel_price_b_2 = sanitize_text_field($_POST['travel_price_b_2']);
 		$travel_price_b_2_note = sanitize_text_field($_POST['travel_price_b_2_note']);
+
+		// $travel_plus_vlm = sanitize_text_field(wp_unslash($_POST['travel_plus_vlm']));
+		$travel_plus_vlm = wp_kses_post(nl2br(wp_unslash($_POST['travel_plus_vlm'])));
 
 		$travel_discount_id = sanitize_text_field($_POST['travel_discount_id']);
 
@@ -407,6 +419,7 @@ class TRAVEL_Admin_Page {
 					'travel_price_b_1_note' => $travel_price_b_1_note,
 					'travel_price_b_2' => $travel_price_b_2,
 					'travel_price_b_2_note' => $travel_price_b_2_note,
+					'travel_plus_vlm' => $travel_plus_vlm,
 					'travel_discount_id' => $travel_discount_id,
 					'travel_page_id' => $travel_page_id
                 ),
@@ -485,6 +498,7 @@ class TRAVEL_Admin_Page {
 					'travel_price_b_1_note' => $travel_price_b_1_note,
 					'travel_price_b_2' => $travel_price_b_2,
 					'travel_price_b_2_note' => $travel_price_b_2_note,
+					'travel_plus_vlm' => $travel_plus_vlm,
 					'travel_discount_id' => $travel_discount_id,
 					'travel_page_id' => $travel_page_id
                 ),

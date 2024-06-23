@@ -98,6 +98,33 @@
         font-weight: 400;
       }
     }
+
+    .--plus-box {
+      border-bottom: 1px dashed #fff;
+      color: #fff;
+      padding: 1rem 0;
+      width: 100%;
+      &--title {
+        align-items: center;
+        font-size: 2rem;
+        font-family: "Glamoure Everyday", sans-serif;
+        padding: 0.2rem 0;
+        display: flex;
+        &::after {
+          display: inline-block;
+          content: "VLM";
+          font-size: 0;
+          background-image: url("./assets/images/VLM_logo_blanc.svg");
+          width: 107px;
+          height: 49px;
+        }
+      }
+
+      &--text {
+        font-size: 1.4rem;
+        line-height: 1.3;
+      }
+    }
   }
   &-right {
     box-sizing: border-box;
