@@ -161,6 +161,19 @@ date_default_timezone_set('Europe/Paris');
     </div>
 </section>
 
+<?php
+    $custom_text = get_post_meta(get_the_ID(), '_travel_mentions_text_meta_key', true);
+    // Affichez le champ personnalisé si non vide
+    if (!empty($custom_text)) {
+        echo '<section class="section-mentions" >';
+        echo '<div class="content-container page-content page-content--mentions">';
+        echo wpautop($custom_text);
+        echo '</div>';
+        echo '</section>';
+    }
+?>
+
+
 
 <? if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
     <section class="section section-full" >
