@@ -122,7 +122,9 @@ date_default_timezone_set('Europe/Paris');
                         echo '<div class="--date-box">';
                         echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
                         echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>'.$travel['travel_price_a_1_note'].'</small></div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>'.$travel['travel_price_a_2_note'].'</small></div>';
+                        if($travel['travel_price_a_2']!='') {
+                            echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>'.$travel['travel_price_a_2_note'].'</small></div>';
+                        }
                         echo '</div>';
                     }
 
