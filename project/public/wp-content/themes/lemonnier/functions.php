@@ -220,7 +220,7 @@ function add_field_show_cata_before_footer() {
 function my_custom_meta_boxes() {
     add_meta_box(
         'travel_mentions_text_meta_box', // ID de la meta box
-        'Mentions & détails vayagees', // Titre de la meta box
+        'Mentions & détails voyage', // Titre de la meta box
         'travel_mentions_text_meta_box_callback', // Fonction de rappel pour afficher la meta box
         'page', // Type de publication
         'normal', // Contexte (normal, side, advanced)
