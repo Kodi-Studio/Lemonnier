@@ -241,7 +241,7 @@ class TRAVEL_Admin_Page {
 		$html .= '</select></td>';
 
 		$html .= '</tr>
-				<tr ><th >Images  :</th></tr>
+				<tr ><th >Images et fiche PDF :</th></tr>
 				<tr valign="top">
                     <th scope="row"><label for="image">Image principale</label></th>
                     <td>
@@ -259,6 +259,18 @@ class TRAVEL_Admin_Page {
                         <p><img src="'.esc_attr($edit_item->travel_vignette).'" alt="" style="max-width: 150px;"></p>
                         
                     </td>
+                </tr>
+
+				<tr valign="top">
+                    <th scope="row"><label for="travel_pdf">Fiche PDF</label></th>
+                    <td>
+                        <input type="file" id="travel_pdf" name="travel_pdf" accept="application/pdf">
+                        ';
+                    	 if (!empty($edit_item->travel_pdf)) {
+							$html .= '<p><a href="'.esc_attr($edit_item->travel_pdf).'" target="_blank">Voir la fiche PDF</a></p>';
+						 }
+                        
+        $html .='           </td>
                 </tr>
 
 		<tr valign="top">
@@ -331,6 +343,7 @@ class TRAVEL_Admin_Page {
 
 		$travel_image = '';
 		$travel_vignette = '';
+		$travel_pdf = '';
 
         // // Gestion de l'upload de l'image principale
         if (!empty($_FILES['travel_image']['name'])) {
@@ -346,6 +359,22 @@ class TRAVEL_Admin_Page {
             $existing_item = $wpdb->get_row($wpdb->prepare("SELECT travel_image FROM `kdest_travel` WHERE travel_id = %d", $edit_id));
             $travel_image = $existing_item->travel_image;
         }
+
+		 // // Gestion de l'upload de la fiche PDF
+        if (!empty($_FILES['travel_pdf']['name'])) {
+            $uploaded = media_handle_upload('travel_pdf', 0);
+            if (is_wp_error($uploaded)) {
+                echo '<div class="error"><p>Erreur lors du téléchargement de l\'image : ' . $uploaded->get_error_message() . '</p></div>';
+            } else {
+                $travel_pdf = wp_get_attachment_url($uploaded);
+            }
+        } else if (isset($_POST['travel_id'])) {
+            // Conserver l'image existante si elle n'a pas été mise à jour
+            $edit_id = intval($_POST['travel_pdf']);
+            $existing_item = $wpdb->get_row($wpdb->prepare("SELECT travel_pdf FROM `kdest_travel` WHERE travel_id = %d", $edit_id));
+            $travel_pdf = $existing_item->travel_pdf;
+        }
+
 
 		// // Gestion de l'upload de l'image vignette
         if (!empty($_FILES['travel_vignette']['name'])) {
@@ -404,6 +433,7 @@ class TRAVEL_Admin_Page {
 					'travel_during_text' => $travel_during_text,
 					'travel_image' => $travel_image,
 					'travel_vignette' => $travel_vignette,
+					'travel_pdf' => $travel_pdf,
 					'travel_homepage' => $travel_homepage,
 					'travel_online' => $travel_online,
 					'travel_type_id' => $travel_type_id,
@@ -482,6 +512,7 @@ class TRAVEL_Admin_Page {
 					'travel_during_text' => $travel_during_text,
 					'travel_image' => $travel_image,
 					'travel_vignette' => $travel_vignette,
+					'travel_pdf' => $travel_pdf,
 					'travel_homepage' => $travel_homepage,
 					'travel_online' => $travel_online,
 					'travel_type_id' => $travel_type_id,
