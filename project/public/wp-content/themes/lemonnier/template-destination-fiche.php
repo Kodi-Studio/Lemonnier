@@ -101,6 +101,7 @@ date_default_timezone_set('Europe/Paris');
     <div id="content-container" class="content-container page-content" >
         <main class="travel-sheet" >
             <div class="travel-sheet-left">
+                <div  class="travel-sheet-left--inner">
                     <?php if($travel['travel_discount_libelle']) {
                         echo '<div class="--discount" style="--color-text:#FFF; --color-bg: #cc0000; --border-color:transparent">'.$travel['travel_discount_libelle'].'</div>';
                     }
@@ -149,13 +150,18 @@ date_default_timezone_set('Europe/Paris');
                     }
 
 
-                    if($travel['travel_pdf'] != '') {
+                   ?>
+                </div>
+                <?php
+                 if($travel['travel_pdf'] != '') {
                     ?>
                     <div  class="download-sheet-pdf--linkbox">
-                        <a href="<?php echo $travel['travel_pdf']  ?>"><img class="download-sheet-pdf"  src="<?php echo esc_url( get_template_directory_uri() ).'/assets/images/picto_loadPDF.png' ?>" /></a>
+                        <a href="<?php echo $travel['travel_pdf']  ?>">
+                            <img class="download-sheet-pdf"  src="<?php echo esc_url( get_template_directory_uri() ).'/assets/images/picto_loadPDF.png' ?>" />
+                            Télécharger<br />la fiche voyage
+                        </a>
                     </div>
-                    <?php } ?>
-                
+                <?php } ?>
             </div>
             <div class="travel-sheet-right">
                 <h1 class="travel-title"><?php echo $travel['travel_title']  ?></h1>
