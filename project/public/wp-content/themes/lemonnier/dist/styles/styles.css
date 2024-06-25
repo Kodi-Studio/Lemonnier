@@ -1,6 +1,7 @@
 /*!*************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss ***!
   \*************************************************************************************************************/
+@charset "UTF-8";
 /*
 Theme Name: Theme Lemonnier voyages - Atelier Mook
 Theme URI: https://netbrothers.de
@@ -1089,6 +1090,60 @@ a.type-card:visited {
   font-weight: 300;
 }
 
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 colonnes de taille égale */
+  gap: 12px; /* espace entre les éléments */
+  gap: 12px;
+  padding-top: 100px;
+}
+@media (min-width: 768px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr); /* 3 colonnes de taille égale */
+  }
+}
+@media (min-width: 960px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
+  }
+}
+.card-list .wp-block-create-block-travel-card-block {
+  border-radius: 12px;
+  border: 1px solid #7d41c2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px 6px;
+}
+.card-list .wp-block-create-block-travel-card-block img {
+  width: 75%;
+  height: auto;
+  margin: 0 auto 24px;
+}
+.card-list .wp-block-create-block-travel-card-block h2 {
+  font-family: "Glamoure Everyday", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 12px;
+}
+.card-list .wp-block-create-block-travel-card-block p {
+  font-family: "Lexend", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.card-list .wp-block-create-block-travel-card-block p strong {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+@media (min-width: 960px) {
+  .card-list .wp-block-create-block-travel-card-block:nth-child(3n+2) {
+    transform: translateY(-100px);
+  }
+}
+
 .section-header-fiche {
   max-width: 1200px;
   border-top-left-radius: 200px;
@@ -1213,10 +1268,11 @@ a.type-card:visited {
 }
 .travel-sheet-right {
   box-sizing: border-box;
-  padding-left: 24px;
+  padding: 0 20px;
 }
 @media (min-width: 960px) {
   .travel-sheet-right {
+    padding: 0 0 0 24px;
     width: 78%;
   }
 }
