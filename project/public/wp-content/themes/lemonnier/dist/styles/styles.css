@@ -1298,6 +1298,17 @@ a.type-card:visited {
   padding: 12px;
 }
 
+.download-sheet-pdf {
+  width: 90px;
+  height: auto;
+  margin: auto;
+}
+.download-sheet-pdf--linkbox {
+  margin: 5rem auto;
+  text-align: center;
+  width: 100%;
+}
+
 .footer {
   background-color: #000;
 }
