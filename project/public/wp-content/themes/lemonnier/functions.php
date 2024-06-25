@@ -303,3 +303,4 @@ function save_show_check_cata_before_footer($post_id) {
 add_action('add_meta_boxes', 'add_field_show_cata_before_footer');
 add_action('save_post', 'save_show_check_cata_before_footer');
 
+

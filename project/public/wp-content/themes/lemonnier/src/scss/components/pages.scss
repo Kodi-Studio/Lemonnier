@@ -428,3 +428,67 @@ a.type-card {
   line-height: 1.5;
   font-weight: 300;
 }
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 colonnes de taille égale */
+  gap: 12px; /* espace entre les éléments */
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 100px;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr); /* 3 colonnes de taille égale */
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
+  }
+
+  .wp-block-create-block-travel-card-block {
+    border-radius: 12px;
+    border: 1px solid #7d41c2;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    // max-width: calc((100% / 3) - 12px);
+    // min-width: calc((100% / 3) - 12px);
+    text-align: center;
+    padding: 24px 6px;
+    img {
+      width: 75%;
+      height: auto;
+      margin: 0 auto 24px;
+    }
+    h2 {
+      font-family: "Glamoure Everyday", sans-serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-top: 12px;
+    }
+    p {
+      font-family: "Lexend", sans-serif;
+      font-size: 1.3rem;
+      line-height: 1;
+      strong {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+    }
+
+    @include lg {
+      // &:nth-child(3n) {
+      //   transform: translateY(100px);
+      // }
+      // &:nth-child(3n + 1) {
+      //   transform: translateY(100px);
+      // }
+      &:nth-child(3n + 2) {
+        transform: translateY(-100px);
+      }
+    }
+  }
+}
