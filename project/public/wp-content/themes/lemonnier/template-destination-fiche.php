@@ -149,9 +149,12 @@ date_default_timezone_set('Europe/Paris');
                     }
 
 
+                    if($travel['travel_pdf'] != '') {
                     ?>
-
-                    
+                    <div  class="download-sheet-pdf--linkbox">
+                        <a href="<?php echo $travel['travel_pdf']  ?>"><img class="download-sheet-pdf"  src="<?php echo esc_url( get_template_directory_uri() ).'/assets/images/picto_loadPDF.png' ?>" /></a>
+                    </div>
+                    <?php } ?>
                 
             </div>
             <div class="travel-sheet-right">
