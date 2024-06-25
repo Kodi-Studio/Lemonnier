@@ -1183,13 +1183,15 @@ a.type-card:visited {
 .travel-sheet-left {
   align-items: start;
   display: flex;
-  background-color: var(--bg-color);
   box-sizing: border-box;
-  border-top-right-radius: 80px;
-  border-bottom-left-radius: 80px;
   flex-direction: column;
   height: fit-content;
   min-height: 200px;
+}
+.travel-sheet-left--inner {
+  background-color: var(--bg-color);
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
   padding: 2rem 1.2rem 5rem;
 }
 @media (min-width: 960px) {
@@ -1305,8 +1307,19 @@ a.type-card:visited {
 }
 .download-sheet-pdf--linkbox {
   margin: 5rem auto;
-  text-align: center;
   width: 100%;
+  text-align: center;
+}
+.download-sheet-pdf--linkbox img {
+  margin-bottom: 0.6rem;
+}
+.download-sheet-pdf--linkbox a {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: "Lexend", sans-serif;
 }
 
 .footer {
