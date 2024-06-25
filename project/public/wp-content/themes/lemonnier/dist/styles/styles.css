@@ -758,7 +758,6 @@ h2 {
 .carousel-travels-title {
   text-align: center;
   width: auto;
-  margin: auto;
 }
 .carousel-travels-title h2 {
   font-family: "Glamoure Everyday", sans-serif;
@@ -766,6 +765,7 @@ h2 {
   margin: 1rem 0 0;
   padding: 0;
   font-size: 4rem;
+  line-height: 1.2;
 }
 .carousel-travels-title h3 {
   font-family: "Lexend", sans-serif;
@@ -1094,8 +1094,8 @@ a.type-card:visited {
   display: grid;
   grid-template-columns: repeat(1, 1fr); /* 3 colonnes de taille égale */
   gap: 12px; /* espace entre les éléments */
-  gap: 12px;
-  padding-top: 100px;
+  padding-top: 200px;
+  margin-top: 5rem !important;
 }
 @media (min-width: 768px) {
   .card-list {
@@ -1139,8 +1139,14 @@ a.type-card:visited {
   display: inline-block;
 }
 @media (min-width: 960px) {
-  .card-list .wp-block-create-block-travel-card-block:nth-child(3n+2) {
+  .card-list .wp-block-create-block-travel-card-block:nth-child(3n+1) {
     transform: translateY(-100px);
+  }
+  .card-list .wp-block-create-block-travel-card-block:nth-child(3n+2) {
+    transform: translateY(-200px);
+  }
+  .card-list .wp-block-create-block-travel-card-block:nth-child(3n) {
+    transform: translateY(-50px);
   }
 }
 
