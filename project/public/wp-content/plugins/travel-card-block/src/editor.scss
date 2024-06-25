@@ -1,0 +1,44 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-travel-card-block {
+	border: 1px dotted #f00;
+}
+.trave-block {
+	display: inline-block;
+	border-radius: 8px;
+}
+.block-editor-block-list__block {
+	display: inline-block;
+	border-radius: 8px;
+}
+.card-list {
+	// border: 12px solid green;
+	display: flex;
+	flex-direction: row;
+	// align-items: start;
+	justify-content: start;
+	flex-wrap: wrap;
+	// gap: 8px;
+	.block-editor-block-list__block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 8px;
+		width: calc((100% / 3) - 8px);
+		text-align: center;
+
+		.image-button {
+			height: fit-content;
+			img {
+				max-width: 80%;
+				margin: auto;
+			}
+		}
+	}
+}
+
+// block-editor-block-list__block wp-block wp-block-create-block-travel-card-block
