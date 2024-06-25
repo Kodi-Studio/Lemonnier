@@ -1153,6 +1153,7 @@ a.type-card:visited {
 .travel-sheet {
   display: flex;
   flex-direction: column;
+  margin-bottom: 4rem;
 }
 @media (min-width: 960px) {
   .travel-sheet {
