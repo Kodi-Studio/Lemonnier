@@ -15,11 +15,6 @@
   border-radius: 8px;
 }
 
-.block-editor-block-list__block {
-  display: inline-block;
-  border-radius: 8px;
-}
-
 .card-list {
   display: flex;
   flex-direction: row;
