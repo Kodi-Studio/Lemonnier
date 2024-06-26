@@ -709,7 +709,16 @@ h2 {
   }
 }
 .page-content {
+  box-sizing: border-box;
   padding-top: 50px;
+}
+.page-content--mentions {
+  padding: 50px 20px;
+}
+@media (min-width: 960px) {
+  .page-content--mentions {
+    padding: 50px 0;
+  }
 }
 .page-content h2,
 .page-content h2.page-title {
@@ -734,7 +743,12 @@ h2 {
   background: transparent;
   max-width: 1200px;
   margin: auto;
-  width: calc(100vw - 20px);
+  width: 100%;
+}
+@media (min-width: 960px) {
+  .content-container {
+    width: calc(100vw - 20px);
+  }
 }
 .content-container.top-page {
   position: absolute;
@@ -1088,6 +1102,14 @@ a.type-card:visited {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 300;
+  width: 100vw;
+  margin-left: -20px;
+}
+@media (min-width: 960px) {
+  .section-mentions {
+    width: unset;
+    margin-left: unset;
+  }
 }
 
 .card-list {
@@ -1150,10 +1172,27 @@ a.type-card:visited {
   }
 }
 
+.main {
+  padding: 0 20px;
+}
+@media (min-width: 960px) {
+  .main {
+    padding: 0;
+  }
+}
+.main > .section {
+  width: 100%;
+}
+
 .section-header-fiche {
-  max-width: 1200px;
   border-top-left-radius: 200px;
   border-bottom-right-radius: 100px;
+  max-width: calc(100vw - 20px);
+}
+@media (min-width: 960px) {
+  .section-header-fiche {
+    max-width: 1200px;
+  }
 }
 
 .travel-sheet {
@@ -1192,10 +1231,12 @@ a.type-card:visited {
   background-color: var(--bg-color);
   border-top-right-radius: 80px;
   border-bottom-left-radius: 80px;
+  box-sizing: border-box;
   padding: 2rem 1.2rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
 @media (min-width: 960px) {
   .travel-sheet-left {
@@ -1227,6 +1268,7 @@ a.type-card:visited {
   font-family: "Glamoure Everyday", sans-serif;
   font-size: 3rem;
   padding: 1rem 0;
+  width: 100%;
 }
 .travel-sheet-left .--date-box {
   width: 100%;

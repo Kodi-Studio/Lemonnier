@@ -141,6 +141,18 @@ date_default_timezone_set('Europe/Paris');
                         echo '</div>';
                     }
 
+                    if($travel['travel_date_c_start'] && $travel['travel_date_c_start'] != '0000-00-00') {
+
+                        $starDate = formatFrenchDate($travel['travel_date_c_start']);
+                        $endDate = formatFrenchDate($travel['travel_date_c_end']);
+
+                        echo '<div class="--date-box">';
+                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                        echo '<div class="--price">'.$travel['travel_price_c_1'].'€<small>'.$travel['travel_price_c_1_note'].'</small></div>';
+                        echo '<div class="--price">'.$travel['travel_price_c_2'].'€<small>'.$travel['travel_price_c_2_note'].'</small></div>';
+                        echo '</div>';
+                    }
+
 
                     if($travel['travel_plus_vlm'] != '') {
                         echo '<div class="--plus-box">';
