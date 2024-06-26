@@ -47,7 +47,16 @@
   }
 
   &-content {
+    box-sizing: border-box;
     padding-top: 50px;
+
+    &--mentions {
+      padding: 50px 20px;
+      @include lg {
+        padding: 50px 0;
+      }
+    }
+
     h2,
     h2.page-title {
       color: #000;
@@ -71,7 +80,11 @@
   // height: calc(100% - 40px);
   max-width: 1200px;
   margin: auto;
-  width: calc(100vw - 20px);
+
+  width: 100%;
+  @include lg {
+    width: calc(100vw - 20px);
+  }
 
   &.top-page {
     position: absolute;
@@ -427,6 +440,13 @@ a.type-card {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 300;
+
+  width: 100vw;
+  margin-left: -20px;
+  @include lg {
+    width: unset;
+    margin-left: unset;
+  }
 }
 
 .card-list {

@@ -280,7 +280,7 @@ class TRAVEL_Admin_types_Page {
                 )[0];
                 /// creation de la page
                 $page_title = 'Sommaire '.$travel_type_title;
-                $page_content = 'Voici le contenu de ma nouvelle page.';
+                $page_content = '';
                 $new_page = array(
                         'post_title'    => $page_title,
                         'post_content'  => $page_content,
@@ -325,7 +325,7 @@ class TRAVEL_Admin_types_Page {
             /// creation d'une page sommaire du type en question
             // Vérifiez d'abord si la page n'existe pas déjà pour éviter les doublons
             $page_title = 'Sommaire '.$travel_type_title;
-            $page_content = 'Voici le contenu de ma nouvelle page.';
+            $page_content = '';
             // $page_check = get_page_by_title($page_title);
             $page_check = (object) get_posts(
                 array(
