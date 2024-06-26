@@ -168,7 +168,7 @@ date_default_timezone_set('Europe/Paris');
                  if($travel['travel_pdf'] != '') {
                     ?>
                     <div  class="download-sheet-pdf--linkbox">
-                        <a href="<?php echo $travel['travel_pdf']  ?>">
+                        <a href="<?php echo $travel['travel_pdf']  ?>" target="_blank" >
                             <img class="download-sheet-pdf"  src="<?php echo esc_url( get_template_directory_uri() ).'/assets/images/picto_loadPDF.png' ?>" />
                             Télécharger<br />la fiche voyage
                         </a>
