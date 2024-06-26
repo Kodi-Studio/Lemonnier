@@ -1172,6 +1172,10 @@ a.type-card:visited {
   }
 }
 
+.pages-type-title-block {
+  margin-bottom: 5rem;
+}
+
 .main {
   padding: 0 20px;
 }

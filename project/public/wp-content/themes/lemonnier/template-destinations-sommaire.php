@@ -57,7 +57,7 @@ declare(strict_types=1);
         <div id="content-container" class="content-container page-content" >
             <main>
                 
-                <div style="--color-text:<?php echo $type[0]['travel_type_color']  ?>;" >
+                <div class="pages-type-title-block" style="--color-text:<?php echo $type[0]['travel_type_color']  ?>;" >
                     <div class="carousel-travels-title">
                         <h2><?php echo $type[0]['travel_type_title']  ?></h2>
                         <h3><strong><?php echo $type[0]['travel_type_subtitle_page']  ?></strong></h3>
