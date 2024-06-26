@@ -97,6 +97,7 @@ class TRAVEL_Admin_types_Page {
 			$edit_item = (object) array(
                     'travel_type_title' => '',
                     'travel_type_subtitle' => '',
+                    'travel_type_subtitle_page' => '',
                     'travel_type_description' => '',
                     'travel_type_image' => '',
                     'travel_type_vignette' => '',
@@ -108,6 +109,8 @@ class TRAVEL_Admin_types_Page {
 		}
 
         $nonce_field = wp_nonce_field('save_travel_subtitle', 'travel_subtitle_nonce', true, false);
+        $nonce_field_page = wp_nonce_field('save_travel_subtitle_page', 'travel_subtitle__page_nonce', true, false);
+
 
         $html =  "<div class='wrap' >";
 		$html .=  "<h1>Gestion types de voyages.";
@@ -137,6 +140,15 @@ class TRAVEL_Admin_types_Page {
                         <input type="text" id="travel_type_subtitle" name="travel_type_subtitle" class="regular-text" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_subtitle) : '').'" required>
                     </td>
                 </tr>
+
+                <tr valign="top">
+                    <th scope="row"><label for="travel_type_subtitle_page">Sous Titre (page sommaire)</label></th>
+                    <td>
+                        '.$nonce_field_page.'
+                        <input type="text" id="travel_type_subtitle_page" name="travel_type_subtitle_page" class="regular-text" value="'.esc_attr($edit_item ? esc_attr($edit_item->travel_type_subtitle_page) : '').'" required>
+                    </td>
+                </tr>
+
                 <tr valign="top">
                     <th scope="row"><label for="travel_type_description">Description</label></th>
                     <td><input type="text" id="travel_type_description" name="travel_type_description" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_type_description) : '').'" required></td>
@@ -216,6 +228,7 @@ class TRAVEL_Admin_types_Page {
             return;
         }
         $travel_type_subtitle = wp_kses_post(wp_unslash($_POST['travel_type_subtitle']));
+        $travel_type_subtitle_page = wp_kses_post(wp_unslash($_POST['travel_type_subtitle_page']));
 
         $travel_type_description = sanitize_text_field(wp_unslash($_POST['travel_type_description']));
         $travel_type_color = sanitize_text_field($_POST['travel_type_color']);
@@ -305,6 +318,7 @@ class TRAVEL_Admin_types_Page {
                 array(
                     'travel_type_title' => $travel_type_title,
                     'travel_type_subtitle' => $travel_type_subtitle,
+                    'travel_type_subtitle_page' => $travel_type_subtitle_page,
                     'travel_type_description' => $travel_type_description,
                     'travel_type_color' => $travel_type_color,
 					'travel_type_image' => $travel_type_image,
@@ -376,6 +390,7 @@ class TRAVEL_Admin_types_Page {
                 array(
                     'travel_type_title' => $travel_type_title,
                     'travel_type_subtitle' => $travel_type_subtitle,
+                    'travel_type_subtitle_page' => $travel_type_subtitle_page,
                     'travel_type_description' => $travel_type_description,
                     'travel_type_color' => $travel_type_color,
                     'travel_type_image' => $travel_type_image,

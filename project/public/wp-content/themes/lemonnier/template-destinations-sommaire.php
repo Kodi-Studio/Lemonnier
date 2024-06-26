@@ -60,7 +60,7 @@ declare(strict_types=1);
                 <div style="--color-text:<?php echo $type[0]['travel_type_color']  ?>;" >
                     <div class="carousel-travels-title">
                         <h2><?php echo $type[0]['travel_type_title']  ?></h2>
-                        <h3><strong><?php echo $type[0]['travel_type_description']  ?></strong></h3>
+                        <h3><strong><?php echo $type[0]['travel_type_subtitle_page']  ?></strong></h3>
                     </div>
                 </div>
                 <?php the_content(); ?>
