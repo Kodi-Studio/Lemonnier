@@ -95,6 +95,7 @@ class TRAVEL_Admin_Page {
 			$edit_item = $wpdb->get_row($wpdb->prepare("SELECT * FROM `kdest_travel` WHERE travel_id = %d", $edit_id));
 		} else {
 			$edit_item = (object) array(
+					'travel_display_position' => '',
                     'travel_title' => '',
                     'travel_subtitle' => '',
 					'travel_subtitle_fiche' => '',
@@ -147,13 +148,17 @@ class TRAVEL_Admin_Page {
                     <th scope="row"><label for="travel_title">Titre</label></th>
                     <td><input type="text" id="travel_title" name="travel_title" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_title) : '').'" required></td>
                 </tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_display_position">Position dans la page</label></th>
+                    <td><input type="number" id="travel_display_position" name="travel_display_position" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_display_position) : 0).'" required></td>
+                </tr>
                 <tr valign="top">
                     <th scope="row"><label for="travel_subtitle">Sous Titre</label></th>
                     <td><input type="text" id="travel_subtitle" name="travel_subtitle" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_subtitle) : '').'" required></td>
                 </tr>
 				<tr valign="top">
 					<th scope="row"><label for="travel_subtitle_fiche">Sous Titre (fiche voyage)</label></th>
-					<td><input type="text" id="travel_subtitle_fiche" name="travel_subtitle_fiche" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_subtitle_fiche) : '').'" required></td>
+					<td><input type="text" id="travel_subtitle_fiche" name="travel_subtitle_fiche" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_subtitle_fiche) : '').'" ></td>
 				</tr>
 				
 				<tr valign="top">
@@ -352,6 +357,7 @@ class TRAVEL_Admin_Page {
 			require_once(ABSPATH . 'wp-admin/includes/image.php');
 		}
 
+		$travel_display_position = sanitize_text_field(wp_unslash($_POST['travel_display_position']));
 		$travel_title = sanitize_text_field(wp_unslash($_POST['travel_title']));
         $travel_subtitle = sanitize_text_field(wp_unslash($_POST['travel_subtitle']));
 		$travel_subtitle_fiche = sanitize_text_field(wp_unslash($_POST['travel_subtitle_fiche']));
@@ -480,6 +486,7 @@ class TRAVEL_Admin_Page {
             $wpdb->update(
                 'kdest_travel',
                 array(
+					'travel_display_position' => $travel_display_position,
                     'travel_title' => $travel_title,
                     'travel_subtitle' => $travel_subtitle,
 					'travel_subtitle_fiche' => $travel_subtitle_fiche,
@@ -568,6 +575,7 @@ class TRAVEL_Admin_Page {
             $wpdb->insert(
                 'kdest_travel',
                 array(
+					'travel_display_position'=> $travel_display_position,
                     'travel_title' => $travel_title,
                     'travel_subtitle' => $travel_subtitle,
 					'travel_subtitle_fiche' => $travel_subtitle_fiche,
