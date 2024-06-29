@@ -5,7 +5,9 @@
  */
 
 .wp-block-create-block-travel-card-block {
-	border: 1px dotted #f00;
+	// border: 1px dotted #f00;
+	border-width: 1px;
+	border-style: solid;
 }
 .trave-block {
 	display: inline-block;

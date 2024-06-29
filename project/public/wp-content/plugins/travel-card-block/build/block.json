@@ -46,6 +46,10 @@
     "otherTextColor": {
       "type": "string",
       "default": "#000000"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#7d41c2"
     }
   },
   "textdomain": "travel-card-block",

@@ -464,9 +464,11 @@ a.type-card {
     grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
   }
 
+  --border-color: #7d41c2;
+
   .wp-block-create-block-travel-card-block {
     border-radius: 12px;
-    border: 1px solid #7d41c2;
+    border: 1px solid var(--border-color);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

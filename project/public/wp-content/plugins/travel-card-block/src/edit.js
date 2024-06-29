@@ -60,6 +60,7 @@ export default function Edit({ attributes, setAttributes }) {
 		backgroundColor,
 		titleTextColor,
 		otherTextColor,
+		borderColor,
 	} = attributes;
 
 	const onChangeTitle = (newTitle) => {
@@ -95,10 +96,14 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ otherTextColor: newOtherTextColor });
 	};
 
+	const onChangeBorderColor = (newBorderColor) => {
+		setAttributes({ borderColor: newBorderColor });
+	};
+
 	return (
 		<div
 			className="travel-block"
-			{...useBlockProps({ style: { backgroundColor } })}
+			{...useBlockProps({ style: { backgroundColor, borderColor } })}
 		>
 			<InspectorControls>
 				<PanelBody title={__("Couleur de fond", "travel-card-block")}>
@@ -118,6 +123,9 @@ export default function Edit({ attributes, setAttributes }) {
 						value={otherTextColor}
 						onChange={onChangeOtherTextColor}
 					/>
+				</PanelBody>
+				<PanelBody title={__("Couleur de contour", "travel-card-block")}>
+					<ColorPalette value={borderColor} onChange={onChangeBorderColor} />
 				</PanelBody>
 			</InspectorControls>
 			<BlockControls>
