@@ -77,7 +77,8 @@ function Edit({
     alignment,
     backgroundColor,
     titleTextColor,
-    otherTextColor
+    otherTextColor,
+    borderColor
   } = attributes;
   const onChangeTitle = newTitle => {
     setAttributes({
@@ -115,11 +116,17 @@ function Edit({
       otherTextColor: newOtherTextColor
     });
   };
+  const onChangeBorderColor = newBorderColor => {
+    setAttributes({
+      borderColor: newBorderColor
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "travel-block",
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: {
-        backgroundColor
+        backgroundColor,
+        borderColor
       }
     })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
@@ -137,6 +144,11 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
     value: otherTextColor,
     onChange: onChangeOtherTextColor
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Couleur de contour", "travel-card-block")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    value: borderColor,
+    onChange: onChangeBorderColor
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
     value: alignment,
     onChange: onChangeAlignment
@@ -280,13 +292,18 @@ function save({
     alignment,
     backgroundColor,
     titleTextColor,
-    otherTextColor
+    otherTextColor,
+    borderColor
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "travel-block",
+    style: {
+      borderColor: borderColor
+    },
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       style: {
-        backgroundColor
+        backgroundColor,
+        borderColor
       }
     })
   }, mediaURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -391,7 +408,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/travel-card-block","version":"0.1.0","title":"Travel Card Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":"h2"},"content":{"type":"string","source":"html","selector":"p"},"mediaID":{"type":"number"},"mediaURL":{"type":"string","source":"attribute","selector":"img","attribute":"src"},"alignment":{"type":"string","default":"none"},"backgroundColor":{"type":"string","default":"#C3C3C3"},"titleTextColor":{"type":"string","default":"#000000"},"otherTextColor":{"type":"string","default":"#000000"}},"textdomain":"travel-card-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/travel-card-block","version":"0.1.0","title":"Travel Card Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"title":{"type":"string","source":"html","selector":"h2"},"content":{"type":"string","source":"html","selector":"p"},"mediaID":{"type":"number"},"mediaURL":{"type":"string","source":"attribute","selector":"img","attribute":"src"},"alignment":{"type":"string","default":"none"},"backgroundColor":{"type":"string","default":"#C3C3C3"},"titleTextColor":{"type":"string","default":"#000000"},"otherTextColor":{"type":"string","default":"#000000"},"borderColor":{"type":"string","default":"#7d41c2"}},"textdomain":"travel-card-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

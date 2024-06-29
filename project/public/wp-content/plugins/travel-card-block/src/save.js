@@ -32,12 +32,14 @@ export default function save({ attributes }) {
 		backgroundColor,
 		titleTextColor,
 		otherTextColor,
+		borderColor,
 	} = attributes;
 
 	return (
 		<div
 			className="travel-block"
-			{...useBlockProps.save({ style: { backgroundColor } })}
+			style={{ borderColor: borderColor }}
+			{...useBlockProps.save({ style: { backgroundColor, borderColor } })}
 		>
 			{mediaURL && <img src={mediaURL} alt="" />}
 			<RichText.Content

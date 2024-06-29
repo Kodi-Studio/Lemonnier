@@ -1118,6 +1118,7 @@ a.type-card:visited {
   gap: 12px; /* espace entre les éléments */
   padding-top: 200px;
   margin-top: 5rem !important;
+  --border-color: #7d41c2;
 }
 @media (min-width: 768px) {
   .card-list {
@@ -1131,7 +1132,7 @@ a.type-card:visited {
 }
 .card-list .wp-block-create-block-travel-card-block {
   border-radius: 12px;
-  border: 1px solid #7d41c2;
+  border: 1px solid var(--border-color);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
