@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template_Destinations_Sommaire
+ * Template Name: Template_Destinations_Sommaire_all
  */
 
 declare(strict_types=1);
