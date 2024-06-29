@@ -21,7 +21,7 @@ declare(strict_types=1);
 
     $type_id = $type[0]['travel_type_id'];
 
-    $query = 	"SELECT t1.* , t2.* FROM `kdest_travel` t1 LEFT JOIN `travel_discount` t2 ON t1.travel_discount_id = t2.travel_discount_id WHERE t1.travel_type_id = $type_id ORDER BY t1.travel_display_position DESC, t1.travel_date_a_start ASC, t1.travel_date_b_start ASC, t1.travel_date_c_start ASC";
+    $query = 	"SELECT t1.* , t2.* FROM `kdest_travel` t1 LEFT JOIN `travel_discount` t2 ON t1.travel_discount_id = t2.travel_discount_id WHERE t1.travel_type_id = $type_id AND t1.travel_online = 1 ORDER BY t1.travel_display_position DESC, t1.travel_date_a_start ASC, t1.travel_date_b_start ASC, t1.travel_date_c_start ASC";
     $travels = $wpdb->get_results($query, ARRAY_A );
 
 
