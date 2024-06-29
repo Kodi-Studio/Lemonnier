@@ -816,7 +816,7 @@ h2 {
 }
 .carousel-generic--container {
   display: flex;
-  margin: 4rem auto 8rem;
+  margin: 2rem auto 4rem;
   align-items: center;
   flex-direction: column;
   width: 100%;
