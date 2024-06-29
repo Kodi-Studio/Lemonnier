@@ -57,9 +57,16 @@ date_default_timezone_set('Europe/Paris');
     $query = 	"SELECT t1.* ,  t2.*, t3.* from `kdest_travel` t1  
                 LEFT JOIN `travel_discount` t2  ON t1.travel_discount_id = t2.travel_discount_id
                 LEFT JOIN `travel_type` t3  ON t1.travel_type_id = t3.travel_type_id
-                WHERE t1.travel_page_id = %d";
+                WHERE t1.travel_page_id = %d AND t1.travel_online = 1";
     $prepared_query = $wpdb->prepare($query, $pageId);
-    $travel = $wpdb->get_results($prepared_query, ARRAY_A)[0];
+    $travel = $wpdb->get_results($prepared_query, ARRAY_A);
+
+    if(!$travel) {
+        header('Location: /');
+    } else {
+        $travel = $travel[0];
+    }
+
 
     $bgHeader = $travel['travel_type_color']
 
@@ -109,50 +116,65 @@ date_default_timezone_set('Europe/Paris');
                     <h4 class="--subtitle" ><?php echo $travel['travel_subtitle'] ?></h4>
                     <?php
 
-                    if($travel['travel_date_a_start']) {
+                    $currentTime = time();
 
-                        // $date = DateTime::createFromFormat('Y-m-d', $travel['travel_date_a_start']);
+                    if( (!$travel['travel_date_a_start'] || $travel['travel_date_a_start'] == '0000-00-00' ||  $currentTime > strtotime(($travel['travel_date_a_start']))  ) 
+                        && (!$travel['travel_date_b_start'] || $travel['travel_date_b_start'] == '0000-00-00' ||  $currentTime > strtotime(($travel['travel_date_b_start']))) 
+                        && (!$travel['travel_date_b_start'] || $travel['travel_date_b_start'] == '0000-00-00' ||  $currentTime > strtotime(($travel['travel_date_c_start']))) 
+                        ) {
 
-                        $starDate = formatFrenchDate($travel['travel_date_a_start']);
-                        $endDate = formatFrenchDate($travel['travel_date_a_end']);
+                            echo '<div class="--plus-box">';
+                            echo '<div class="--plus-box--text">'.$travel['travel_date_alt_text'].'</div>';
+                            echo '</div>';
 
-                        echo '<div class="--date-box">';
-                        echo '<div class="--during-text">'.$travel['travel_during_text'].'</div>';
-                        echo '</div>';
+                        } else {
 
-                        echo '<div class="--date-box">';
-                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
-                        echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>'.$travel['travel_price_a_1_note'].'</small></div>';
-                        if($travel['travel_price_a_2']!='') {
-                            echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>'.$travel['travel_price_a_2_note'].'</small></div>';
+                            if($travel['travel_date_a_start']) {
+
+                                // $date = DateTime::createFromFormat('Y-m-d', $travel['travel_date_a_start']);
+
+                                $starDate = formatFrenchDate($travel['travel_date_a_start']);
+                                $endDate = formatFrenchDate($travel['travel_date_a_end']);
+
+                                echo '<div class="--date-box">';
+                                echo '<div class="--during-text">'.$travel['travel_during_text'].'</div>';
+                                echo '</div>';
+
+                                echo '<div class="--date-box">';
+                                echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                                echo '<div class="--price">'.$travel['travel_price_a_1'].'€<small>'.$travel['travel_price_a_1_note'].'</small></div>';
+                                if($travel['travel_price_a_2']!='') {
+                                    echo '<div class="--price">'.$travel['travel_price_a_2'].'€<small>'.$travel['travel_price_a_2_note'].'</small></div>';
+                                }
+                                echo '</div>';
+                            }
+
+                            if($travel['travel_date_b_start'] && $travel['travel_date_b_start'] != '0000-00-00') {
+
+                                $starDate = formatFrenchDate($travel['travel_date_b_start']);
+                                $endDate = formatFrenchDate($travel['travel_date_b_end']);
+
+                                echo '<div class="--date-box">';
+                                echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                                echo '<div class="--price">'.$travel['travel_price_b_1'].'€<small>'.$travel['travel_price_b_1_note'].'</small></div>';
+                                echo '<div class="--price">'.$travel['travel_price_b_2'].'€<small>'.$travel['travel_price_b_2_note'].'</small></div>';
+                                echo '</div>';
+                            }
+
+                            if($travel['travel_date_c_start'] && $travel['travel_date_c_start'] != '0000-00-00') {
+
+                                $starDate = formatFrenchDate($travel['travel_date_c_start']);
+                                $endDate = formatFrenchDate($travel['travel_date_c_end']);
+
+                                echo '<div class="--date-box">';
+                                echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
+                                echo '<div class="--price">'.$travel['travel_price_c_1'].'€<small>'.$travel['travel_price_c_1_note'].'</small></div>';
+                                echo '<div class="--price">'.$travel['travel_price_c_2'].'€<small>'.$travel['travel_price_c_2_note'].'</small></div>';
+                                echo '</div>';
+                            }
                         }
-                        echo '</div>';
-                    }
 
-                    if($travel['travel_date_b_start'] && $travel['travel_date_b_start'] != '0000-00-00') {
-
-                        $starDate = formatFrenchDate($travel['travel_date_b_start']);
-                        $endDate = formatFrenchDate($travel['travel_date_b_end']);
-
-                        echo '<div class="--date-box">';
-                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
-                        echo '<div class="--price">'.$travel['travel_price_b_1'].'€<small>'.$travel['travel_price_b_1_note'].'</small></div>';
-                        echo '<div class="--price">'.$travel['travel_price_b_2'].'€<small>'.$travel['travel_price_b_2_note'].'</small></div>';
-                        echo '</div>';
-                    }
-
-                    if($travel['travel_date_c_start'] && $travel['travel_date_c_start'] != '0000-00-00') {
-
-                        $starDate = formatFrenchDate($travel['travel_date_c_start']);
-                        $endDate = formatFrenchDate($travel['travel_date_c_end']);
-
-                        echo '<div class="--date-box">';
-                        echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
-                        echo '<div class="--price">'.$travel['travel_price_c_1'].'€<small>'.$travel['travel_price_c_1_note'].'</small></div>';
-                        echo '<div class="--price">'.$travel['travel_price_c_2'].'€<small>'.$travel['travel_price_c_2_note'].'</small></div>';
-                        echo '</div>';
-                    }
-
+                    
 
                     if($travel['travel_plus_vlm'] != '') {
                         echo '<div class="--plus-box">';
@@ -160,6 +182,8 @@ date_default_timezone_set('Europe/Paris');
                         echo '<div class="--plus-box--text">'.$travel['travel_plus_vlm'].'</div>';
                         echo '</div>';
                     }
+
+                    
 
 
                    ?>
