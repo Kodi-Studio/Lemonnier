@@ -57,7 +57,7 @@ date_default_timezone_set('Europe/Paris');
     $query = 	"SELECT t1.* ,  t2.*, t3.* from `kdest_travel` t1  
                 LEFT JOIN `travel_discount` t2  ON t1.travel_discount_id = t2.travel_discount_id
                 LEFT JOIN `travel_type` t3  ON t1.travel_type_id = t3.travel_type_id
-                WHERE t1.travel_page_id = %d";
+                WHERE t1.travel_page_id = %d AND t1.travel_online = 0";
     $prepared_query = $wpdb->prepare($query, $pageId);
     $travel = $wpdb->get_results($prepared_query, ARRAY_A)[0];
 
