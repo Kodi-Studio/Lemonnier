@@ -524,3 +524,66 @@ a.type-card {
 .pages-type-title-block {
   margin-bottom: 5rem;
 }
+
+.catalog {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // grid-template-columns: repeat(1, 1fr); /* 3 colonnes de taille égale */
+    // @include md {
+    //   grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+    // }
+    // @include lg {
+    //   grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
+    // }
+    @include md {
+      flex-direction: row;
+    }
+  }
+  &-item {
+    width: 90%;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    // justify-content:;
+    a {
+      text-align: center;
+      color: rgb(87, 87, 85);
+    }
+    p {
+      padding: 1rem;
+      font-size: 2.5rem;
+      font-family: "Lexend", sans-serif;
+      font-weight: 500;
+    }
+    @include md {
+      border-right: 1px dashed #c3c3c3;
+      margin: 4rem 0;
+      &:nth-child(2n) {
+        border: none;
+      }
+      width: 32%;
+    }
+
+    @include lg {
+      // width: 32%;
+      border-right: 1px dashed #c3c3c3;
+      &:nth-child(2n) {
+        border-right: 1px dashed #c3c3c3;
+      }
+      &:nth-child(3n) {
+        border: none;
+      }
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+  &-vignette {
+    width: 90%;
+  }
+  &-libelle {
+  }
+}

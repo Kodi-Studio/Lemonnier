@@ -63,6 +63,18 @@ declare(strict_types=1);
                         <h3><strong><?php echo $type[0]['travel_type_subtitle_page']  ?></strong></h3>
                     </div>
                 </div>
+                <div>
+                    <!--
+                    <form>
+                        <div>
+                            RECHERCHER : 
+                            <select name="country" id="contry" placeholder="PAYS" >
+                                <option value="">qfsdfsdf</option>
+                            </select>
+                        </div>
+                    </form>
+                    -->
+                </div>
                 <?php the_content(); ?>
                 <div class="travel-list">
                 <?php
