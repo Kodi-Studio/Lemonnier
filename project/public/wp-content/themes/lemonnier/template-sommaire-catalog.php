@@ -52,7 +52,7 @@ declare(strict_types=1);
 
     <section class="section section-full page-header page-header--small" style="background-color: <?php echo $type[0]['travel_type_color']  ?>;" >
         
-        <!-- <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" /> -->
+        <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
         <!-- <div class="content-container top-page top-page--small">
             <div class="logo-container" >
