@@ -1154,7 +1154,9 @@ a.type-card:visited {
 .card-list .wp-block-create-block-travel-card-block p {
   font-family: "Lexend", sans-serif;
   font-size: 1.3rem;
-  line-height: 1;
+  line-height: 1.3;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .card-list .wp-block-create-block-travel-card-block p strong {
   font-size: 1.5rem;
