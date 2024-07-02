@@ -54,14 +54,14 @@ declare(strict_types=1);
         
         <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
-        <!-- <div class="content-container top-page top-page--small">
+        <div class="content-container top-page top-page--small">
             <div class="logo-container" >
                 <img class="logo-text" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Voyages_Le_Monnier_typo_blanc.svg" alt="">
                 <h1 class="page-title" >
                     Créateur<br /> de voyages
                 </h1>
             </div>
-        </div> -->
+        </div>
     </section>
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
