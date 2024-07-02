@@ -15,22 +15,7 @@ declare(strict_types=1);
 
     $pageid = get_the_ID();
 
-    // global $wpdb;
-    // $query = 	"SELECT * from `catalogues` WHERE cata_online = 1";
-    // $catalogs = $wpdb->get_results($query, ARRAY_A );
-
-    $bgHeader = "#CC0000"; ///$type[0]['travel_type_color'];
-
 ?>
-
-<!-- <style>
-
-    .header.default {
-        --bg-header: <?php echo $bgHeader; ?>;
-
-    }
-
-</style> -->
 <style>
     .header {
         --bg-header: #7d41c2;
@@ -50,11 +35,11 @@ declare(strict_types=1);
 </style>
 <?php get_header(); ?>
 
-    <section class="section section-full page-header page-header--small" style="background-color: <?php echo $type[0]['travel_type_color']  ?>;" >
+    <section class="section section-full page-header">
         
         <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
-        <div class="content-container top-page top-page--small">
+        <div class="content-container top-page">
             <div class="logo-container" >
                 <img class="logo-text" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/Voyages_Le_Monnier_typo_blanc.svg" alt="">
                 <h1 class="page-title" >
