@@ -89,19 +89,6 @@ declare(strict_types=1);
                         </div>
                     
                     <?php } ?>
-                    <?php
-                        $list = getCatalogs();
-                        foreach($list as $cata) {
-                    ?>
-
-                        <div class="catalog-item" >
-                            <a href="<?php echo $cata['cata_fichier']; ?>">
-                                <img src="<?php echo $cata['cata_vignette'] ?>" alt="<?php echo $cata['cata_libelle'] ?>" class="catalog-vignette" />
-                                <?php echo $cata['cata_libelle'] ?>
-                            </a>
-                        </div>
-                    
-                    <?php } ?>
                 </div>
             </main>
             <!-- <?php get_sidebar(); ?> -->
