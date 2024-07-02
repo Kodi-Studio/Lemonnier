@@ -79,6 +79,10 @@ function getCatalogs() {
 	return $result;
 }
 
+function getTypePagePermalink($page_id) {
+	return get_permalink($page_id , false);
+}
+
 
 
 //// SHORTSCODES
@@ -110,9 +114,12 @@ function travels_homepage_shortcode($atts) {
 		$travel = (object) $value;
 		// $typeId = $travel->travel_type_id;
 
+		$pageTypePermalink = getTypePagePermalink($value['travel_type_page_id']);
+
 
 		if($travel->travel_type_id != $typeId) $html .= generateHeaderListeTravel($travel , $typeId);
 		
+		// $html .= '<a href="'.get_permalink( $travel->travel_page_id , false).'" class="carousel-generic--item">';
 		$html .= '<a href="'.get_permalink( $travel->travel_page_id , false).'" class="carousel-generic--item">';
 		$html .= '<div><img class="--vignette" src="'.$travel->travel_vignette.'" width="150" /></div>';
 		$html .= '<div class="--title" >'.$travel->travel_title.'</div>';
@@ -132,7 +139,7 @@ function travels_homepage_shortcode($atts) {
 
 		$endHtml = '</div>
 					
-					<a class="--next-link" href="/destinations/" >
+					<a class="--next-link" href="'.$pageTypePermalink.'" >
 						<div class="--next-link--arrow">'.SVG_ARROW.'</div>
 						<div class="--next-link--text" >Voir toutes les offres</div>
 						</div>
