@@ -91,6 +91,7 @@ services:
     volumes:
         - ./php_8.0/vhosts:/etc/apache2/sites-enabled
         - ./:/var/www
+        - ./php_8.0/conf/php.ini:/usr/local/etc/php/php.ini  # Monter le fichier php.ini
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.www_docker_kodistudio.rule=Host(`lemonnier.ateliermook.com`)"

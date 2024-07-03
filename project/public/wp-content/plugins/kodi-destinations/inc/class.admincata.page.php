@@ -124,7 +124,7 @@ class TRAVEL_Admin_cata_Page {
 				<tr valign="top">
                     <th scope="row"><label for="image">Image vignette</label></th>
                     <td>
-                        <input type="file" id="cata_vignette" name="cata_vignette" accept="image/*" required>
+                        <input type="file" id="cata_vignette" name="cata_vignette" accept="image/*" '.esc_html(!isset($edit_item->cata_vignette) ? 'required': '').' >
                         
                         <p><img src="'.esc_attr($edit_item->cata_vignette).'" alt="" style="max-width: 300px;"></p>
                         
@@ -133,7 +133,7 @@ class TRAVEL_Admin_cata_Page {
 				<tr valign="top">
                     <th scope="row"><label for="travel_vignette">Fichier PDF</label></th>
                     <td>
-                        <input type="file" id="cata_fichier" name="cata_fichier" accept="application/pdf" required>';
+                        <input type="file" id="cata_fichier" name="cata_fichier" accept="application/pdf"  '.esc_html(!isset($edit_item->cata_fichier) ? 'required': '').'>';
 
 
         if(isset($_GET['edit'])) {
