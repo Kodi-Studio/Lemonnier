@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template_Autocars
+ * Template Name: Template_Groupes
  */
 
 declare(strict_types=1);
@@ -19,10 +19,10 @@ declare(strict_types=1);
 <style>
 
     .page-header {
-        --bg-header: #c7b600;
+        --bg-header: rgb(203,135,87);
     }
     .header {
-        --bg-header: #c7b600;
+        --bg-header: rgb(203,135,87);
     }
     .header-container .menu .menu-item:not(.current-menu-item) a {
         --menu-text-color: #FFF;
@@ -31,13 +31,13 @@ declare(strict_types=1);
         --menu-text-color:  #FFF;
     }
     .travel-sheet {
-        --bg-color: #c7b600;
+        --bg-color: rgb(203,135,87);
     }
     .burger span {
          --menu-text-color:  #FFF;
     }
     .carousel-travels-title {
-        --color-text: #c7b600;
+        --color-text: rgb(203,135,87);
     }
    
 </style>
@@ -56,11 +56,11 @@ declare(strict_types=1);
                     <div class="carousel-travels-title">
                         <h2><span style="color: #000;" ><?php  echo explode('/',get_the_title())[0]; ?></span>/<?php  echo explode('/',get_the_title())[1]; ?></h2>
                         <div class="image-block-subtitle-page" >
-                            <img class="image-block-subtitle-page--image" src="<?php echo  get_post_meta(get_the_ID(), 'image_titre_url', true); ?>" />
+                            <img class="image-block-subtitle-page--image" src="<?php echo  get_post_meta(get_the_ID(), 'image_titre_url', true); ?>" alt="<?php echo get_the_title(); ?>" />
                         </div>
                     </div>
                 </div>
-               
+
                 <?php the_content(); ?>
                 
             </main>

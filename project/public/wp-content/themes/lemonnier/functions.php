@@ -142,7 +142,7 @@ function add_field_upload_image() {
 
 
 
-// Fonction pour afficher le champ d'upload d'image
+// Fonction pour afficher le champ d'upload d'image entête
 function show_champ_upload_image($post) {
     // Récupérer la valeur actuelle du champ s'il existe
     $image_url = get_post_meta($post->ID, 'image_url', true);
@@ -150,7 +150,7 @@ function show_champ_upload_image($post) {
     // Sécuriser le formulaire avec un nonce
     wp_nonce_field('upload_image_nonce', 'upload_image_nonce_field');
 
-    // Afficher le champ d'upload d'image
+    // Afficher le champ d'upload d'image entete
     echo '<label for="image_url">Image :</label>';
     echo '<input type="text" id="image_url" name="image_url" value="' . esc_attr($image_url) . '" size="30" />';
     echo '<input type="button" id="upload_image_button" class="button" value="Uploader une image" />';
@@ -182,7 +182,7 @@ function show_champ_upload_image($post) {
 
 }
 
-// Fonction pour enregistrer la valeur du champ d'upload d'image
+// Fonction pour enregistrer la valeur du champ d'upload d'image entête
 function enregistrer_champ_upload_image($post_id) {
     // Vérifier les autorisations et la présence du nonce
     if (!isset($_POST['upload_image_nonce_field']) || !wp_verify_nonce($_POST['upload_image_nonce_field'], 'upload_image_nonce')) {
@@ -267,8 +267,6 @@ add_action('save_post', 'my_save_custom_meta_box_data');
 
 
 ///// END ajouter un champ custom WYSIWYG pour les mentions sur fond violet des pages fiche vayage
-
-
 function show_check_cata_before_footer($post) {
 
     // Récupérer la valeur actuelle du champ s'il existe
@@ -308,6 +306,91 @@ add_action('save_post', 'save_show_check_cata_before_footer');
 // @ini_set( 'post_max_size', '64M');
 // @ini_set( 'max_execution_time', '300' );
 
-@ini_set('upload_max_filesize', '64M');
-@ini_set('post_max_size', '64M');
-@ini_set('memory_limit', '128M');
+// @ini_set('upload_max_filesize', '64M');
+// @ini_set('post_max_size', '64M');
+// @ini_set('memory_limit', '128M');
+
+// ####################################################################################################
+///// ADD image sous titre templates autocars, Groupes ...etc
+
+
+// Fonction pour ajouter le champ d'upload d'image EN entête des pages
+function add_field_upload_image_titre() {
+    add_meta_box(
+        'champ_upload_image_titre',
+        'Image sous titre',
+        'show_champ_upload_image_titre',
+        'page', // Ajouter uniquement à l'édition de pages
+        'normal',
+        'high'
+    );
+}
+
+
+
+// Fonction pour afficher le champ d'upload d'image titre
+function show_champ_upload_image_titre($post) {
+    $template_file = get_page_template_slug($post->ID);
+
+    $allowed_templates = array(
+        'template-autocars.php', // Le nom du template sans le chemin ni l'extension .php
+        'template-groupes.php',  // Ajouter d'autres templates si nécessaire
+    );
+
+    if (in_array($template_file, $allowed_templates))
+    {
+        // Récupérer la valeur actuelle du champ s'il existe
+        $image_titre_url = get_post_meta($post->ID, 'image_titre_url', true);
+
+        // Sécuriser le formulaire avec un nonce
+        wp_nonce_field('upload_image_titre_nonce', 'upload_image_titre_nonce_field');
+
+        // Afficher le champ d'upload d'image entete
+        echo '<label for="image_url">Image :</label>';
+        echo '<input type="text" id="image_titre_url" name="image_titre_url" value="' . esc_attr($image_titre_url) . '" size="30" />';
+        echo '<input type="button" id="upload_image_titre_button" class="button" value="Uploader une image" />';
+        echo '<p class="description">Sélectionnez ou téléchargez une image pour cette page.</p>';
+        echo '<div><img style="max-width: 200px" src="'.$image_titre_url.'" /></div>'
+        // JavaScript pour gérer l'événement de clic sur le bouton d'upload
+        ?>
+        <script>
+            jQuery(document).ready(function($){
+                $('#upload_image_titre_button').click(function() {
+                    var custom_uploader = wp.media({
+                        title: 'Uploader une image',
+                        button: {
+                            text: 'Choisir une image'
+                        },
+                        multiple: false  // Set to true to allow multiple files to be selected
+                    })
+                    .on('select', function() {
+                        var attachment = custom_uploader.state().get('selection').first().toJSON();
+                        $('#image_titre_url').val(attachment.url);
+                    })
+                    .open();
+                });
+            });
+        </script>
+    <?php
+
+    }
+
+}
+
+// Fonction pour enregistrer la valeur du champ d'upload d'image titre
+function enregistrer_champ_upload_image_titre($post_id) {
+    // Vérifier les autorisations et la présence du nonce
+    if (!isset($_POST['upload_image_titre_nonce_field']) || !wp_verify_nonce($_POST['upload_image_titre_nonce_field'], 'upload_image_titre_nonce')) {
+        return;
+    }
+
+    // Vérifier si la valeur a été saisie
+    if (isset($_POST['image_titre_url'])) {
+        // Nettoyer et enregistrer la valeur du champ d'upload d'image
+        update_post_meta($post_id, 'image_titre_url', sanitize_text_field($_POST['image_titre_url']));
+    }
+}
+
+// Hooks pour ajouter et enregistrer le champ d'upload d'image titre
+add_action('add_meta_boxes', 'add_field_upload_image_titre');
+add_action('save_post', 'enregistrer_champ_upload_image_titre');

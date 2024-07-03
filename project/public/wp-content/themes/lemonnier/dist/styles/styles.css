@@ -1233,6 +1233,15 @@ a.type-card:visited {
 .catalog-vignette {
   width: 90%;
 }
+.image-block-subtitle-page {
+  border-top: 1px dashed red;
+  max-width: 800px;
+  margin: auto;
+}
+.image-block-subtitle-page--image {
+  max-width: 400px;
+}
+
 .main {
   padding: 0 20px;
 }
