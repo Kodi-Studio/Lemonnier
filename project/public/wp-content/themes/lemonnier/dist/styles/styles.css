@@ -666,6 +666,7 @@ h2 {
   overflow: hidden;
   position: relative;
   height: 50vh;
+  background-color: var(--bg-header);
 }
 .page-header--small {
   height: 50px;
