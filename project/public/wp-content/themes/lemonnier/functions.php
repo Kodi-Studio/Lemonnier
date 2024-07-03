@@ -304,3 +304,10 @@ add_action('add_meta_boxes', 'add_field_show_cata_before_footer');
 add_action('save_post', 'save_show_check_cata_before_footer');
 
 
+// @ini_set( 'upload_max_size' , '64M' );
+// @ini_set( 'post_max_size', '64M');
+// @ini_set( 'max_execution_time', '300' );
+
+@ini_set('upload_max_filesize', '64M');
+@ini_set('post_max_size', '64M');
+@ini_set('memory_limit', '128M');
