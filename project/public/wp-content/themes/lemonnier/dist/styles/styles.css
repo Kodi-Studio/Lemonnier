@@ -1234,7 +1234,7 @@ a.type-card:visited {
   width: 90%;
 }
 .image-block-subtitle-page {
-  border-top: 1px dashed red;
+  border-top: 1px dashed var(--color-text);
   max-width: 800px;
   margin: auto;
 }
