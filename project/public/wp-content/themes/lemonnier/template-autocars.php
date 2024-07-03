@@ -54,7 +54,7 @@ declare(strict_types=1);
                 
                 <div class="pages-type-title-block" style="--color-text:#7d41c2;" >
                     <div class="carousel-travels-title">
-                        <h2><span style="color: #000;" >Autocars</span>/Busses</h2>
+                        <h2><?php  echo explode('/',get_the_title())[0]; ?></span>/<?php  echo explode('/',get_the_title())[1]; ?></h2>
                         <!-- <h3><strong>Une avalanche de propositions</strong> pour toutes sortes d'envies !</h3> -->
                     </div>
                 </div>
@@ -68,7 +68,7 @@ declare(strict_types=1);
 
 
 <? 
-    /*if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
+    if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
     <section class="section section-full" >
         <div class="section-footer--catalogs" >
             <div class="max-width-lg full-vw-width">
@@ -91,8 +91,8 @@ declare(strict_types=1);
             </div>
         </div>
     </section>
-    <? }
-    
-    */ ?>
+<? 
+    }
+?>
 
 <?php get_footer(); ?>
