@@ -588,3 +588,12 @@ a.type-card {
   &-libelle {
   }
 }
+
+.image-block-subtitle-page {
+  border-top: 1px dashed red;
+  max-width: 800px;
+  margin: auto;
+  &--image {
+    max-width: 400px;
+  }
+}
