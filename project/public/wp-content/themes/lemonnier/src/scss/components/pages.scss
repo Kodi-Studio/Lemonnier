@@ -26,6 +26,9 @@
     }
     @include md {
       height: 40vh;
+      &--hight {
+        height: 60vh;
+      }
       &--small {
         height: 100px;
       }
@@ -40,9 +43,15 @@
       letter-spacing: 2px;
       margin-top: 1.2rem;
       padding-top: 1.6rem;
+      &.--small {
+        font-size: 2.5rem;
+      }
 
       @include md {
         font-size: 5.2rem;
+        &.--small {
+          font-size: 4rem;
+        }
       }
     }
   }
