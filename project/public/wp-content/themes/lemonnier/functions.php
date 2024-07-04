@@ -408,6 +408,7 @@ function my_mce4_options($init) {
         "CC005A", "france",
         "980071", "AllCircuits",
         "C41E28", "RedLemonnier",
+        "D7834D", "LightBrown",
         "993300", "Burnt orange",
         "333300", "Dark olive",
         "003300", "Dark green",
