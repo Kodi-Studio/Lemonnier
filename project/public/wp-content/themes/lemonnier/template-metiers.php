@@ -72,6 +72,21 @@ declare(strict_types=1);
     </section>
 
 
+    <section class="section section-full section-contact-form" >
+
+        <div>
+            <div><input type="text" value="" placeholder="Nom/Name*" class="form-imput" index="0" name="lastname" id="lastname"  required ></div>
+            <div><input type="text" value="" placeholder="Prénom/firstname*" class="form-imput" index="1" name="firstname" name="firstname" required ></div>
+        </div>
+        <div>
+            <div><input type="mail" value="" placeholder="Email*" class="form-imput" index="0" name="email" id="email"  required ></div>
+            <div><input type="tel" value="" placeholder="Tél*" class="form-imput" index="1" name="phone" name="phone" required ></div>
+        </div>
+
+
+    </section>
+
+
 <? 
     if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
     <section class="section section-full" >

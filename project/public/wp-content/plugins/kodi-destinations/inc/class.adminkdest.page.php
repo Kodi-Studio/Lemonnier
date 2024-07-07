@@ -123,6 +123,12 @@ class TRAVEL_Admin_Page {
 					'travel_price_c_1' => '',
 					'travel_price_c_2' => '',
 
+					'travel_date_d_start' => '',
+					'travel_date_d_end' => '',
+					'travel_date_d_note' => '',
+					'travel_price_d_1' => '',
+					'travel_price_d_2' => '',
+
 					'travel_date_alt_text' => '',
 
 					'travel_discount_id' => null,
@@ -272,6 +278,39 @@ class TRAVEL_Admin_Page {
 					<td><input type="text" id="travel_price_c_2_note" name="travel_price_c_2_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_c_2_note) : '').'" ></td>
 				</tr>
 
+				<!-- -->
+
+				<tr ><th >Quatrième dates :</th></tr>
+                <tr valign="top">
+                    <th scope="row"><label for="travel_date_d_start">Date de début '.$_POST['travel_date_d_start'].'</label></th>
+                    <td><input type="date" id="travel_date_d_start" name="travel_date_d_start" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_d_start) : '').'" ></td>
+                </tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_date_d_end">Date de fin</label></th>
+                    <td><input type="date" id="travel_date_d_end" name="travel_date_d_end" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_d_end) : '').'" ></td>
+                </tr>
+				
+				<tr valign="top">
+                    <th scope="row"><label for="travel_price_d_1">Tarif 1</label></th>
+                    <td><input type="text" id="travel_price_d_1" name="travel_price_d_1" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_d_1) : '').'" ></td>
+                </tr>
+				<tr valign="top">
+					<th scope="row"><label for="travel_price_d_1_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_d_1_note" name="travel_price_d_1_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_d_1_note) : '').'" ></td>
+				</tr>
+				<tr valign="top">
+                    <th scope="row"><label for="travel_price_d_2">Tarif 2</label></th>
+                    <td><input type="text" id="travel_price_d_2" name="travel_price_d_2" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_d_2) : '').'" ></td>
+                </tr>
+				<tr valign="top">
+					<th scope="row"><label for="travel_price_d_2_note">Note tarif</label></th>
+					<td><input type="text" id="travel_price_d_2_note" name="travel_price_d_2_note" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_price_d_2_note) : '').'" ></td>
+				</tr>
+
+
+				<!-- -->
+
+
 				<tr valign="top">
 					<th scope="row"><label for="travel_price_c_2_note">Texte alternatif aux dates</label></th>
 					<td><input type="text" id="travel_date_alt_text" name="travel_date_alt_text" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_date_alt_text) : '').'" ></td>
@@ -379,6 +418,10 @@ class TRAVEL_Admin_Page {
 
 		$travel_date_c_start = sanitize_text_field($_POST['travel_date_c_start']);
 		$travel_date_c_end = sanitize_text_field($_POST['travel_date_c_end']);
+		var_dump($_POST['travel_date_d_start']);
+		$travel_date_d_start = sanitize_text_field($_POST['travel_date_d_start']);
+		$travel_date_d_end = sanitize_text_field($_POST['travel_date_d_end']);
+
 
 		$travel_price_a_1 = sanitize_text_field($_POST['travel_price_a_1']);
 		$travel_price_a_1_note = sanitize_text_field($_POST['travel_price_a_1_note']);
@@ -394,6 +437,11 @@ class TRAVEL_Admin_Page {
 		$travel_price_c_1_note = sanitize_text_field($_POST['travel_price_c_1_note']);
 		$travel_price_c_2 = sanitize_text_field($_POST['travel_price_c_2']);
 		$travel_price_c_2_note = sanitize_text_field($_POST['travel_price_c_2_note']);
+
+		$travel_price_d_1 = sanitize_text_field($_POST['travel_price_d_1']);
+		$travel_price_d_1_note = sanitize_text_field($_POST['travel_price_d_1_note']);
+		$travel_price_d_2 = sanitize_text_field($_POST['travel_price_d_2']);
+		$travel_price_d_2_note = sanitize_text_field($_POST['travel_price_d_2_note']);
 
 		$travel_date_alt_text = sanitize_text_field($_POST['travel_date_alt_text']);
 
@@ -527,6 +575,13 @@ class TRAVEL_Admin_Page {
 					'travel_price_c_2' => $travel_price_c_2,
 					'travel_price_c_2_note' => $travel_price_c_2_note,
 
+					'travel_date_d_start' => $travel_date_d_start,
+					'travel_date_d_end' => $travel_date_d_end,
+					'travel_price_d_1' => $travel_price_d_1,
+					'travel_price_d_1_note' => $travel_price_d_1_note,
+					'travel_price_d_2' => $travel_price_d_2,
+					'travel_price_d_2_note' => $travel_price_d_2_note,
+
 					'travel_date_alt_text' => $travel_date_alt_text,
 
 					'travel_plus_vlm' => $travel_plus_vlm,
@@ -618,6 +673,13 @@ class TRAVEL_Admin_Page {
 					'travel_price_c_1_note' => $travel_price_c_1_note,
 					'travel_price_c_2' => $travel_price_c_2,
 					'travel_price_c_2_note' => $travel_price_c_2_note,
+
+					'travel_date_d_start' => $travel_date_d_start,
+					'travel_date_d_end' => $travel_date_d_end,
+					'travel_price_d_1' => $travel_price_d_1,
+					'travel_price_d_1_note' => $travel_price_d_1_note,
+					'travel_price_d_2' => $travel_price_d_2,
+					'travel_price_d_2_note' => $travel_price_d_2_note,
 
 					'travel_date_alt_text' => $travel_date_alt_text,
 
