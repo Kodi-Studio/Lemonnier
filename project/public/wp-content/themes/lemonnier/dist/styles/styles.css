@@ -1554,10 +1554,19 @@ a.type-card:visited {
 .form-line input[type=tel],
 .form-line input[type=text] {
   width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .form-line input {
   border: none;
   border-bottom: 1px solid grey;
   font-size: 1.4rem;
   line-height: 1.5;
+}
+
+.wpcf7-response-output {
+  background-color: var(--color-text);
+  color: #fff;
+  padding: 3rem;
 }
