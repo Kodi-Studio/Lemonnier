@@ -1,6 +1,7 @@
 .form {
   &-container {
     border: 1px solid var(--color-text);
+    box-sizing: border-box;
     margin: 5rem auto;
     max-width: 1000px;
     padding: 2rem;
@@ -60,6 +61,9 @@
     input[type="tel"],
     input[type="text"] {
       width: 100%;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
     }
     input {
       border: none;
@@ -67,5 +71,48 @@
       font-size: 1.4rem;
       line-height: 1.5;
     }
+    input[type="submit"] {
+      cursor: pointer;
+    }
+    textarea {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      padding: 1rem;
+    }
   }
 }
+.wpcf7-not-valid-tip {
+  color: #c41e28 !important;
+}
+.wpcf7-response-output {
+  background-color: #c41e28;
+  border: none !important;
+  color: #fff;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+  padding: 2rem 3rem !important;
+  max-width: 1000px;
+  margin: 0 auto 2rem !important;
+}
+
+// .wpcf7-response-output {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   background: #fff;
+//   padding: 4rem !important;
+//   border-radius: 1rem;
+//   z-index: 2;
+//   &:after {
+//     content: "";
+//     display: block;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     z-index: 1;
+//   }
+// }
