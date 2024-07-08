@@ -1503,6 +1503,7 @@ a.type-card:visited {
 
 .form-container {
   border: 1px solid var(--color-text);
+  box-sizing: border-box;
   margin: 5rem auto;
   max-width: 1000px;
   padding: 2rem;
@@ -1564,9 +1565,26 @@ a.type-card:visited {
   font-size: 1.4rem;
   line-height: 1.5;
 }
+.form-line input[type=submit] {
+  cursor: pointer;
+}
+.form-line textarea {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+.wpcf7-not-valid-tip {
+  color: #c41e28 !important;
+}
 
 .wpcf7-response-output {
-  background-color: var(--color-text);
+  background-color: #c41e28;
+  border: none !important;
   color: #fff;
-  padding: 3rem;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+  padding: 2rem 3rem !important;
+  max-width: 1000px;
+  margin: 0 auto 2rem !important;
 }
