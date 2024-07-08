@@ -1500,3 +1500,64 @@ a.type-card:visited {
 .footer .menu-item .sub-menu .menu-item a:before {
   content: "- ";
 }
+
+.form-container {
+  border: 1px solid var(--color-text);
+  margin: 5rem auto;
+  max-width: 1000px;
+  padding: 2rem;
+}
+.form-container h2 {
+  font-family: "Glamoure Everyday", sans-serif;
+  color: var(--color-text);
+  margin: 1rem 0 0;
+  padding: 0;
+  text-align: center;
+  font-size: 4rem;
+  line-height: 1.2;
+}
+.form-container .form-button {
+  display: block;
+  border: none;
+  font-family: "Glamoure Everyday", sans-serif;
+  background-color: var(--color-text);
+  color: #fff;
+  font-size: 2rem;
+  padding: 8px 20px;
+  float: right;
+}
+.form-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-direction: column;
+}
+@media (min-width: 960px) {
+  .form-line {
+    flex-direction: row;
+  }
+}
+.form-line.col-1 div {
+  width: 100%;
+}
+.form-line.col-2 div {
+  width: 100%;
+}
+@media (min-width: 960px) {
+  .form-line.col-2 div {
+    width: 50%;
+  }
+}
+.form-line label,
+.form-line textarea,
+.form-line input[type=email],
+.form-line input[type=tel],
+.form-line input[type=text] {
+  width: 100%;
+}
+.form-line input {
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
