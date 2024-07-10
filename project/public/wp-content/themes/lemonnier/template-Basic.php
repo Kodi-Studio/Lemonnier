@@ -46,7 +46,14 @@ declare(strict_types=1);
 ?>
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
-            <main>               
+            <main>
+                <div class="pages-type-title-block" style="--color-text:#7d41c2;" >
+                    <div class="carousel-travels-title">
+                        <h2><span style="color: #000;" ><?php  echo get_the_title(); ?></h2>
+                        <div class="image-block-subtitle-page" >
+                        </div>
+                    </div>
+                </div>           
                 <?php the_content(); ?>
             </main>
             <!-- <?php /*get_sidebar();*/ ?> -->
