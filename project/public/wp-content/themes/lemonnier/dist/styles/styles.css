@@ -671,6 +671,9 @@ p + ul li {
   list-style-position: outside;
   margin-left: 24px;
 }
+p a {
+  color: #499ea8;
+}
 
 .page-header {
   overflow: hidden;
