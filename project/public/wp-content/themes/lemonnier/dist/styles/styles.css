@@ -671,6 +671,9 @@ p + ul li {
   list-style-position: outside;
   margin-left: 24px;
 }
+p + ul li a {
+  color: #499ea8;
+}
 p a {
   color: #499ea8;
 }
