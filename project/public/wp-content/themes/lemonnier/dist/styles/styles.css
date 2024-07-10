@@ -662,6 +662,16 @@ h2 {
   font-size: 2.5rem;
 }
 
+p + ul li {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  padding-left: 12px;
+  list-style: disc;
+  list-style-position: outside;
+  margin-left: 24px;
+}
+
 .page-header {
   overflow: hidden;
   position: relative;
