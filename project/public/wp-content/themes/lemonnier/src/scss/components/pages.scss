@@ -390,6 +390,8 @@ a.type-card {
   flex-direction: column;
   margin-bottom: 6rem;
   box-sizing: border-box;
+  padding: 0 1rem;
+  text-align: center;
 
   @include md {
     border-right: 1px dashed #c6c6c6;
@@ -407,7 +409,9 @@ a.type-card {
       border: none;
     }
   }
-
+  &:last-child {
+    border: none;
+  }
   &--vignette {
     text-align: center;
     img {
@@ -625,5 +629,26 @@ a.type-card {
   margin: auto;
   &--image {
     max-width: 400px;
+  }
+}
+
+.travel-agences-link {
+  border: 2px solid #7d41c2;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  .arrow {
+    width: 12%;
+    margin: 1rem auto;
+  }
+  p {
+    margin: 0;
+    padding: 0;
   }
 }

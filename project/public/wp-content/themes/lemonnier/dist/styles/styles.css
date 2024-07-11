@@ -1045,6 +1045,8 @@ a.type-card:visited {
   flex-direction: column;
   margin-bottom: 6rem;
   box-sizing: border-box;
+  padding: 0 1rem;
+  text-align: center;
 }
 @media (min-width: 768px) {
   .travel-card {
@@ -1064,6 +1066,9 @@ a.type-card:visited {
   .travel-card:nth-child(3n) {
     border: none;
   }
+}
+.travel-card:last-child {
+  border: none;
 }
 .travel-card--vignette {
   text-align: center;
@@ -1265,6 +1270,27 @@ a.type-card:visited {
 }
 .image-block-subtitle-page--image {
   max-width: 400px;
+}
+
+.travel-agences-link {
+  border: 2px solid #7d41c2;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+.travel-agences-link .arrow {
+  width: 12%;
+  margin: 1rem auto;
+}
+.travel-agences-link p {
+  margin: 0;
+  padding: 0;
 }
 
 .main {
