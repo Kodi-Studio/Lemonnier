@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_TIME, 'fr_FR.UTF-8');
+
 function remove_accent($str) 
 { 
   $a = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', 'Ā', 'ā', 'Ă', 'ă', 'Ą', 'ą', 'Ć', 'ć', 'Ĉ', 'ĉ', 'Ċ', 'ċ', 'Č', 'č', 'Ď', 'ď', 'Đ', 'đ', 'Ē', 'ē', 'Ĕ', 'ĕ', 'Ė', 'ė', 'Ę', 'ę', 'Ě', 'ě', 'Ĝ', 'ĝ', 'Ğ', 'ğ', 'Ġ', 'ġ', 'Ģ', 'ģ', 'Ĥ', 'ĥ', 'Ħ', 'ħ', 'Ĩ', 'ĩ', 'Ī', 'ī', 'Ĭ', 'ĭ', 'Į', 'į', 'İ', 'ı', 'Ĳ', 'ĳ', 'Ĵ', 'ĵ', 'Ķ', 'ķ', 'Ĺ', 'ĺ', 'Ļ', 'ļ', 'Ľ', 'ľ', 'Ŀ', 'ŀ', 'Ł', 'ł', 'Ń', 'ń', 'Ņ', 'ņ', 'Ň', 'ň', 'ŉ', 'Ō', 'ō', 'Ŏ', 'ŏ', 'Ő', 'ő', 'Œ', 'œ', 'Ŕ', 'ŕ', 'Ŗ', 'ŗ', 'Ř', 'ř', 'Ś', 'ś', 'Ŝ', 'ŝ', 'Ş', 'ş', 'Š', 'š', 'Ţ', 'ţ', 'Ť', 'ť', 'Ŧ', 'ŧ', 'Ũ', 'ũ', 'Ū', 'ū', 'Ŭ', 'ŭ', 'Ů', 'ů', 'Ű', 'ű', 'Ų', 'ų', 'Ŵ', 'ŵ', 'Ŷ', 'ŷ', 'Ÿ', 'Ź', 'ź', 'Ż', 'ż', 'Ž', 'ž', 'ſ', 'ƒ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ǎ', 'ǎ', 'Ǐ', 'ǐ', 'Ǒ', 'ǒ', 'Ǔ', 'ǔ', 'Ǖ', 'ǖ', 'Ǘ', 'ǘ', 'Ǚ', 'ǚ', 'Ǜ', 'ǜ', 'Ǻ', 'ǻ', 'Ǽ', 'ǽ', 'Ǿ', 'ǿ'); 
@@ -127,9 +129,12 @@ function travels_homepage_shortcode($atts) {
 		if($travel->travel_discount_id) {
 			$borderColor = $travel->travel_discount_bgcolor == '#transp' ? $travel->travel_discount_color : "transparent";
 			$html .= '<div class="--discount" style="--color-text:'.$travel->travel_discount_color.'; --color-bg: '.$travel->travel_discount_bgcolor.'; --border-color:'.$borderColor.'" >'.$travel->travel_discount_libelle.'</div>';
-		} else {
-			$html .= '<div class="--discount" ></div>';
+		} else if($travel->travel_price_a_1) {
+			$html .= '<div class="--price" >'.$travel->travel_price_a_1.'€</div>';
+		} else if($travel->travel_date_alt_text) {
+			$html .= '<div class="--text-alt" >'.$travel->travel_date_alt_text.'</div>';
 		}
+		$html .= '<div class="--note" ><div>'.$travel->travel_during_text.'</div><div class="--note-date" >'.simpleDates($travel->travel_date_a_start,$travel->travel_date_a_end ).'</div></div>';
 		
 		$html .= '</a>';
 		
@@ -167,6 +172,28 @@ function generateHeaderListeTravel($travel , $typeId ) {
 	$html .= '<div class="carousel-generic--container" ><div class="carousel-generic" >';
 	return $html;
 };
+
+function simpleDates($startDate, $endDate) {
+
+	setlocale(LC_TIME, 'fr_FR.UTF-8');
+
+	$dateTimeStart = (new DateTime($startDate))->getTimestamp();
+	$dateTimeEnd = (new DateTime($endDate))->getTimestamp();
+
+
+	$d1 = date('d', $dateTimeStart );
+	$m1 = strftime('%b', $dateTimeStart );
+
+	$d2 = date('d', $dateTimeEnd );
+	$m2 = strftime('%b', $dateTimeEnd );
+
+	if($m1 !== $m2) {
+		return mb_strtolower($d1.' '.$m1.'/'.$d2.' '.$m2 , 'UTF-8');
+	}else {
+		return mb_strtolower($d1.'/'.$d2.' '.$m2, 'UTF-8');
+	}
+	
+}
 
 
 
