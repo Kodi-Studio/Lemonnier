@@ -56,7 +56,7 @@ function getHpTravels() {
 				AND t2.travel_type_online = 1
 				AND t1.travel_online=1
 				AND t2.travel_type_online = 1
-				ORDER BY t2.travel_type_homepage_order ASC, t1.travel_display_position ASC, t1.travel_type_id ASC";
+				ORDER BY t2.travel_type_homepage_order ASC, t1.travel_display_position DESC, t1.travel_type_id ASC";
 
 	$result = $wpdb->get_results($query, ARRAY_A );
 
