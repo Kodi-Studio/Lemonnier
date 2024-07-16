@@ -27,6 +27,8 @@ declare(strict_types=1);
 
     $bgHeader = $type[0]['travel_type_color'];
 
+
+    
 ?>
 
 <style>
@@ -89,13 +91,21 @@ declare(strict_types=1);
                             </div>
                             <div>
                             <?php
+                            
                             $html = '';
                             if($travel['travel_discount_id']){
                                 $borderColor = $travel['travel_discount_bgcolor'] == '#transp' ? $travel['travel_discount_color'] : "transparent";
                                 $html .= '<div class="--discount" style="--color-text:'.$travel['travel_discount_color'].'; --color-bg: '.$travel['travel_discount_bgcolor'].'; --border-color:'.$borderColor.'" >'.$travel['travel_discount_libelle'].'</div>';
-                            } else {
-                                $html .= '<div class="--discount" ></div>';
                             }
+                            else if($travel['travel_price_a_1']) {
+                                $html .= '<div class="--price" >'.$travel['travel_price_a_1'].'€</div>';
+                            } 
+                            else if($travel['travel_date_alt_text']) {
+                                $html .= '<div class="--text-alt" >'.$travel['travel_date_alt_text'].'</div>';
+                            }
+                            $html .= '<div class="--note" ><div>'.$travel['travel_during_text'].'</div><div class="--note-date" >'.simpleDates($travel['travel_date_a_start'],$travel['travel_date_a_end']).'</div></div>';
+		
+
                                 echo $html;
                             ?>
                             </div>
