@@ -689,3 +689,81 @@ a.type-card {
     padding: 0;
   }
 }
+
+.filter-form {
+  &-container {
+    align-items: center;
+    color: #c6c6c6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto 3rem;
+    font-size: 1.2rem;
+
+    .formob {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+    }
+
+    @include lg {
+      flex-direction: row;
+      .formob {
+        display: contents;
+      }
+    }
+
+    * {
+      font-size: 1.2rem;
+    }
+    input {
+      border: 0;
+      border-bottom: 1px solid #c3c3c3;
+      margin: 0 0.5rem;
+      outline: none;
+      &::-ms-input-placeholder {
+        /* Edge 12-18 */
+        color: #c3c3c3;
+      }
+
+      &::placeholder {
+        color: #c3c3c3;
+      }
+    }
+    input[name="wishprice"] {
+      display: none;
+    }
+    button {
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 4px 10px;
+      &:disabled {
+        visibility: hidden;
+      }
+      width: 200px;
+      @include lg {
+        width: auto;
+      }
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    /* Chrome */
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Opéra*/
+    input::-o-inner-spin-button,
+    input::-o-outer-spin-button {
+      -o-appearance: none;
+      margin: 0;
+    }
+  }
+}
