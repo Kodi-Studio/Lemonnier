@@ -298,8 +298,27 @@ p {
       font-weight: 600;
       margin-top: 1rem;
       min-height: 21px;
-      padding: 0.2rem 0.4rem;
+      padding: 0.4rem 0.4rem;
       border-bottom: 1px dashed var(--border-color);
+      font-size: 1.2rem;
+    }
+    .--price {
+      color: var(--red);
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-top: 2px dashed var(--red);
+      border-bottom: 2px dashed var(--red);
+      padding: 6px;
+    }
+    .--note {
+      color: #000;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      padding: 0.4rem 0;
+      &-date {
+        font-weight: 600;
+        line-height: 1.5;
+      }
     }
 
     &:last-child {
