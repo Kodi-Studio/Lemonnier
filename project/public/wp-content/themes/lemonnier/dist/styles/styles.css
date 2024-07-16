@@ -1331,6 +1331,79 @@ a.type-card:visited {
   padding: 0;
 }
 
+.filter-form-container {
+  align-items: center;
+  color: #c6c6c6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  /* Firefox */
+  /* Chrome */
+  /* Opéra*/
+}
+.filter-form-container .formob {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+@media (min-width: 960px) {
+  .filter-form-container {
+    flex-direction: row;
+  }
+  .filter-form-container .formob {
+    display: contents;
+  }
+}
+.filter-form-container * {
+  font-size: 1.2rem;
+}
+.filter-form-container input {
+  border: 0;
+  border-bottom: 1px solid #c3c3c3;
+  margin: 0 0.5rem;
+  outline: none;
+}
+.filter-form-container input::-ms-input-placeholder {
+  /* Edge 12-18 */
+  color: #c3c3c3;
+}
+.filter-form-container input::placeholder {
+  color: #c3c3c3;
+}
+.filter-form-container input[name=wishprice] {
+  display: none;
+}
+.filter-form-container button {
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 4px 10px;
+  width: 200px;
+}
+.filter-form-container button:disabled {
+  visibility: hidden;
+}
+@media (min-width: 960px) {
+  .filter-form-container button {
+    width: auto;
+  }
+}
+.filter-form-container input[type=number] {
+  -moz-appearance: textfield;
+}
+.filter-form-container input::-webkit-inner-spin-button,
+.filter-form-container input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.filter-form-container input::-o-inner-spin-button,
+.filter-form-container input::-o-outer-spin-button {
+  -o-appearance: none;
+  margin: 0;
+}
+
 .main {
   padding: 0 20px;
 }
