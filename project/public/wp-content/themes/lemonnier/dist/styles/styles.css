@@ -243,9 +243,15 @@ a:hover {
   width: 100vw;
   max-width: 100vw;
   margin: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.section-header, .section-full {
+  padding: 0;
 }
 .section-footer {
   width: 100%;
+  box-sizing: border-box;
 }
 .section-footer--catalogs {
   background-color: #7d41c2;
@@ -415,7 +421,7 @@ body.scrolled-up .section-header {
   left: -150vw;
   transition: left 0.3s;
   width: 100vw;
-  background-color: var(--lem-default-blue);
+  background-color: var(--bg-header);
 }
 @media (min-width: 768px) {
   .header-container .menu-header-container {
@@ -432,8 +438,8 @@ body.scrolled-up .section-header {
   color: #fff;
   font-size: 0rem;
   font-family: "Glamoure Everyday", sans-serif;
-  line-height: 1.5em;
-  font-size: 1.5rem;
+  line-height: 2.2em;
+  font-size: 2rem;
   padding: 0 6px;
 }
 @media (min-width: 576px) {
@@ -462,6 +468,8 @@ body.scrolled-up .section-header {
 }
 .header-container .menu .menu-item:not(.current-menu-item) a {
   color: #fff;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 @media (min-width: 960px) {
   .header-container .menu .menu-item:not(.current-menu-item) a {
@@ -469,7 +477,9 @@ body.scrolled-up .section-header {
   }
 }
 .header-container .menu .menu-item .sub-menu {
+  margin-top: -13px;
   padding-left: 20px;
+  padding-bottom: 20px;
 }
 .header-container .menu .menu-item .sub-menu .menu-item {
   font-family: Arial, Helvetica, sans-serif;
@@ -778,15 +788,17 @@ p a {
   }
 }
 .content-container.top-page {
+  box-sizing: border-box;
   position: absolute;
   height: 100%;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  padding: 0 20px;
 }
 .content-container.top-page .logo-container {
   position: absolute;
-  left: 0;
+  left: 20px;
   max-width: 470px;
   top: 50%;
   transform: translateY(-50%);
@@ -794,6 +806,16 @@ p a {
 }
 .content-container.top-page .logo-container .logo-text {
   width: 100%;
+}
+@media (min-width: 960px) {
+  .content-container.top-page .logo-container {
+    left: 0px;
+  }
+}
+@media (min-width: 960px) {
+  .content-container.top-page {
+    padding: 0;
+  }
 }
 
 .carousel-travels-title {
@@ -1405,7 +1427,7 @@ a.type-card:visited {
 }
 
 .main {
-  padding: 0 20px;
+  padding: 0;
 }
 @media (min-width: 960px) {
   .main {
@@ -1625,20 +1647,28 @@ a.type-card:visited {
 }
 .footer-container--navs {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: start;
   align-items: end;
 }
-.footer-container--navs nav {
-  margin: 24px 12px 0;
-  padding: 0px 36px 0px 24px;
-  border-right: 1px dashed #FFF;
+.footer-container--navs .information-menu {
+  width: 100%;
 }
-.footer-container--navs nav:last-child {
-  border-right: none;
+@media (min-width: 960px) {
+  .footer-container--navs {
+    flex-direction: row;
+  }
+  .footer-container--navs nav {
+    margin: 24px 12px 0;
+    padding: 0px 36px 0px 24px;
+    border-right: 1px dashed #fff;
+  }
+  .footer-container--navs nav:last-child {
+    border-right: none;
+  }
 }
 .footer .menu-item a {
-  color: #C3C3C3;
+  color: #c3c3c3;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
   line-height: 2rem;
