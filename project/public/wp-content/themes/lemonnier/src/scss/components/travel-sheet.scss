@@ -13,6 +13,7 @@
   border-top-left-radius: 200px;
   border-bottom-right-radius: 100px;
   max-width: calc(100vw - 20px);
+  padding: 0;
   @include lg {
     max-width: 1200px;
   }

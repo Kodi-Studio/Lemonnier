@@ -1467,6 +1467,7 @@ a.type-card:visited {
   border-top-left-radius: 200px;
   border-bottom-right-radius: 100px;
   max-width: calc(100vw - 20px);
+  padding: 0;
 }
 @media (min-width: 960px) {
   .section-header-fiche {
