@@ -118,14 +118,16 @@ p {
   }
 
   &.top-page {
+    box-sizing: border-box;
     position: absolute;
     height: 100%;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    padding: 0 20px;
     .logo-container {
       position: absolute;
-      left: 0;
+      left: 20px;
       max-width: 470px;
       top: 50%;
       transform: translateY(-50%);
@@ -133,6 +135,12 @@ p {
       .logo-text {
         width: 100%;
       }
+      @include lg {
+        left: 0px;
+      }
+    }
+    @include lg {
+      padding: 0;
     }
   }
 }
