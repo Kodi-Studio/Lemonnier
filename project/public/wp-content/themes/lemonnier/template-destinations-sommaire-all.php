@@ -45,9 +45,6 @@ declare(strict_types=1);
 
     $bgHeader = $type[0]['travel_type_color'];
 
-
-    echo $query;
-
 ?>
 
 <style>
