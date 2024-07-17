@@ -82,7 +82,7 @@ date_default_timezone_set('Europe/Paris');
 
 <style>
     .header {
-        --bg-header: #FFF
+        --bg-header: #fff;
     }
     .header-container .menu .menu-item:not(.current-menu-item) a {
         --menu-text-color:  <?php echo $bgHeader; ?>;
@@ -92,6 +92,9 @@ date_default_timezone_set('Europe/Paris');
     }
     .travel-sheet {
         --bg-color:  <?php echo $bgHeader; ?>;
+    }
+    .menu-header-container {
+        --bg-header:  #7D41C2;
     }
     .burger span {
          --menu-text-color:  <?php echo $bgHeader; ?>;
