@@ -92,16 +92,29 @@ p {
     h2.page-title {
       color: #000;
       font-family: "Lexend", sans-serif;
-      font-weight: 100;
-      font-size: 2rem;
+      font-weight: 500;
+      font-size: 2.1rem;
       line-height: 1.5;
       strong {
         font-weight: 500;
       }
 
+      margin: 3rem 0 0rem;
+
+      & + p {
+        margin: 0rem auto 3rem;
+
+        & + figure {
+          margin-top: -2.2rem;
+        }
+      }
+
       @include md {
         font-size: 2.28rem;
       }
+    }
+    p {
+      font-size: 1.5rem;
     }
   }
 }
@@ -515,17 +528,18 @@ a.type-card {
 .section-mentions {
   background-color: rgb(117, 68, 187);
   padding-bottom: 3rem;
-  text-align: justify;
+  text-align: left;
   color: #fff;
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 300;
 
   width: 100vw;
-  margin-left: -20px;
+  // margin-left: -20px;
   @include lg {
     width: unset;
     margin-left: unset;
+    text-align: justify;
   }
 }
 
@@ -673,7 +687,11 @@ a.type-card {
   max-width: 800px;
   margin: auto;
   &--image {
-    max-width: 400px;
+    max-width: 100%;
+
+    @include lg {
+      max-width: 400px;
+    }
   }
 }
 

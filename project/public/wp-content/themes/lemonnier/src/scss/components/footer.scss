@@ -29,10 +29,6 @@
     justify-content: start;
     align-items: end;
 
-    .information-menu {
-      width: 100%;
-    }
-
     @include lg {
       flex-direction: row;
       nav {
@@ -67,4 +63,8 @@
       }
     }
   }
+}
+
+.menu-informations-container {
+  width: 100%;
 }

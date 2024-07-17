@@ -1,5 +1,17 @@
 @import "./breakpoints.scss";
 
+@function check-color-header($color) {
+  @if $color != #fff {
+    @return $color;
+  } @else {
+    @return #499ea8;
+  }
+}
+
+@mixin set-background($color) {
+  background-color: check-color-header($color);
+}
+
 @keyframes scrolldown {
   from {
     top: calc(0px - var(--header-h));
@@ -111,7 +123,14 @@ body {
       transition: left 0.3s;
       width: 100vw;
       background-color: var(--bg-header);
-
+      @include lg {
+        .sub-menu {
+          color: #fff !important;
+          a {
+            color: #fff !important;
+          }
+        }
+      }
       &.open {
         left: 0;
         transition: left 0.3s;

@@ -430,6 +430,14 @@ body.scrolled-up .section-header {
     height: auto;
   }
 }
+@media (min-width: 960px) {
+  .header-container .menu-header-container .sub-menu {
+    color: #fff !important;
+  }
+  .header-container .menu-header-container .sub-menu a {
+    color: #fff !important;
+  }
+}
 .header-container .menu-header-container.open {
   left: 0;
   transition: left 0.3s;
@@ -761,19 +769,31 @@ p a {
 .page-content h2.page-title {
   color: #000;
   font-family: "Lexend", sans-serif;
-  font-weight: 100;
-  font-size: 2rem;
+  font-weight: 500;
+  font-size: 2.1rem;
   line-height: 1.5;
+  margin: 3rem 0 0rem;
 }
 .page-content h2 strong,
 .page-content h2.page-title strong {
   font-weight: 500;
+}
+.page-content h2 + p,
+.page-content h2.page-title + p {
+  margin: 0rem auto 3rem;
+}
+.page-content h2 + p + figure,
+.page-content h2.page-title + p + figure {
+  margin-top: -2.2rem;
 }
 @media (min-width: 768px) {
   .page-content h2,
   .page-content h2.page-title {
     font-size: 2.28rem;
   }
+}
+.page-content p {
+  font-size: 1.5rem;
 }
 
 .content-container {
@@ -1188,18 +1208,18 @@ a.type-card:visited {
 .section-mentions {
   background-color: rgb(117, 68, 187);
   padding-bottom: 3rem;
-  text-align: justify;
+  text-align: left;
   color: #fff;
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 300;
   width: 100vw;
-  margin-left: -20px;
 }
 @media (min-width: 960px) {
   .section-mentions {
     width: unset;
     margin-left: unset;
+    text-align: justify;
   }
 }
 
@@ -1329,7 +1349,12 @@ a.type-card:visited {
   margin: auto;
 }
 .image-block-subtitle-page--image {
-  max-width: 400px;
+  max-width: 100%;
+}
+@media (min-width: 960px) {
+  .image-block-subtitle-page--image {
+    max-width: 400px;
+  }
 }
 
 .travel-agences-link {
@@ -1651,9 +1676,6 @@ a.type-card:visited {
   justify-content: start;
   align-items: end;
 }
-.footer-container--navs .information-menu {
-  width: 100%;
-}
 @media (min-width: 960px) {
   .footer-container--navs {
     flex-direction: row;
@@ -1682,6 +1704,10 @@ a.type-card:visited {
 }
 .footer .menu-item .sub-menu .menu-item a:before {
   content: "- ";
+}
+
+.menu-informations-container {
+  width: 100%;
 }
 
 .form-container {
