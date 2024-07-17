@@ -334,9 +334,14 @@ body {
           // padding: 8px 15px;
           top: 100%;
           left: 25px;
-          border: 1px solid #000;
+          // border: 1px solid #000;
           flex-direction: column;
           transition: opacity 2s;
+
+          box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
+          -webkit-box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
+          -moz-box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
+
           .menu-item {
             display: block;
             font-family: Arial, Helvetica, sans-serif;
@@ -345,6 +350,12 @@ body {
             a {
               white-space: nowrap;
             }
+          }
+        }
+        &:last-child {
+          .sub-menu {
+            left: unset;
+            right: 0;
           }
         }
       }

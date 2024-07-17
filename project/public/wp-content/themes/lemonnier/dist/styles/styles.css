@@ -615,9 +615,11 @@ body.scrolled-up .section-header {
     position: absolute;
     top: 100%;
     left: 25px;
-    border: 1px solid #000;
     flex-direction: column;
     transition: opacity 2s;
+    box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: -1px 17px 20px -7px rgba(0, 0, 0, 0.64);
   }
   .header .menu .menu-item:hover .sub-menu .menu-item {
     display: block;
@@ -627,6 +629,10 @@ body.scrolled-up .section-header {
   }
   .header .menu .menu-item:hover .sub-menu .menu-item a {
     white-space: nowrap;
+  }
+  .header .menu .menu-item:hover:last-child .sub-menu {
+    left: unset;
+    right: 0;
   }
 }
 
