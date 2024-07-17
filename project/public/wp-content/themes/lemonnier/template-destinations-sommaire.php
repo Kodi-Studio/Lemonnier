@@ -102,9 +102,6 @@ declare(strict_types=1);
 
                     </form>
                 </div>
-                <div>
-                   
-                </div>
                 <?php 
                     
                     the_content(); 
