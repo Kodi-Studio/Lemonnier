@@ -329,6 +329,7 @@ body {
       .menu-item:hover {
         .sub-menu {
           background-color: var(--bg-header);
+          // opacity: 0.7;
           display: flex;
           position: absolute;
           // padding: 8px 15px;

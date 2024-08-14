@@ -68,7 +68,6 @@ declare(strict_types=1);
         </div>
     </section>
 
-
 <? 
     if (get_post_meta(get_the_ID(), 'show_catas_footer', true) === "1") { ?>
     <section class="section section-full" >
