@@ -59,7 +59,7 @@ p {
       border-top: 2px dashed #fff;
       color: #fff;
       font-family: "Glamoure Everyday", sans-serif;
-      font-weight: 100;
+      font-weight: 200;
       font-size: 3rem;
       letter-spacing: 2px;
       margin-top: 1.2rem;
@@ -92,9 +92,10 @@ p {
     h2.page-title {
       color: #000;
       font-family: "Lexend", sans-serif;
-      font-weight: 500;
+      font-weight: 100;
       font-size: 2.1rem;
       line-height: 1.5;
+      letter-spacing: 0.5px;
       strong {
         font-weight: 500;
       }
@@ -115,7 +116,7 @@ p {
     }
     h2:not(.page-title) {
       strong {
-        font-weight: 700;
+        font-weight: 500;
       }
     }
     p {
@@ -171,6 +172,7 @@ p {
 
   h2 {
     font-family: "Glamoure Everyday", sans-serif;
+    font-weight: 300;
     color: var(--color-text);
     margin: 1rem 0 0;
     padding: 0;
@@ -334,7 +336,8 @@ p {
       font-weight: 600;
       border-top: 1px dashed var(--red);
       border-bottom: 1px dashed var(--red);
-      padding: 6px;
+      padding: 6px 0;
+      display: inline-block;
     }
     .--note {
       color: #000;
@@ -495,7 +498,7 @@ a.type-card {
     align-items: center;
     background-color: var(--color-bg);
     color: var(--color-text);
-    display: flex;
+    display: inline-flex;
     font-weight: 600;
     margin-top: 1rem;
     min-height: 21px;
@@ -508,7 +511,8 @@ a.type-card {
     font-weight: 600;
     border-top: 1px dashed var(--red);
     border-bottom: 1px dashed var(--red);
-    padding: 6px;
+    padding: 6px 0;
+    display: inline-block;
   }
   .--note {
     color: #000;
