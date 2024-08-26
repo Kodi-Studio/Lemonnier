@@ -20,6 +20,21 @@
  * @package WordPress
  */
 
+
+/////// ######## PROD ACCESS
+
+// define('DB_NAME', 'mxqqsug821');
+
+// /** MySQL database username */
+// define('DB_USER', 'mxqqsug821');
+
+// /** MySQL database password */
+// define('DB_PASSWORD', 'PcrVvVytpGgd');
+
+////  ######## END PROD ACCESS
+
+
+
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
 define( 'DB_NAME', 'wordpress' );

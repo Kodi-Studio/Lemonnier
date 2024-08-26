@@ -50,7 +50,7 @@ declare(strict_types=1);
     </section>
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
-            <main>
+            <main class="page-autocars" >
                 
                 <div class="pages-type-title-block" style="--color-text:#7d41c2;" >
                     <div class="carousel-travels-title">

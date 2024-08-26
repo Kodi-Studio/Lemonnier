@@ -64,7 +64,7 @@ declare(strict_types=1);
     </section>
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
-            <main>               
+            <main class="page-metiers" >               
                 <?php the_content(); ?>
             </main>
             <!-- <?php /*get_sidebar();*/ ?> -->

@@ -50,7 +50,7 @@ declare(strict_types=1);
     </section>
     <section class="section" >
         <div id="content-container" class="content-container page-content" >
-            <main>
+            <main class="page-groupe" >
                 
                 <div class="pages-type-title-block" style="--color-text:#7d41c2;" >
                     <div class="carousel-travels-title">
@@ -63,7 +63,7 @@ declare(strict_types=1);
 
                 <?php the_content(); ?>
                 
-            </main>
+            </main >
             <!-- <?php get_sidebar(); ?> -->
         </div>
     </section>
