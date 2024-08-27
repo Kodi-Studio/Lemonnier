@@ -1408,6 +1408,9 @@ a.type-card:visited {
   font-size: 1.2rem;
   line-height: 1.8rem;
 }
+.travel-agences-link p {
+  text-align: center;
+}
 .travel-agences-link .arrow {
   width: 12%;
   margin: 1rem auto;
