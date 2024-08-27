@@ -825,11 +825,13 @@ p a {
 }
 .page-content p {
   font-size: 1.5rem;
-  text-align: justify;
   font-weight: 200;
 }
 .page-content p strong {
   font-weight: 500;
+}
+.page-content p:not(.has-text-align-center) {
+  text-align: justify;
 }
 
 .content-container {

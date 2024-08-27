@@ -121,11 +121,14 @@ p {
     }
     p {
       font-size: 1.5rem;
-      text-align: justify;
+
       font-weight: 200;
       strong {
         font-weight: 500;
       }
+    }
+    p:not(.has-text-align-center) {
+      text-align: justify;
     }
   }
 }
