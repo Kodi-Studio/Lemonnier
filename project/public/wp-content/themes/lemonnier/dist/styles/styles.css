@@ -1854,6 +1854,13 @@ main.page-metiers h2 {
   line-height: 1.5;
   padding: 1rem;
 }
+.form-line select {
+  height: 34px;
+  padding: 0 15px;
+  line-height: 2;
+  display: inline-block;
+  font-size: 1rem;
+}
 
 .wpcf7-not-valid-tip {
   color: #c41e28 !important;
