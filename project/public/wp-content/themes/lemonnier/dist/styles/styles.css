@@ -1411,7 +1411,7 @@ a.type-card:visited {
   line-height: 1.8rem;
 }
 .travel-agences-link p {
-  text-align: center;
+  text-align: center !important;
 }
 .travel-agences-link .arrow {
   width: 12%;
