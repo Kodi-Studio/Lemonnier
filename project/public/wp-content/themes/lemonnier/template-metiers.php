@@ -47,7 +47,7 @@ declare(strict_types=1);
     get_header(); 
 ?>
 
-   <section class="section section-full page-header page-header--hight">
+   <section class="section section-full page-header">
         
         <img class="image-header" src="<?php echo  get_post_meta(get_the_ID(), 'image_url', true); ?>" />
         <img class="weaver" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/weaver.svg" />
