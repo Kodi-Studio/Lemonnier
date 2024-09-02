@@ -796,7 +796,7 @@ p a {
 .page-content h2.page-title {
   color: #000;
   font-family: "Lexend", sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 2.1rem;
   line-height: 1.5;
   letter-spacing: 0.5px;
@@ -1289,7 +1289,7 @@ a.type-card:visited {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 24px 6px;
+  padding: 24px;
 }
 .card-list .wp-block-create-block-travel-card-block img {
   width: 75%;
@@ -1299,16 +1299,14 @@ a.type-card:visited {
 .card-list .wp-block-create-block-travel-card-block h2 {
   font-family: "Glamoure Everyday", sans-serif;
   font-size: 2.5rem;
-  font-weight: bold;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 1.2;
   margin-top: 12px;
 }
 .card-list .wp-block-create-block-travel-card-block p {
   font-family: "Lexend", sans-serif;
   font-size: 1.3rem;
   line-height: 1.3;
-  padding-left: 12px;
-  padding-right: 12px;
 }
 .card-list .wp-block-create-block-travel-card-block p strong {
   font-size: 1.5rem;

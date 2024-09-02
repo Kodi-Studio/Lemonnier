@@ -69,7 +69,7 @@ declare(strict_types=1);
                         <div class="catalog-item" >
                             <a href="<?php echo $cata['cata_fichier']; ?>" target="_blank" >
                                 <img src="<?php echo $cata['cata_vignette'] ?>" alt="<?php echo $cata['cata_libelle'] ?>" class="catalog-vignette" />
-                               <p><?php echo $cata['cata_libelle'] ?></p>
+                               <p class="has-text-align-center" ><?php echo $cata['cata_libelle'] ?></p>
                             </a>
                         </div>
                     

@@ -40,7 +40,7 @@ date_default_timezone_set('Europe/Paris');
         $month =  $months[+date("m", strtotime($dateString))-1];
         $year = date("Y", strtotime($dateString));
 
-        return $day.' '.$month; //.' '.$year;
+        return $day.' '.$month.' '.$year;
 
     }
 

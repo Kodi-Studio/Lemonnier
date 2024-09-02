@@ -127,6 +127,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title={__("Couleur de contour", "travel-card-block")}>
 					<ColorPalette value={borderColor} onChange={onChangeBorderColor} />
 				</PanelBody>
+				alignment
 			</InspectorControls>
 			<BlockControls>
 				<AlignmentToolbar value={alignment} onChange={onChangeAlignment} />
