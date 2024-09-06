@@ -465,22 +465,32 @@ function dynamic_email_recipient( $components, $contact_form ) {
     
     // Récupérer l'objet du formulaire via l'ID ou un autre paramètre
     $form_id = $contact_form->id();
+
+    // var_dump($contact_form);
     
     // Vérifier l'ID du formulaire si nécessaire
     // if ( $form_id == '15aaca7' ) { // Remplacez 123 par l'ID de votre formulaire
 
         // Récupérer les données du formulaire (par exemple un champ avec l'email souhaité)
         $submission = WPCF7_Submission::get_instance();
+
+        // var_dump($submission );
         
         if ( $submission ) {
             $posted_data = $submission->get_posted_data();
-            
+            // var_dump( isset( $posted_data['mail-agence'] ) );
             // Supposez qu'un champ de formulaire contient l'email (par exemple `[your-email]`)
-            if ( isset( $posted_data['your-email'] ) ) {
-                $email = sanitize_email( $posted_data['mail-agence'] );
+            if ( isset( $posted_data['mail-agence'] ) ) {
+                $destinataire = sanitize_email( $posted_data['mail-agence'][0] );
+                // var_dump( $posted_data['mail-agence'] );
+
+                // echo "email : ".$destinataire;
+
+                // var_dump($components['recipient']);
                 
                 // Modifier l'adresse e-mail de destination
-                $components['recipient'] = $email;
+                $components['recipient'] = $destinataire;
+                // var_dump($components['recipient']);
             }
         }
     // }
