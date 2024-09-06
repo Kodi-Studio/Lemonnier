@@ -467,7 +467,7 @@ function dynamic_email_recipient( $components, $contact_form ) {
     $form_id = $contact_form->id();
     
     // Vérifier l'ID du formulaire si nécessaire
-    if ( $form_id == '15aaca7' ) { // Remplacez 123 par l'ID de votre formulaire
+     if ( isset( $posted_data['mail-agence'] ) ) {
 
 
 
@@ -478,12 +478,12 @@ function dynamic_email_recipient( $components, $contact_form ) {
             $posted_data = $submission->get_posted_data();
             
             // Supposez qu'un champ de formulaire contient l'email (par exemple `[your-email]`)
-            if ( isset( $posted_data['mail-agence'] ) ) {
+           
                 $email = sanitize_email( $posted_data['mail-agence'] );
                 
                 // Modifier l'adresse e-mail de destination
                 $components['recipient'] = $email;
-            }
+            
         }
     }
     
