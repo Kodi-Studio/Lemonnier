@@ -165,7 +165,7 @@ function dynamic_email_recipient( $components, $contact_form ) {
     $form_id = $contact_form->id();
     
     // Vérifier l'ID du formulaire si nécessaire
-    if ( $form_id == 123 ) { // Remplacez 123 par l'ID de votre formulaire
+    if ( $form_id == '15aaca7' ) { // Remplacez 123 par l'ID de votre formulaire
 
         // Récupérer les données du formulaire (par exemple un champ avec l'email souhaité)
         $submission = WPCF7_Submission::get_instance();
