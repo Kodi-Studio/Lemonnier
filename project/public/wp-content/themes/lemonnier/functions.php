@@ -456,3 +456,41 @@ function my_mce4_options($init) {
 add_filter('tiny_mce_before_init', 'my_mce4_options');
 
 
+
+
+
+////////// FILTRE POUR RENDRE L'ADRESSE DE DESTINATION DES FORMULAIRES DYNAMIQUES
+function dynamic_email_recipient( $components, $contact_form ) {
+    
+    
+    // Récupérer l'objet du formulaire via l'ID ou un autre paramètre
+    $form_id = $contact_form->id();
+    
+    // Vérifier l'ID du formulaire si nécessaire
+    if ( $form_id == '15aaca7' ) { // Remplacez 123 par l'ID de votre formulaire
+
+
+
+        // Récupérer les données du formulaire (par exemple un champ avec l'email souhaité)
+        $submission = WPCF7_Submission::get_instance();
+        
+        if ( $submission ) {
+            $posted_data = $submission->get_posted_data();
+            
+            // Supposez qu'un champ de formulaire contient l'email (par exemple `[your-email]`)
+            if ( isset( $posted_data['mail-agence'] ) ) {
+                $email = sanitize_email( $posted_data['mail-agence'] );
+                
+                // Modifier l'adresse e-mail de destination
+                $components['recipient'] = $email;
+            }
+        }
+    }
+    
+    return $components;
+}
+
+add_filter( 'wpcf7_mail_components', 'dynamic_email_recipient', 10, 2 );
+
+
+
