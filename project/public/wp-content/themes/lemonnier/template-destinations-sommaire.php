@@ -23,7 +23,7 @@ declare(strict_types=1);
 
     $query = 	"SELECT t1.* , t2.* FROM `kdest_travel` t1 
                 LEFT JOIN `travel_discount` t2 ON t1.travel_discount_id = t2.travel_discount_id 
-                WHERE t1.travel_type_id = $type_id AND t1.travel_online = 1";
+                WHERE (t1.travel_type_id = $type_id OR t1.travel_type_id_2 = $type_id)  AND t1.travel_online = 1";
     
     if(isset($_POST['minprice']) && $_POST['minprice'] != '' && isset($_POST['wishprice'])  && $_POST['wishprice'] == "0" ) {
 

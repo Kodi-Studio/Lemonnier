@@ -106,6 +106,7 @@ class TRAVEL_Admin_Page {
 					'travel_homepage' => 0,
 					'travel_online' => 0,
 					'travel_type_id' => '',
+					'travel_type_id_2' => '',
 					'travel_date_a_start' => '',
 					'travel_date_a_end' => '',
 					'travel_date_a_note' => '',
@@ -181,12 +182,25 @@ class TRAVEL_Admin_Page {
 
 		$html .= '<tr><th>Catégorie (type de voyage) :</th></tr>';
     	$html .= '<tr valign="top">';
-    	$html .= '<th scope="row"><label for="travel_type_id">Type catégorie :</label></th>';
+    	$html .= '<th scope="row"><label for="travel_type_id">Type catégorie 1 :</label></th>';
 		$html .= '<td>
 					<select id="travel_type_id" name="travel_type_id" required>
                     <option value="">Sélectionner une catégorie</option>';
 					foreach ($travels_types as $type) {
                         $selected = $edit_item && $edit_item->travel_type_id == $type->travel_type_id ? 'selected' : '';
+                        $html .='<option value="' . esc_attr($type->travel_type_id) . '" ' . $selected . '>' . esc_html($type->travel_type_title) . '</option>';
+                    }
+
+		$html .= '</select></td>';
+		$html .= '</tr>';
+
+    	$html .= '<tr valign="top">';
+    	$html .= '<th scope="row"><label for="travel_type_id">Type catégorie 2 :</label></th>';
+		$html .= '<td>
+					<select id="travel_type_id_2" name="travel_type_id_2" required>
+                    <option value="">Sélectionner une catégorie</option>';
+					foreach ($travels_types as $type) {
+                        $selected = $edit_item && $edit_item->travel_type_id_2 == $type->travel_type_id ? 'selected' : '';
                         $html .='<option value="' . esc_attr($type->travel_type_id) . '" ' . $selected . '>' . esc_html($type->travel_type_title) . '</option>';
                     }
 
@@ -454,6 +468,7 @@ class TRAVEL_Admin_Page {
 		$travel_online = isset($_POST['travel_online']) ? 1 : 0;
 
 		$travel_type_id = intval($_POST['travel_type_id']);
+		$travel_type_id_2 = intval($_POST['travel_type_id_2']);
 
 		$travel_page_id = ( isset($_POST['travel_page_id']) && $_POST['travel_page_id'] != null ) ? $_POST['travel_page_id'] : null;
 
@@ -555,6 +570,7 @@ class TRAVEL_Admin_Page {
 					'travel_homepage' => $travel_homepage,
 					'travel_online' => $travel_online,
 					'travel_type_id' => $travel_type_id,
+					'travel_type_id_2' => $travel_type_id_2,
 					'travel_date_a_start' => $travel_date_a_start,
 					'travel_date_a_end' => $travel_date_a_end,
 					'travel_price_a_1' => $travel_price_a_1,
@@ -653,7 +669,7 @@ class TRAVEL_Admin_Page {
 					'travel_homepage' => $travel_homepage,
 					'travel_online' => $travel_online,
 					'travel_type_id' => $travel_type_id,
-					'travel_type_id' => $travel_type_id,
+					'travel_type_id_2' => $travel_type_id_2,
 					'travel_date_a_start' => $travel_date_a_start,
 					'travel_date_a_end' => $travel_date_a_end,
 					'travel_price_a_1' => $travel_price_a_1,
