@@ -197,7 +197,7 @@ class TRAVEL_Admin_Page {
     	$html .= '<tr valign="top">';
     	$html .= '<th scope="row"><label for="travel_type_id">Type catégorie 2 :</label></th>';
 		$html .= '<td>
-					<select id="travel_type_id_2" name="travel_type_id_2" required>
+					<select id="travel_type_id_2" name="travel_type_id_2">
                     <option value="">Sélectionner une catégorie</option>';
 					foreach ($travels_types as $type) {
                         $selected = $edit_item && $edit_item->travel_type_id_2 == $type->travel_type_id ? 'selected' : '';
