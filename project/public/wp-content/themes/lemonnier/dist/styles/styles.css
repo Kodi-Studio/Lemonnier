@@ -1751,7 +1751,7 @@ main.page-metiers h2 {
   }
   .footer-container--navs nav {
     margin: 24px 12px 0;
-    padding: 0px 36px 0px 24px;
+    padding: 0px 16px 0px 12px;
     border-right: 1px dashed #fff;
   }
   .footer-container--navs nav:last-child {
@@ -1761,7 +1761,7 @@ main.page-metiers h2 {
 .footer .menu-item a {
   color: #c3c3c3;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 2rem;
   letter-spacing: 1.3px;
 }
@@ -1769,7 +1769,9 @@ main.page-metiers h2 {
   margin-bottom: 12px;
 }
 .footer .menu-item .sub-menu .menu-item a {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: nowrap;
 }
 .footer .menu-item .sub-menu .menu-item a:before {
   content: "- ";
