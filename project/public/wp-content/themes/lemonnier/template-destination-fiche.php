@@ -160,7 +160,9 @@ date_default_timezone_set('Europe/Paris');
                                 echo '<div class="--date-box">';
                                 echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
                                 echo '<div class="--price">'.$travel['travel_price_b_1'].'€<small>'.$travel['travel_price_b_1_note'].'</small></div>';
-                                echo '<div class="--price">'.$travel['travel_price_b_2'].'€<small>'.$travel['travel_price_b_2_note'].'</small></div>';
+                                if($travel['travel_price_b_2']!='') {
+                                    echo '<div class="--price">'.$travel['travel_price_b_2'].'€<small>'.$travel['travel_price_b_2_note'].'</small></div>';
+                                }
                                 echo '</div>';
                             }
 
@@ -172,7 +174,9 @@ date_default_timezone_set('Europe/Paris');
                                 echo '<div class="--date-box">';
                                 echo '<div class="--date">du '.$starDate.'<br /> au '.$endDate.'</div>';
                                 echo '<div class="--price">'.$travel['travel_price_c_1'].'€<small>'.$travel['travel_price_c_1_note'].'</small></div>';
-                                echo '<div class="--price">'.$travel['travel_price_c_2'].'€<small>'.$travel['travel_price_c_2_note'].'</small></div>';
+                                if($travel['travel_price_c_2']!='') {
+                                    echo '<div class="--price">'.$travel['travel_price_c_2'].'€<small>'.$travel['travel_price_c_2_note'].'</small></div>';
+                                }
                                 echo '</div>';
                             }
                         }
