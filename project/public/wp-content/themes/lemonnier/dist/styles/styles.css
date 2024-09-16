@@ -1610,6 +1610,10 @@ main.page-metiers h2 {
   margin: 0;
   padding: 0;
 }
+.travel-sheet-left .--picto {
+  width: 40px;
+  margin: 12px 0 0;
+}
 .travel-sheet-left .--subtitle {
   border-bottom: 1px dashed #fff;
   color: #fff;

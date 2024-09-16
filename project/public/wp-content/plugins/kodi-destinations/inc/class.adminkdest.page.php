@@ -158,6 +158,19 @@ class TRAVEL_Admin_Page {
                     <td><input type="text" id="travel_title" name="travel_title" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_title) : '').'" required></td>
                 </tr>
 				<tr valign="top">
+                    <th scope="row"><label for="travel_picto">Picto</label></th>
+                    <td>
+						<select name="travel_picto" id="name="travel_picto"" >
+							<option value="" '.esc_html($edit_item && $edit_item->travel_picto == '' ? 'selected' : '').' >aucun</option>
+							<option value="PICTO_bus" '.esc_html($edit_item && $edit_item->travel_picto == 'car' ? 'selected' : '').' >car</option>
+							<option value="PICTO_avion" '.esc_html($edit_item && $edit_item->travel_picto == 'avion' ? 'selected' : '').' >avion</option>
+							<option value="PICTO_bateau" '.esc_html($edit_item && $edit_item->travel_picto == 'bateau' ? 'selected' : '').' >bateau</option>
+						</select>
+					</td>
+                </tr>
+
+
+				<tr valign="top">
                     <th scope="row"><label for="travel_display_position">Position dans la page</label></th>
                     <td><input type="number" id="travel_display_position" name="travel_display_position" class="regular-text" value="'.esc_html($edit_item ? esc_attr($edit_item->travel_display_position) : 0).'" required></td>
                 </tr>
@@ -419,6 +432,7 @@ class TRAVEL_Admin_Page {
 
 		$travel_display_position = sanitize_text_field(wp_unslash($_POST['travel_display_position']));
 		$travel_title = sanitize_text_field(wp_unslash($_POST['travel_title']));
+		$travel_picto = sanitize_text_field(wp_unslash($_POST['travel_picto']));
         $travel_subtitle = sanitize_text_field(wp_unslash($_POST['travel_subtitle']));
 		$travel_subtitle_fiche = sanitize_text_field(wp_unslash($_POST['travel_subtitle_fiche']));
         $travel_description = sanitize_text_field(wp_unslash($_POST['travel_description']));
@@ -560,6 +574,7 @@ class TRAVEL_Admin_Page {
                 array(
 					'travel_display_position' => $travel_display_position,
                     'travel_title' => $travel_title,
+					'travel_picto' => $travel_picto,
                     'travel_subtitle' => $travel_subtitle,
 					'travel_subtitle_fiche' => $travel_subtitle_fiche,
                     'travel_description' => $travel_description,
@@ -659,6 +674,7 @@ class TRAVEL_Admin_Page {
                 array(
 					'travel_display_position'=> $travel_display_position,
                     'travel_title' => $travel_title,
+					'travel_picto' => $travel_picto,
                     'travel_subtitle' => $travel_subtitle,
 					'travel_subtitle_fiche' => $travel_subtitle_fiche,
                     'travel_description' => $travel_description,
