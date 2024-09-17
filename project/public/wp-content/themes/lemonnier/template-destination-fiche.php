@@ -115,7 +115,7 @@ date_default_timezone_set('Europe/Paris');
                     <?php if($travel['travel_discount_libelle']) {
                         echo '<div class="--discount" style="--color-text:#FFF; --color-bg: #cc0000; --border-color:transparent">'.$travel['travel_discount_libelle'].'</div>';
                     }
-                    if( $travel['travel_picto'] !== '' )
+                    if( $travel['travel_picto'] )
                     {
                         echo '<img class="--picto" src="'.esc_url( get_template_directory_uri() ).'/assets/images/'.$travel['travel_picto'].'.png" />';
                     }
