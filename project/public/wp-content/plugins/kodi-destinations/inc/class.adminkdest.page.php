@@ -162,9 +162,9 @@ class TRAVEL_Admin_Page {
                     <td>
 						<select name="travel_picto" id="name="travel_picto"" >
 							<option value="" '.esc_html($edit_item && $edit_item->travel_picto == '' ? 'selected' : '').' >aucun</option>
-							<option value="PICTO_bus" '.esc_html($edit_item && $edit_item->travel_picto == 'car' ? 'selected' : '').' >car</option>
-							<option value="PICTO_avion" '.esc_html($edit_item && $edit_item->travel_picto == 'avion' ? 'selected' : '').' >avion</option>
-							<option value="PICTO_bateau" '.esc_html($edit_item && $edit_item->travel_picto == 'bateau' ? 'selected' : '').' >bateau</option>
+							<option value="PICTO_bus" '.esc_html($edit_item && $edit_item->travel_picto == 'PICTO_bus' ? 'selected' : '').' >car</option>
+							<option value="PICTO_avion" '.esc_html($edit_item && $edit_item->travel_picto == 'PICTO_avion' ? 'selected' : '').' >avion</option>
+							<option value="PICTO_bateau" '.esc_html($edit_item && $edit_item->travel_picto == 'PICTO_bateau' ? 'selected' : '').' >bateau</option>
 						</select>
 					</td>
                 </tr>
